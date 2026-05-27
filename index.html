@@ -536,10 +536,12 @@
   .drawer-body {
     padding: 22px 36px 32px 36px;
     overflow: auto;
-    display: grid;
-    grid-template-columns: minmax(0,1fr);
+    display: flex;
+    flex-direction: column;
     gap: 22px;
+    min-width: 0;
   }
+  .drawer-body > * { min-width: 0; flex: 0 0 auto; }
   .snippet-frame {
     border: 1px solid var(--rule);
     background: #efeadc;
@@ -560,10 +562,12 @@
     display: block;
     width: 100%;
     height: auto;
-    border: 1px solid var(--rule-2);
-    background: #d8d2c2;
     max-height: 280px;
     object-fit: contain;
+    object-position: center top;
+    margin: 0 auto;
+    border: 1px solid var(--rule-2);
+    background: #d8d2c2;
   }
   .snippet-loading {
     height: 120px;
