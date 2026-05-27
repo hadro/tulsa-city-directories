@@ -200,6 +200,16 @@
     font-family: var(--mono); font-size: 11.5px; color: var(--ink-4);
     font-variant-numeric: tabular-nums;
   }
+  .facet-note {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--ink-3);
+    margin: 6px 0 0 22px;
+    padding-left: 8px;
+    border-left: 1px solid var(--rule);
+  }
 
   .sidebar-note {
     font-family: var(--serif);
@@ -1075,6 +1085,9 @@
           <p class="about-emphasis">The directory marked Black Tulsans with a parenthesized &ldquo;(c)&rdquo; &mdash; short for &ldquo;colored&rdquo; &mdash; alongside their name. Names without this designation were assumed white. The notation is preserved here as it appears in the original; it is a record of how Jim Crow classification was built into the everyday infrastructure of the city, not an endorsement of it.</p>
           <p>Roughly <strong id="aboutColoredCount">5,529 entries</strong> in the 1921 edition carry the &ldquo;(c)&rdquo; designation. Many of them lived and worked in Greenwood &mdash; the prosperous Black district destroyed weeks after the directory went to press.</p>
 
+          <h3 class="about-h3">Likely Greenwood residents</h3>
+          <p>The <strong>Greenwood</strong> facet flags entries whose street address geocodes inside the 1921 burned-area polygon used by the <em>New York Times</em>&rsquo; reconstruction of the massacre footprint. The set combines two passes through this directory: the alphabetical &ldquo;(c)&rdquo; section (people listed with names) and the separate street-and-avenue directory (people listed by address and occupant). It is a structural proxy, not a complete roster &mdash; historical street names that no longer exist on modern maps will be undercounted, and any geocoding error propagates here.</p>
+
           <h3 class="about-h3">A note on accuracy</h3>
           <p>There are OCR, entity-extraction, and entry-alignment errors throughout this data. Always consult the original source page as the authoritative record; this explorer is a way to engage with the directory more deeply, not a replacement for it. Data has not been reviewed for 100&percnt; accuracy.</p>
 
@@ -1100,6 +1113,11 @@
             <div class="about-side-label">Marked &ldquo;(c)&rdquo;</div>
             <div class="about-side-stat" id="aboutStatColored">&mdash;</div>
             <div class="about-side-sub">entries designated Colored in the original publication</div>
+          </div>
+          <div class="about-side-block">
+            <div class="about-side-label">Likely Greenwood</div>
+            <div class="about-side-stat" id="aboutStatGreenwood">&mdash;</div>
+            <div class="about-side-sub">entries whose address geocoded inside the 1921 burned-area polygon, drawn from the alphabetical (c) section and the street directory.</div>
           </div>
           <div class="about-side-block">
             <div class="about-side-label">Volume</div>
@@ -1155,6 +1173,10 @@
 <script>
 /* ============================ Config ============================ */
 const CSV_URL = "entries_gemini-3.1-flash-lite.csv";
+const GREENWOOD_GEOJSON_URLS = [
+  "greenwood_geocoded.geojson",
+  "greenwood_street_geocoded.geojson",
+];
 const MANIFEST_ID = "p15020coll12:2857";
 const IIIF_SERVICE_BASE = "https://digitalcollections.tulsalibrary.org/iiif/2";
 const IIIF_FIRST_CANVAS_SERVICE_ID = 2439;
@@ -1187,6 +1209,9 @@ const FACETS = [
   { key: "race_designation", title: "Race designation", options: [
     { label: "(c) — designated Colored", value: "(c)" },
   ]},
+  { key: "_greenwood", title: "Greenwood", options: [
+    { label: "Likely Greenwood resident", value: "True" },
+  ], note: "Entries whose address geocoded inside the 1921 burned-area polygon — drawn from the alphabetical (c) section and the street directory." },
   { key: "is_rear", title: "Is rear", options: [
     { label: "No",  value: "False" },
     { label: "Yes", value: "True"  },
@@ -1436,6 +1461,7 @@ function renderSidebar() {
           <span class="count">${fmt(cnt)}</span>
         </div>`;
       }).join("")}
+      ${facet.note ? `<p class="facet-note">${escapeHTML(facet.note)}</p>` : ""}
     </div>`);
   });
   html.push(`<p class="sidebar-note">Source scans courtesy of the <a href="${TULSA_LIBRARY_ITEM}" target="_blank" rel="noopener">Tulsa City&ndash;County Library</a>. <a href="#" data-open-about>About this directory &rarr;</a></p>`);
@@ -1575,13 +1601,17 @@ function renderEmptyState() {
   }
   for (const [k, set] of Object.entries(state.facetOn || {})) {
     if (!set || !set.size) continue;
+    if (k === "_greenwood") {
+      chips.push(`greenwood: likely resident`);
+      continue;
+    }
     const labels = [...set].map(v => {
       if (k === "is_business" || k === "is_rear" || k === "is_special_contract" || k === "is_advertisement") {
         return v === "True" ? "Yes" : "No";
       }
       return v;
     });
-    chips.push(`${k.replace(/_/g, " ")}: ${escapeHTML(labels.join(", "))}`);
+    chips.push(`${k.replace(/^_/, "").replace(/_/g, " ")}: ${escapeHTML(labels.join(", "))}`);
   }
   return `
     <h3 class="empty-title">No entries match the current filters.</h3>
@@ -1675,6 +1705,25 @@ function openEntry(i) {
       <div class="v ${f.cls} ${f.isEmpty ? 'empty' : ''}">${f.isEmpty ? 'no value recorded' : escapeHTML(f.v)}</div>
     </div>
   `).join("");
+
+  // Greenwood block (only when this entry geocoded inside the burned-area polygon)
+  if (r._greenwood === "True") {
+    const coords = state.greenwoodCoords && state.greenwoodCoords.get(r.canvas_fragment);
+    const coordsLabel = coords
+      ? `${coords[1].toFixed(5)}, ${coords[0].toFixed(5)}`
+      : "geocoded";
+    const mapLink = coords
+      ? ` &middot; <a class="source-link" style="font-size:12px;" href="https://www.openstreetmap.org/?mlat=${coords[1]}&mlon=${coords[0]}#map=18/${coords[1]}/${coords[0]}" target="_blank" rel="noopener">View on map<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>`
+      : "";
+    metaHTML += `
+      <div class="field" style="grid-column: 1 / -1; border-bottom: 0; padding-top: 4px;">
+        <div class="k" style="color: var(--accent);">Likely Greenwood resident</div>
+        <div class="v" style="font-size: 13px; font-family: var(--sans); color: var(--ink-2); font-style: italic;">
+          Address geocoded inside the 1921 burned-area polygon (${escapeHTML(coordsLabel)}).${mapLink}
+        </div>
+      </div>
+    `;
+  }
 
   const sourceUrl = sourcePageUrl(r);
   metaHTML += `
@@ -1866,10 +1915,13 @@ async function boot() {
 
   try {
     statusEl.textContent = "Fetching directory entries";
-    const resp = await fetch(CSV_URL);
-    if (!resp.ok) throw new Error(`HTTP ${resp.status} fetching ${CSV_URL}`);
+    const [csvResp, ...gwResps] = await Promise.all([
+      fetch(CSV_URL),
+      ...GREENWOOD_GEOJSON_URLS.map(u => fetch(u).catch(() => null)),
+    ]);
+    if (!csvResp.ok) throw new Error(`HTTP ${csvResp.status} fetching ${CSV_URL}`);
     statusEl.textContent = "Parsing 69,989 entries";
-    const text = await resp.text();
+    const text = await csvResp.text();
     const rows = rowsFromCSV(text);
 
     // Build a per-row lowercase search haystack across the most useful fields
@@ -1883,7 +1935,40 @@ async function boot() {
         if (v) s += " " + v;
       }
       r._search = s.toLowerCase();
+      r._greenwood = "";
     }
+
+    // Resolve "Likely Greenwood resident" by canvas_fragment match against
+    // the geocoded burned-area datasets.
+    statusEl.textContent = "Resolving Greenwood matches";
+    const greenwoodFragments = new Set();
+    const greenwoodCoords = new Map();
+    for (const resp of gwResps) {
+      if (!resp || !resp.ok) continue;
+      try {
+        const fc = await resp.json();
+        if (!fc || !Array.isArray(fc.features)) continue;
+        for (const f of fc.features) {
+          const cf = f && f.properties && f.properties.canvas_fragment;
+          if (!cf) continue;
+          greenwoodFragments.add(cf);
+          const coords = f.geometry && f.geometry.coordinates;
+          if (Array.isArray(coords) && coords.length >= 2) {
+            greenwoodCoords.set(cf, coords);
+          }
+        }
+      } catch (e) { /* skip a bad file */ }
+    }
+    let greenwoodCount = 0;
+    for (let i = 0; i < rows.length; i++) {
+      if (greenwoodFragments.has(rows[i].canvas_fragment)) {
+        rows[i]._greenwood = "True";
+        greenwoodCount++;
+      }
+    }
+    state.greenwoodCoords = greenwoodCoords;
+    state.greenwoodCount = greenwoodCount;
+
     state.rows = rows;
     state.totalCount = rows.length;
     state.coloredCount = rows.reduce((n, r) => n + (r.race_designation === "(c)" ? 1 : 0), 0);
@@ -1894,6 +1979,8 @@ async function boot() {
     document.getElementById("aboutStatTotal").textContent = fmt(state.totalCount);
     document.getElementById("aboutStatColored").textContent = fmt(state.coloredCount);
     document.getElementById("aboutColoredCount").textContent = fmt(state.coloredCount) + " entries";
+    const gwStat = document.getElementById("aboutStatGreenwood");
+    if (gwStat) gwStat.textContent = fmt(state.greenwoodCount);
 
     renderSidebar();
     renderTable();
