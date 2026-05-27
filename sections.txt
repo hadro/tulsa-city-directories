@@ -1,0 +1,5 @@
+# filename of FIRST page in section, section label
+0001_p15020coll12:2439.jpg  frontmatter
+0014_p15020coll12:2452_right.jpg  city directory alphabetical list of names
+0299_p15020coll12:2737_left.jpg  street and avenue directory
+0374_p15020coll12:2812_right.jpg  classified and business directory

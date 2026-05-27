@@ -1,0 +1,1466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Polk-Hoffhine Tulsa City Directory, 1921 — Pipeline Data Explorer</title>
+<meta name="viewport" content="width=1440" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper:        #f3ede2;
+    --paper-2:      #ebe4d6;
+    --paper-3:      #e3dbc9;
+    --card:         #faf6ec;
+    --rule:         #d8cfba;
+    --rule-2:       #c6bca3;
+    --ink:          #1e1a14;
+    --ink-2:        #4a443a;
+    --ink-3:        #5e574c;   /* AA on paper for normal text */
+    --ink-4:        #80796c;   /* AA on paper for large/non-essential text */
+    --accent:       #7a2a1f;       /* deep oxblood */
+    --accent-soft:  #f0d6cb;
+    --row-hover:    #ece5d4;
+    --row-selected: #e6dcc4;
+    --focus:        #7a2a1f;
+    --serif: "Spectral", "Source Serif Pro", Georgia, serif;
+    --sans:  "IBM Plex Sans", system-ui, sans-serif;
+    --mono:  "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  .tip:focus-visible .tip-body,
+  .tip:focus-within .tip-body { opacity: 1; transform: translate(-50%, -4px); pointer-events: auto; }
+  body {
+    font-family: var(--sans);
+    font-size: 13.5px;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ============================ Masthead ============================ */
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+    padding: 22px 36px 18px 36px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: end;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 8px 0;
+  }
+  .eyebrow .dot {
+    display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent); vertical-align: middle; margin: 0 8px 2px 0;
+  }
+  .title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    margin: 0;
+  }
+  .title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-2);
+  }
+  .context {
+    margin: 10px 0 0 0;
+    max-width: 720px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .context .quiet { color: var(--ink-3); }
+  .masthead-meta {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    line-height: 1.7;
+  }
+  .masthead-meta .count {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  /* ============================ App layout ============================ */
+  .app {
+    display: grid;
+    grid-template-columns: 256px minmax(0, 1fr);
+    min-height: calc(100vh - 96px);
+  }
+  .sidebar {
+    border-right: 1px solid var(--rule);
+    padding: 22px 22px 32px 36px;
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    align-self: start;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  /* subtle scrollbar in the sidebar */
+  .sidebar::-webkit-scrollbar { width: 8px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--rule-2); border-radius: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .main {
+    background: var(--paper);
+    padding: 18px 36px 200px 22px;
+    min-width: 0;
+  }
+
+  /* ============================ Sidebar ============================ */
+  .filter-section { margin-bottom: 22px; }
+  .filter-section h3 {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 10px 0;
+    font-weight: 500;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .filter-section h3 .clear {
+    font-family: var(--sans); text-transform: none; letter-spacing: 0;
+    font-size: 11px; color: var(--ink-4); cursor: pointer;
+    border: 0; background: none; padding: 0;
+  }
+  .filter-section h3 .clear:hover { color: var(--accent); }
+
+  .facet-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    cursor: pointer;
+    user-select: none;
+    color: var(--ink-2);
+  }
+  .facet-row:hover { color: var(--ink); }
+  .facet-row .label {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 13px;
+  }
+  .facet-row .label .chk {
+    width: 13px; height: 13px; border: 1px solid var(--rule-2);
+    border-radius: 2px; background: var(--card);
+    display: inline-flex; align-items: center; justify-content: center;
+    flex: 0 0 13px;
+  }
+  .facet-row[data-on="true"] .chk {
+    background: var(--ink); border-color: var(--ink);
+  }
+  .facet-row[data-on="true"] .chk::after {
+    content: ""; width: 6px; height: 6px; background: var(--paper);
+    display: block;
+  }
+  .facet-row .count {
+    font-family: var(--mono); font-size: 11.5px; color: var(--ink-4);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sidebar-note {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink-3);
+    padding: 16px 0 0 0;
+    margin-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .sidebar-note a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+
+  /* ============================ Toolbar ============================ */
+  .toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .search {
+    position: relative;
+  }
+  .search input {
+    width: 100%;
+    height: 40px;
+    padding: 0 14px 0 38px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: var(--card);
+    font-family: var(--sans);
+    font-size: 13.5px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .search input::placeholder { color: var(--ink-4); }
+  .search input:focus {
+    border-color: var(--ink-2);
+    box-shadow: 0 0 0 3px rgba(122,42,31,0.10);
+  }
+  .search svg {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--ink-3);
+  }
+  .search-hint {
+    font-size: 11.5px; color: var(--ink-4); margin: 6px 2px 0;
+    font-family: var(--sans);
+  }
+  .btn {
+    height: 40px;
+    padding: 0 14px;
+    border: 1px solid var(--rule-2);
+    background: var(--card);
+    border-radius: 2px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: background .12s, border-color .12s;
+    white-space: nowrap;
+  }
+  .btn:hover { background: var(--paper-2); border-color: var(--ink-3); }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn svg { color: var(--ink-3); }
+  .btn-primary svg { color: var(--paper-2); }
+
+  /* ============================ Table ============================ */
+  .table-wrap {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    /* overflow:visible so position:sticky on thead works
+       (sticky is clipped by any non-visible overflow ancestor) */
+    overflow: visible;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    padding: 0;
+    background: var(--paper-2);
+    border-bottom: 1px solid var(--rule);
+    user-select: none;
+    vertical-align: bottom;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  thead th .col-sort {
+    display: flex; width: 100%;
+    align-items: center; justify-content: space-between;
+    padding: 14px 14px 10px 14px;
+    border: 0; background: none;
+    font: inherit; color: inherit; text-align: left;
+    letter-spacing: inherit; text-transform: inherit;
+    cursor: pointer;
+  }
+  thead th .col-sort:hover { color: var(--ink); }
+  thead th .col-sort .sort {
+    color: var(--ink-4); font-family: var(--sans); margin-left: 6px;
+  }
+  thead th[aria-sort="ascending"] .col-sort .sort,
+  thead th[aria-sort="descending"] .col-sort .sort { color: var(--ink); }
+  thead tr.filter-row th {
+    position: sticky;
+    top: 38px;
+    z-index: 4;
+    padding: 0 10px 10px 10px;
+    background: var(--paper-2);
+    border-bottom: 1px solid var(--rule);
+    text-transform: none; letter-spacing: 0;
+  }
+  thead th:hover { color: var(--ink-3); } /* don't change just because filter-row hover */
+  thead th .sort {
+    display: inline-block; margin-left: 4px; color: var(--ink-4);
+    font-family: var(--sans);
+  }
+  thead tr.filter-row input,
+  thead tr.filter-row select {
+    width: 100%;
+    height: 28px;
+    padding: 0 24px 0 8px;
+    border: 1px solid var(--rule-2);
+    background: var(--card);
+    border-radius: 2px;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink);
+    outline: none;
+  }
+  thead tr.filter-row select { padding-right: 8px; }
+  thead tr.filter-row input:focus,
+  thead tr.filter-row select:focus {
+    border-color: var(--ink-2);
+    box-shadow: 0 0 0 2px rgba(122,42,31,0.18);
+  }
+  thead tr.filter-row input::placeholder { color: var(--ink-4); font-style: italic; }
+  .filter-wrap { position: relative; }
+  .filter-wrap .clear-x {
+    position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+    width: 18px; height: 18px;
+    display: none;
+    align-items: center; justify-content: center;
+    border: 0; background: none; padding: 0; cursor: pointer;
+    color: var(--ink-3); border-radius: 2px;
+  }
+  .filter-wrap .clear-x:hover { background: var(--paper-3); color: var(--ink); }
+  .filter-wrap .clear-x:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .filter-wrap.has-value .clear-x { display: inline-flex; }
+
+  tbody tr {
+    cursor: pointer;
+  }
+  tbody tr:focus { outline: none; }
+  tbody tr:focus-visible td:first-child {
+    box-shadow: inset 3px 0 0 var(--accent), inset 0 0 0 1px var(--accent);
+  }
+  tbody tr:focus-visible td {
+    background: var(--row-hover);
+  }
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--paper-2);
+    font-size: 13.5px;
+    color: var(--ink);
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  tbody tr:hover td { background: var(--row-hover); }
+  tbody tr.selected td { background: var(--row-selected); }
+  tbody tr.selected td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+
+  .range-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-2);
+    background: var(--paper-2);
+    padding: 2px 7px;
+    border-radius: 2px;
+    border: 1px solid var(--rule);
+  }
+  .name-cell {
+    font-family: var(--serif);
+    font-size: 15px;
+    letter-spacing: -0.005em;
+  }
+  .name-cell .race-mark {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--accent);
+    margin-left: 6px;
+    padding: 1px 5px;
+    border: 1px solid var(--accent-soft);
+    border-radius: 2px;
+    background: rgba(122,42,31,0.04);
+    vertical-align: 1px;
+    cursor: help;
+    position: relative;
+    display: inline-block;
+  }
+  button.race-mark {
+    font: inherit; line-height: inherit;
+  }
+  .is-bus-yes {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-2);
+    background: var(--paper-2);
+    padding: 2px 7px;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+  }
+  .is-bus-no {
+    color: var(--ink-4);
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+  .muted { color: var(--ink-4); }
+  .spouse-cell { font-style: italic; color: var(--ink-2); }
+
+  /* ============================ Drawer ============================ */
+  @media (prefers-reduced-motion: reduce) {
+    .drawer, .drawer-backdrop { transition: none !important; }
+  }
+  .drawer-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(30,26,20,0.18);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .22s ease;
+    z-index: 40;
+  }
+  .drawer-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .drawer {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    background: var(--card);
+    border-top: 1px solid var(--rule-2);
+    box-shadow: 0 -20px 60px -20px rgba(30,26,20,0.18);
+    transform: translateY(102%);
+    transition: transform .28s cubic-bezier(.32,.72,0,1);
+    z-index: 50;
+    max-height: 72vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .drawer.open { transform: translateY(0); }
+
+  .drawer-header {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto;
+    align-items: center;
+    padding: 16px 28px 14px 36px;
+    border-bottom: 1px solid var(--rule);
+    gap: 16px;
+  }
+  .drawer-eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 4px 0;
+  }
+  .drawer-title {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .drawer-title .race-mark {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--accent);
+    margin-left: 10px;
+    padding: 2px 7px;
+    border: 1px solid var(--accent-soft);
+    border-radius: 2px;
+    background: rgba(122,42,31,0.04);
+    vertical-align: 4px;
+  }
+  .drawer-actions {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .drawer-actions .nav-pill {
+    display: inline-flex; align-items: center;
+    border: 1px solid var(--rule-2);
+    border-radius: 2px;
+    background: var(--card);
+    height: 32px;
+    overflow: hidden;
+  }
+  .drawer-actions .nav-pill button {
+    border: 0; background: none; padding: 0 10px; height: 100%;
+    color: var(--ink-2); cursor: pointer; font-family: var(--mono); font-size: 12px;
+  }
+  .drawer-actions .nav-pill button:hover { background: var(--paper-2); color: var(--ink); }
+  .drawer-actions .nav-pill .sep { width: 1px; background: var(--rule); }
+  .drawer-actions .close {
+    border: 1px solid var(--rule-2);
+    background: var(--card);
+    width: 32px; height: 32px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 2px; cursor: pointer; color: var(--ink-2);
+  }
+  .drawer-actions .close:hover { background: var(--paper-2); color: var(--ink); }
+
+  .drawer-body {
+    padding: 22px 36px 32px 36px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: minmax(0,1fr);
+    gap: 22px;
+  }
+  .snippet-frame {
+    border: 1px solid var(--rule);
+    background: #efeadc;
+    padding: 14px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .snippet-frame .snippet-caption {
+    position: absolute;
+    top: 8px; right: 12px;
+    font-family: var(--mono); font-size: 10px;
+    color: var(--ink-4); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .snippet-frame img,
+  .snippet-frame svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule-2);
+    background: #d8d2c2;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 18px 36px;
+    padding: 4px 4px;
+  }
+  .meta-grid .field {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 4px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--paper-2);
+  }
+  .meta-grid .field .k {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+  }
+  .meta-grid .field .v {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .meta-grid .field .v.mono {
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+  .meta-grid .field .v.empty {
+    color: var(--ink-4); font-style: italic; font-family: var(--serif);
+    font-size: 14px;
+  }
+  .source-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--accent); text-decoration: none;
+    font-family: var(--sans); font-size: 13px;
+    border-bottom: 1px dotted var(--accent);
+    padding-bottom: 1px;
+  }
+  .source-link:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* tooltip */
+  .tip { position: relative; }
+  .tip:hover .tip-body { opacity: 1; transform: translate(-50%, -4px); pointer-events: auto; }
+  .tip-body {
+    position: absolute;
+    bottom: 100%; left: 50%;
+    transform: translate(-50%, 0);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: 11.5px;
+    line-height: 1.45;
+    padding: 8px 10px;
+    border-radius: 2px;
+    width: 220px;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease;
+    z-index: 30;
+    box-shadow: 0 8px 20px -8px rgba(30,26,20,0.4);
+  }
+  .tip-body::after {
+    content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    border: 5px solid transparent; border-top-color: var(--ink);
+  }
+  .tip-body em { font-style: normal; color: var(--accent-soft); }
+
+  /* ============================ Empty state ============================ */
+  .empty-state {
+    padding: 56px 32px 64px;
+    text-align: center;
+    color: var(--ink-2);
+    background: var(--card);
+  }
+  .empty-state .empty-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 0 0 8px 0;
+    letter-spacing: -0.005em;
+  }
+  .empty-state .empty-sub {
+    font-size: 13px;
+    color: var(--ink-3);
+    margin: 0 0 18px 0;
+  }
+  .empty-state .active-summary {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    max-width: 640px;
+    margin: 6px auto 18px;
+  }
+  .empty-state .active-summary .chip {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    background: rgba(122,42,31,0.06);
+    border: 1px solid var(--accent-soft);
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+  }
+  .empty-state .clear-all {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 4px;
+    padding: 9px 16px;
+    border: 1px solid var(--accent);
+    background: rgba(122,42,31,0.04);
+    color: var(--accent);
+    font-family: var(--sans);
+    font-size: 13px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .12s;
+  }
+  .empty-state .clear-all:hover { background: rgba(122,42,31,0.12); }
+
+  /* ============================ About modal ============================ */
+  .about-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(30,26,20,0.42);
+    z-index: 400;
+    display: none;
+    place-items: center;
+    padding: 48px;
+    backdrop-filter: blur(2px);
+  }
+  .about-backdrop.open { display: grid; }
+  .about-modal {
+    position: relative;
+    background: var(--paper);
+    width: 100%;
+    max-width: 1080px;
+    max-height: calc(100vh - 96px);
+    border: 1px solid var(--rule-2);
+    box-shadow: 0 30px 80px -20px rgba(30,26,20,0.4);
+    display: flex; flex-direction: column;
+    border-radius: 2px;
+  }
+  .about-modal::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0;
+    height: 4px; background: var(--accent);
+  }
+  .about-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 26px 32px 0;
+    flex-shrink: 0;
+  }
+  .about-eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .about-close {
+    background: transparent;
+    border: 1px solid var(--rule-2);
+    width: 32px; height: 32px;
+    display: grid; place-items: center;
+    cursor: pointer;
+    color: var(--ink-2);
+    border-radius: 2px;
+  }
+  .about-close:hover { color: var(--ink); border-color: var(--ink); }
+  .about-body {
+    padding: 26px 56px 56px;
+    overflow-y: auto;
+  }
+  .about-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    margin: 0 0 36px 0;
+    color: var(--ink);
+    max-width: 22ch;
+  }
+  .about-title em {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr);
+    gap: 56px;
+    align-items: start;
+  }
+  .about-prose { font-family: var(--serif); font-size: 16px; line-height: 1.65; color: var(--ink-2); }
+  .about-prose p { margin: 0 0 18px 0; max-width: 60ch; }
+  .about-prose strong { color: var(--ink); font-weight: 500; }
+  .about-lede { font-size: 18px; color: var(--ink); }
+  .about-h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 32px 0 12px 0;
+    font-weight: 500;
+  }
+  .about-emphasis {
+    border-left: 2px solid var(--accent);
+    padding-left: 18px;
+    font-style: italic;
+    color: var(--ink) !important;
+    margin: 0 0 18px 0;
+  }
+  .about-list { margin: 0 0 18px 0; padding-left: 28px; counter-reset: gbsteps; list-style: none; }
+  .about-list li {
+    position: relative;
+    padding: 6px 0 6px 8px;
+    counter-increment: gbsteps;
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+  .about-list li::before {
+    content: counter(gbsteps, decimal-leading-zero);
+    position: absolute; left: -28px; top: 8px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 0.04em;
+  }
+  .about-link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .about-link:hover { text-decoration-style: dashed; }
+  .about-side {
+    border-left: 1px solid var(--rule);
+    padding-left: 32px;
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  .about-side-block { display: flex; flex-direction: column; gap: 4px; }
+  .about-side-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 4px;
+  }
+  .about-side-stat {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .about-side-stat-text {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .about-side-sub {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink-3);
+  }
+  .about-credit {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-3);
+    line-height: 1.55;
+    border-top: 1px solid var(--rule);
+    padding-top: 18px;
+    margin-top: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .about-backdrop { transition: none !important; }
+  }
+
+  /* keyboard hint */
+  kbd {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule-2);
+    border-bottom-width: 2px;
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: var(--ink-2);
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div>
+    <p class="eyebrow"><span class="dot"></span>Pipeline Data Explorer</p>
+    <h1 class="title">Polk-Hoffhine Directory Co.'s <em>Tulsa City Directory,</em> 1921</h1>
+    <p class="context">
+      Compiled and published in the spring of 1921 — months before the Tulsa Race Massacre destroyed the Greenwood district that May.
+      <span class="quiet">Names marked “(c)” were designated as Colored in the original publication.</span>
+    </p>
+  </div>
+  <div class="masthead-meta">
+    <span class="count" id="entryCount">69,989</span>
+    entries · 1921 edition<br/>
+    one of <span style="color:var(--ink)">11</span> directories indexed<br/>
+    <a href="#about" data-open-about style="color:var(--accent);text-decoration:none;border-bottom:1px dotted var(--accent);font-family:var(--sans);font-size:11.5px;display:inline-block;margin-top:8px;letter-spacing:0;">About this directory →</a>
+  </div>
+</header>
+
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <section class="main">
+    <div class="toolbar">
+      <div class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>
+        </svg>
+        <input id="search" type="text" placeholder="Search names, addresses, employers, occupations…" />
+      </div>
+      <button class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg>
+        Export CSV
+      </button>
+      <button class="btn" id="randomBtn" title="Jump to a random entry">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+        Random entry
+      </button>
+    </div>
+    <p class="search-hint" role="status" aria-live="polite">Showing <strong id="visibleCount">69,989</strong> of 69,989 entries · sorted by <strong id="sortLabel">name</strong>. Click any row to open the source scan and full entry.</p>
+
+    <div class="table-wrap">
+      <table id="dataTable">
+        <colgroup>
+          <col style="width: 92px"/>
+          <col style="width: 22%"/>
+          <col style="width: 90px"/>
+          <col style="width: 14%"/>
+          <col style="width: 80px"/>
+          <col style="width: 18%"/>
+          <col style="width: 24%"/>
+        </colgroup>
+        <thead>
+          <tr id="header-row">
+            <th data-key="range" aria-sort="none"><button class="col-sort" type="button">Range <span class="sort" aria-hidden="true">↕</span></button></th>
+            <th data-key="name" aria-sort="ascending"><button class="col-sort" type="button">Name <span class="sort" aria-hidden="true">↓</span></button></th>
+            <th data-key="is_business" aria-sort="none"><button class="col-sort" type="button">Business <span class="sort" aria-hidden="true">↕</span></button></th>
+            <th data-key="spouse" aria-sort="none"><button class="col-sort" type="button">Spouse <span class="sort" aria-hidden="true">↕</span></button></th>
+            <th data-key="race" aria-sort="none"><button class="col-sort" type="button">Race <span class="sort" aria-hidden="true">↕</span></button></th>
+            <th data-key="occupation" aria-sort="none"><button class="col-sort" type="button">Occupation <span class="sort" aria-hidden="true">↕</span></button></th>
+            <th data-key="address" aria-sort="none"><button class="col-sort" type="button">Address <span class="sort" aria-hidden="true">↕</span></button></th>
+          </tr>
+          <tr class="filter-row">
+            <th><div class="filter-wrap"><input data-filter="range" placeholder="filter…" aria-label="Filter by range"/><button class="clear-x" data-clear-for="range" aria-label="Clear range filter" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
+            <th><div class="filter-wrap"><input data-filter="name" placeholder="filter…" aria-label="Filter by name"/><button class="clear-x" data-clear-for="name" aria-label="Clear name filter" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
+            <th><select data-filter="is_business" aria-label="Filter by business"><option value="">(all)</option><option>Yes</option><option>No</option></select></th>
+            <th><div class="filter-wrap"><input data-filter="spouse" placeholder="filter…" aria-label="Filter by spouse"/><button class="clear-x" data-clear-for="spouse" aria-label="Clear spouse filter" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
+            <th><select data-filter="race" aria-label="Filter by race designation"><option value="">(all)</option><option>(c)</option><option>—</option></select></th>
+            <th><div class="filter-wrap"><input data-filter="occupation" placeholder="filter…" aria-label="Filter by occupation"/><button class="clear-x" data-clear-for="occupation" aria-label="Clear occupation filter" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
+            <th><div class="filter-wrap"><input data-filter="address" placeholder="filter…" aria-label="Filter by address"/><button class="clear-x" data-clear-for="address" aria-label="Clear address filter" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ Empty state ============================ -->
+<div id="emptyState" class="empty-state" style="display:none;"></div>
+
+<!-- ============================ About modal ============================ -->
+<div class="about-backdrop" id="aboutBackdrop" role="presentation">
+  <div class="about-modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" tabindex="-1">
+    <div class="about-head">
+      <div class="about-eyebrow">About this directory</div>
+      <button class="about-close" id="aboutCloseBtn" aria-label="Close about panel">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="about-body">
+      <h2 id="aboutTitle" class="about-title">An exploration tool for data from the <em>Polk-Hoffhine Tulsa City Directory,</em> 1921 — extracted from page scans.</h2>
+      <div class="about-grid">
+        <div class="about-prose">
+          <p class="about-lede">This tool lets you browse structured data extracted from the 1921 Tulsa City Directory, published by Polk-Hoffhine Directory Co. in the spring of 1921 — months before the Tulsa Race Massacre destroyed the Greenwood district that May 31 and June 1.</p>
+
+          <h3 class="about-h3">The source</h3>
+          <p>Polk-Hoffhine Directory Co. published the Tulsa city directory annually in the early 20th century. The 1921 edition catalogues residents, businesses, and addresses on the eve of one of the worst incidents of racial violence in U.S. history. Page scans courtesy of the <a class="about-link" href="#" target="_blank" rel="noopener">Tulsa City–County Library</a>.</p>
+          <p>Entries were extracted from those scans using an LLM-enhanced OCR and named-entity-recognition pipeline. Each entry links back to the cropped source-scan region it was lifted from.</p>
+
+          <h3 class="about-h3">A note on the “(c)” designation</h3>
+          <p class="about-emphasis">The directory marked Black Tulsans with a parenthesized “(c)” — short for “colored” — alongside their name. Names without this designation were assumed white. The notation is preserved here as it appears in the original; it is a record of how Jim Crow classification was built into the everyday infrastructure of the city, not an endorsement of it.</p>
+          <p>Roughly <strong>5,529 entries</strong> in the 1921 edition carry the “(c)” designation. Many of them lived and worked in Greenwood — the prosperous Black district destroyed weeks after the directory went to press.</p>
+
+          <h3 class="about-h3">A note on accuracy</h3>
+          <p>There are OCR, entity-extraction, and entry-alignment errors throughout this data. Always consult the original source page as the authoritative record; this explorer is a way to engage with the directory more deeply, not a replacement for it. Data has not been reviewed for 100% accuracy.</p>
+
+          <h3 class="about-h3">What's missing</h3>
+          <p>City directories systematically under-counted: domestic workers without recorded employers, transient laborers, children, many wives without separate listings, and people deliberately omitted by the canvassers. The absence of a name here does not mean the person was not in Tulsa.</p>
+
+          <h3 class="about-h3">How to use this site</h3>
+          <ol class="about-list">
+            <li>Filter by <strong>business</strong>, <strong>race designation</strong>, <strong>rear-dwelling</strong>, or <strong>advertisement</strong> in the left sidebar.</li>
+            <li>Filter any column by typing in the small input below its header.</li>
+            <li>Use the <strong>search bar</strong> to find names, addresses, employers, or occupations across the full directory.</li>
+            <li><strong>Click any row</strong> to open the full entry alongside the source-scan snippet.</li>
+            <li>Use <strong>Export CSV</strong> to download the currently filtered selection for your own work.</li>
+          </ol>
+        </div>
+        <aside class="about-side">
+          <div class="about-side-block">
+            <div class="about-side-label">Dataset</div>
+            <div class="about-side-stat">69,989</div>
+            <div class="about-side-sub">individual listings, extracted from the 1921 edition</div>
+          </div>
+          <div class="about-side-block">
+            <div class="about-side-label">Marked “(c)”</div>
+            <div class="about-side-stat">5,529</div>
+            <div class="about-side-sub">entries designated Colored in the original publication</div>
+          </div>
+          <div class="about-side-block">
+            <div class="about-side-label">Volume</div>
+            <div class="about-side-stat-text">1921 edition</div>
+            <div class="about-side-sub">one of 11 Tulsa directories being indexed in this collection.</div>
+          </div>
+          <div class="about-side-block">
+            <div class="about-side-label">Pipeline</div>
+            <div class="about-side-stat-text">Directory Pipeline</div>
+            <div class="about-side-sub">An open-source tool for extracting structured data from digitized historical directories.</div>
+          </div>
+          <div class="about-credit">Source material held by the Tulsa City–County Library. Greenwood and the Tulsa Race Massacre context drawn from the <a class="about-link" href="#" target="_blank" rel="noopener">Tulsa Historical Society &amp; Museum</a>.</div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="drawer-backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true" tabindex="-1">
+  <header class="drawer-header">
+    <div>
+      <p class="drawer-eyebrow" id="drawerEyebrow">Entry · Polk-Hoffhine 1921 · p. 137</p>
+      <h2 class="drawer-title" id="drawerTitle">—</h2>
+    </div>
+    <div class="drawer-actions">
+      <button class="close" id="closeBtn" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </header>
+  <div class="drawer-body">
+    <div class="snippet-frame">
+      <span class="snippet-caption">Source scan · page snippet</span>
+      <svg viewBox="0 0 1200 180" preserveAspectRatio="none" role="img" aria-label="Scanned page snippet from the 1921 Polk-Hoffhine Tulsa City Directory showing the highlighted entry in context with surrounding directory listings.">
+        <defs>
+          <pattern id="grain" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse">
+            <rect width="3" height="3" fill="#d8d2c2"/>
+            <circle cx="1" cy="1" r="0.5" fill="#b8b09e" opacity="0.4"/>
+          </pattern>
+          <pattern id="textlines" x="0" y="0" width="600" height="22" patternUnits="userSpaceOnUse">
+            <rect x="10" y="3"   width="180" height="6" fill="#5a5346" opacity="0.55"/>
+            <rect x="195" y="3"  width="120" height="6" fill="#5a5346" opacity="0.45"/>
+            <rect x="320" y="3"  width="240" height="6" fill="#5a5346" opacity="0.5"/>
+            <rect x="10" y="13"  width="90"  height="5" fill="#5a5346" opacity="0.4"/>
+            <rect x="110" y="13" width="200" height="5" fill="#5a5346" opacity="0.45"/>
+            <rect x="320" y="13" width="160" height="5" fill="#5a5346" opacity="0.4"/>
+          </pattern>
+        </defs>
+        <rect width="1200" height="180" fill="url(#grain)"/>
+        <rect width="1200" height="180" fill="url(#textlines)" opacity="0.85"/>
+        <rect x="0" y="0" width="3" height="180" fill="#9e9683" opacity="0.4"/>
+        <rect x="597" y="0" width="3" height="180" fill="#9e9683" opacity="0.4"/>
+        <rect x="1197" y="0" width="3" height="180" fill="#9e9683" opacity="0.4"/>
+        <!-- highlighted row -->
+        <rect id="highlight" x="20" y="64" width="280" height="14" fill="#7a2a1f" opacity="0.18"/>
+      </svg>
+    </div>
+    <div class="meta-grid" id="metaGrid"></div>
+  </div>
+</aside>
+
+<script>
+/* ============================ Mock data ============================ */
+/* A representative slice mirroring the wireframe — names, businesses, employers, addresses,
+   race markers as they appear in the 1921 source. */
+const DATA = [
+  { range:"BAR", name:"Barnard Harvey",       is_business:false, spouse:"Hallie",   race:"",  occupation:"clk",          employer:"Sinclair Oil & G Co", address:"rms 147 S Cincinnati av", page:137 },
+  { range:"BAR", name:"Barnard Harvey S",     is_business:false, spouse:"",         race:"",  occupation:"chemist",      employer:"Piece Oil Corp",      address:"b 1503 E Independence",  page:137 },
+  { range:"BAR", name:"Barnard Hollice",      is_business:false, spouse:"",         race:"",  occupation:"lab",          employer:"",                    address:"r 412 N Greenwood",      page:137 },
+  { range:"BAR", name:"Barnard Horace G Jr",  is_business:false, spouse:"Frances",  race:"",  occupation:"oil scout",    employer:"Magnolia Pet Co",     address:"h 1216 S Cheyenne",      page:137 },
+  { range:"BAR", name:"Barnard James",        is_business:false, spouse:"Lizzie",   race:"",  occupation:"carp",         employer:"",                    address:"r 213 W Easton",         page:137 },
+  { range:"BAR", name:"Barnard James L",      is_business:false, spouse:"",         race:"",  occupation:"driver",       employer:"Tulsa Ice Co",        address:"rms 421 W 4th",          page:137 },
+  { range:"BAR", name:"Barnard James M",      is_business:false, spouse:"Lizzie",   race:"",  occupation:"barber",       employer:"",                    address:"r 824 S Norfolk",        page:138 },
+  { range:"BAR", name:"Barnard J Clark",      is_business:false, spouse:"",         race:"",  occupation:"atty",         employer:"Holcombe & Barnard",  address:"r 1417 S Boulder",       page:138 },
+  { range:"BAR", name:"Barnard Lee",          is_business:false, spouse:"",         race:"",  occupation:"shoemkr",      employer:"",                    address:"rms 14 N Boston",        page:138 },
+  { range:"BAR", name:"Barnard Mary A",       is_business:false, spouse:"",         race:"",  occupation:"wid Geo",      employer:"",                    address:"r 503 N Cheyenne",       page:138 },
+  { range:"BAR", name:"Barnard Oscar",        is_business:false, spouse:"",         race:"",  occupation:"porter",       employer:"Tulsa Hotel",         address:"r 528 N Detroit",        page:138 },
+  { range:"BAR", name:"Barnard Richmond P",   is_business:false, spouse:"Maggie",   race:"",  occupation:"mgr",          employer:"Western Union",       address:"h 1308 S Boston",        page:138 },
+  { range:"BAR", name:"Barnard Terrell H",    is_business:false, spouse:"Pearl",    race:"",  occupation:"pumper",       employer:"Sinclair Oil & G",    address:"h 2017 E 6th",           page:138 },
+  { range:"BAR", name:"Barnds Martha",        is_business:false, spouse:"",         race:"(c)",occupation:"cook",         employer:"",                    address:"r 524 N Greenwood",      page:138 },
+  { range:"BAR", name:"Barner Harry M",       is_business:false, spouse:"",         race:"",  occupation:"slsmn",        employer:"",                    address:"rms 16 W 6th",           page:138 },
+  { range:"BAR", name:"Barnes Albert L",      is_business:false, spouse:"",         race:"",  occupation:"chemist",      employer:"Piece Oil Corp",      address:"b 1503 E Independence",  page:138 },
+  { range:"BAR", name:"Barnes Mrs Arlie",     is_business:false, spouse:"",         race:"(c)",occupation:"maid",         employer:"",                    address:"r 1313 N Bulette av",    page:138 },
+  { range:"BAR", name:"Barnes Arthur",        is_business:false, spouse:"",         race:"",  occupation:"clk",          employer:"Frank Barnes & Co",   address:"r 1323 S Baltimore",     page:138 },
+  { range:"BAR", name:"Barnes Arthur T",      is_business:false, spouse:"Hazel",    race:"",  occupation:"carrier",      employer:"P O",                 address:"h 614 N Quaker",         page:139 },
+  { range:"BAR", name:"Barnes Augustus L",    is_business:false, spouse:"Ella",     race:"",  occupation:"foreman",      employer:"Cosden Refining",     address:"h 1109 W Easton",        page:139 },
+  { range:"BAR", name:"Barnes Frank & Co",    is_business:true,  spouse:"",         race:"",  occupation:"",             employer:"",                    address:"1323 S Baltimore",       page:139, business_category:"grocers" },
+  { range:"BIE", name:"Bierstedt Walter",     is_business:false, spouse:"Okla",     race:"",  occupation:"pipe ftr",     employer:"",                    address:"r Lake Sta",             page:154 },
+  { range:"BIE", name:"Biery Oil Co",         is_business:true,  spouse:"",         race:"",  occupation:"",             employer:"W E Ralph traffic mngr", address:"339 Kennedy bldg",    page:154, business_category:"oil producers" },
+  { range:"BIE", name:"Biesecker Charles A",  is_business:false, spouse:"Nona",     race:"",  occupation:"carp",         employer:"",                    address:"r 121 N Lewis av",       page:154 },
+  { range:"BIG", name:"Big Fifty Oil Co",     is_business:true,  spouse:"",         race:"",  occupation:"",             employer:"E A Ross mngr",       address:"211 Drew bldg",          page:154, business_category:"oil producers" },
+  { range:"BIG", name:"Bigelow Lonnie",       is_business:false, spouse:"Myrtle",   race:"(c)",occupation:"lab",          employer:"",                    address:"r rear 1824 S Detroit",  page:154 },
+  { range:"BIG", name:"Bigert Charles",       is_business:false, spouse:"",         race:"",  occupation:"decorator",    employer:"",                    address:"rms 121 N Main",         page:155 },
+  { range:"BIG", name:"Biggs Jack",           is_business:false, spouse:"Bertha",   race:"",  occupation:"waiter",       employer:"",                    address:"rms 223 W 3d",           page:155 },
+  { range:"BIG", name:"Bigham Mary E",        is_business:false, spouse:"",         race:"",  occupation:"wid John",     employer:"",                    address:"b 1608 E 2d",            page:155 },
+  { range:"BIG", name:"Bignell Colan W",      is_business:false, spouse:"",         race:"",  occupation:"slsmn",        employer:"",                    address:"rms 703 S Boulder",      page:155 },
+  { range:"BIG", name:"Bignell Leonard G E",  is_business:false, spouse:"Maude",    race:"",  occupation:"salsn",        employer:"",                    address:"r 103 N Phoenix",        page:155 },
+  { range:"BIG", name:"Bigpond Albert",       is_business:false, spouse:"",         race:"",  occupation:"broker",       employer:"",                    address:"rms 411 S Elwood",       page:155 },
+  { range:"BIG", name:"Bigpond Albert & Co",  is_business:true,  spouse:"",         race:"",  occupation:"",             employer:"R L Drew mngr, oil lands", address:"305 Drexel bldg",   page:155, business_category:"oil leases" },
+  { range:"BIL", name:"Bilbo Cecil",          is_business:false, spouse:"Sola",     race:"",  occupation:"clk",          employer:"",                    address:"r 8, 1215 E 5th",        page:155 },
+  { range:"BIL", name:"Bilbo John W",         is_business:false, spouse:"Verna",    race:"",  occupation:"lab",          employer:"",                    address:"r 323 S Lawton",         page:155 },
+  { range:"BIL", name:"Bilby Edward",         is_business:false, spouse:"Martha",   race:"",  occupation:"cement blocks",employer:"",                    address:"r 2333 S Olympia",       page:155 },
+  { range:"BIL", name:"Bilby Marvin C",       is_business:false, spouse:"Mildred",  race:"",  occupation:"painter",      employer:"",                    address:"rms 307 N Boston",       page:155 },
+  { range:"BIL", name:"Biles Afa",            is_business:false, spouse:"",         race:"(c)",occupation:"porter",       employer:"",                    address:"rms 1322 E 2d",          page:155 },
+  { range:"BIL", name:"Biles Arley M",        is_business:false, spouse:"",         race:"",  occupation:"mech",         employer:"",                    address:"rms 521 N Denver",       page:155 },
+  { range:"BIL", name:"Biles Dixie",          is_business:false, spouse:"",         race:"",  occupation:"slsmn",        employer:"",                    address:"rms 521 N Denver",       page:155 },
+  { range:"BIL", name:"Biles Wirth",          is_business:false, spouse:"",         race:"",  occupation:"watchman",     employer:"",                    address:"rms 1327 E 2d",          page:155 },
+];
+
+/* ============================ Sidebar filters ============================ */
+const FACETS = [
+  { key:"is_business", title:"Business", clear:true, options:[
+    { label:"No",  match:r=>!r.is_business, count:38330 },
+    { label:"Yes", match:r=>r.is_business,  count:3053  },
+  ]},
+  { key:"race", title:"Race designation", clear:true, options:[
+    { label:"(c) — designated Colored", match:r=>r.race==="(c)", count:5529 },
+  ]},
+  { key:"is_rear", title:"Is rear", clear:true, options:[
+    { label:"No",  match:r=>true,  count:21664 },
+    { label:"Yes", match:r=>false, count:264   },
+  ]},
+  { key:"contract", title:"Special contract", clear:true, options:[
+    { label:"No",  match:r=>true,  count:5664 },
+    { label:"Yes", match:r=>false, count:1014 },
+  ]},
+  { key:"ad", title:"Is advertisement", clear:true, options:[
+    { label:"No",  match:r=>true,  count:6325 },
+    { label:"Yes", match:r=>false, count:353  },
+  ]},
+];
+
+const state = {
+  sortKey: "name",
+  sortDir: "asc",
+  search: "",
+  colFilters: {},
+  facetOn: {},   // key -> Set of labels
+  selectedIdx: -1,
+};
+
+/* ============================ Render: sidebar ============================ */
+function renderSidebar() {
+  const el = document.getElementById("sidebar");
+  el.innerHTML = "";
+  FACETS.forEach(facet => {
+    const sec = document.createElement("div");
+    sec.className = "filter-section";
+    const activeSet = state.facetOn[facet.key] || new Set();
+    sec.innerHTML = `
+      <h3>
+        <span>${facet.title}</span>
+        ${activeSet.size ? `<button class="clear" data-clear="${facet.key}">clear</button>` : ""}
+      </h3>
+      ${facet.options.map(opt => `
+        <div class="facet-row" data-facet="${facet.key}" data-label="${opt.label}" data-on="${activeSet.has(opt.label)}">
+          <span class="label"><span class="chk"></span>${opt.label}</span>
+          <span class="count">${opt.count.toLocaleString()}</span>
+        </div>
+      `).join("")}
+    `;
+    el.appendChild(sec);
+  });
+  const note = document.createElement("p");
+  note.className = "sidebar-note";
+  note.innerHTML = `Source scans courtesy of the Tulsa City–County Library. <a href="#" data-open-about>About this directory →</a>`;
+  el.appendChild(note);
+
+  el.querySelectorAll(".facet-row").forEach(row => {
+    row.addEventListener("click", () => {
+      const k = row.dataset.facet, l = row.dataset.label;
+      const set = state.facetOn[k] || (state.facetOn[k] = new Set());
+      if (set.has(l)) set.delete(l); else set.add(l);
+      renderSidebar(); renderTable();
+    });
+  });
+  el.querySelectorAll("[data-clear]").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      state.facetOn[btn.dataset.clear] = new Set();
+      renderSidebar(); renderTable();
+    });
+  });
+}
+
+/* ============================ Render: table ============================ */
+function filtered() {
+  let rows = DATA.slice();
+  // global search
+  const q = state.search.trim().toLowerCase();
+  if (q) {
+    rows = rows.filter(r =>
+      Object.values(r).some(v => String(v).toLowerCase().includes(q))
+    );
+  }
+  // column filters
+  for (const [k, v] of Object.entries(state.colFilters)) {
+    if (!v) continue;
+    rows = rows.filter(r => {
+      if (k === "is_business") return v === "Yes" ? r.is_business : !r.is_business;
+      if (k === "race") return v === "(c)" ? r.race === "(c)" : r.race === "";
+      return String(r[k] ?? "").toLowerCase().includes(v.toLowerCase());
+    });
+  }
+  // facet filters (only race actually filters mock data — others demo only)
+  const raceFacet = state.facetOn["race"];
+  if (raceFacet && raceFacet.size) rows = rows.filter(r => r.race === "(c)");
+  const busFacet = state.facetOn["is_business"];
+  if (busFacet && busFacet.size && busFacet.size < 2) {
+    if (busFacet.has("Yes")) rows = rows.filter(r => r.is_business);
+    if (busFacet.has("No"))  rows = rows.filter(r => !r.is_business);
+  }
+  // sort
+  const k = state.sortKey, dir = state.sortDir === "asc" ? 1 : -1;
+  rows.sort((a,b) => {
+    const va = String(a[k] ?? "").toLowerCase();
+    const vb = String(b[k] ?? "").toLowerCase();
+    return va < vb ? -dir : va > vb ? dir : 0;
+  });
+  return rows;
+}
+
+function renderTable() {
+  const tbody = document.getElementById("tbody");
+  const rows = filtered();
+  state.visibleRows = rows;
+
+  tbody.innerHTML = rows.map((r, i) => `
+    <tr data-i="${i}" class="${i===state.selectedIdx?'selected':''}" tabindex="0" role="button" aria-label="Open entry: ${r.name}">
+      <td><span class="range-tag">${r.range}</span></td>
+      <td class="name-cell">${r.name}${r.race ? `<button type="button" class="race-mark tip" aria-label="Race designation ${r.race}: marked as Colored in the original publication">${r.race}<span class="tip-body" role="tooltip">Marked in the original publication as <em>“Colored”</em> — the directory's racial notation under Jim Crow.</span></button>` : ""}</td>
+      <td>${r.is_business ? `<span class="is-bus-yes">YES</span>` : `<span class="is-bus-no" aria-label="No">—</span>`}</td>
+      <td class="spouse-cell">${r.spouse || `<span class="muted" aria-label="no spouse recorded">—</span>`}</td>
+      <td>${r.race || `<span class="muted" aria-label="none">—</span>`}</td>
+      <td>${r.occupation || `<span class="muted" aria-label="none">—</span>`}</td>
+      <td>${r.address}</td>
+    </tr>
+  `).join("");
+
+  // empty state
+  const emptyEl = document.getElementById("emptyState");
+  if (rows.length === 0) {
+    emptyEl.style.display = "block";
+    document.querySelector(".table-wrap").style.display = "none";
+    emptyEl.innerHTML = renderEmptyState();
+    const clearBtn = emptyEl.querySelector(".clear-all");
+    if (clearBtn) clearBtn.addEventListener("click", clearAllFilters);
+  } else {
+    emptyEl.style.display = "none";
+    document.querySelector(".table-wrap").style.display = "";
+  }
+
+  document.getElementById("visibleCount").textContent = rows.length === DATA.length
+    ? "69,989" : rows.length.toLocaleString();
+  const sortLabel = document.getElementById("sortLabel");
+  if (sortLabel) sortLabel.textContent = state.sortKey.replace("_", " ") + " " + (state.sortDir === "asc" ? "↑" : "↓");
+
+  tbody.querySelectorAll("tr").forEach(tr => {
+    tr.addEventListener("click", (e) => {
+      // don't double-fire when the (c) chip is clicked
+      if (e.target.closest(".race-mark")) { e.stopPropagation(); return; }
+      openEntry(+tr.dataset.i);
+    });
+    tr.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openEntry(+tr.dataset.i);
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        (tr.nextElementSibling || tr).focus();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        (tr.previousElementSibling || tr).focus();
+      }
+    });
+  });
+
+  // sort indicators (aria-sort + arrow glyph)
+  document.querySelectorAll("#header-row th").forEach(th => {
+    const k = th.dataset.key;
+    const isActive = k === state.sortKey;
+    th.setAttribute("aria-sort", !isActive ? "none" : (state.sortDir === "asc" ? "ascending" : "descending"));
+    th.querySelector(".sort").textContent = !isActive ? "↕" : (state.sortDir === "asc" ? "↓" : "↑");
+  });
+}
+
+/* ============================ Drawer ============================ */
+function renderEmptyState() {
+  const chips = [];
+  if (state.search.trim()) chips.push(`search: “${escapeHTML(state.search.trim())}”`);
+  for (const [k, v] of Object.entries(state.colFilters)) {
+    if (v) chips.push(`${k.replace(/_/g, " ")}: “${escapeHTML(v)}”`);
+  }
+  for (const [k, set] of Object.entries(state.facetOn || {})) {
+    if (set && set.size) chips.push(`${k.replace(/_/g, " ")}: ${[...set].join(", ")}`);
+  }
+  return `
+    <h3 class="empty-title">No entries match the current filters.</h3>
+    <p class="empty-sub">Try removing a filter or broadening your search.</p>
+    ${chips.length ? `<div class="active-summary">${chips.map(c => `<span class="chip">${c}</span>`).join("")}</div>` : ""}
+    <button class="clear-all" type="button">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      Clear all filters
+    </button>
+  `;
+}
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function clearAllFilters() {
+  state.search = "";
+  state.colFilters = {};
+  state.facetOn = {};
+  document.getElementById("search").value = "";
+  document.querySelectorAll("[data-filter]").forEach(el => {
+    el.value = "";
+    el.closest(".filter-wrap")?.classList.remove("has-value");
+  });
+  renderSidebar();
+  renderTable();
+}
+
+let drawerReturnFocus = null;
+function openEntry(i) {
+  state.selectedIdx = i;
+  const r = state.visibleRows[i];
+  if (!r) return;
+  // remember what to return focus to on close
+  drawerReturnFocus = document.activeElement;
+  document.getElementById("drawerTitle").innerHTML = r.name + (r.race ? ` <span class="race-mark" aria-label="Race designation ${r.race}">${r.race}</span>` : "");
+  document.getElementById("drawerEyebrow").textContent = `Entry · Polk-Hoffhine 1921 · p. ${r.page}`;
+
+  const fields = [
+    ["Alphabetical range", r.range, "mono"],
+    ["Name", r.name, ""],
+    ["Is business", r.is_business ? "Yes" : "No", "mono"],
+    ["Spouse", r.spouse, ""],
+    ["Race designation", r.race ? `${r.race} — designated Colored` : "", ""],
+    ["Occupation role", r.occupation, ""],
+    ["Employer", r.employer, ""],
+    ["Address", r.address, ""],
+    ["Business category", r.business_category || "", ""],
+  ];
+  document.getElementById("metaGrid").innerHTML = fields.map(([k,v,cls]) => `
+    <div class="field">
+      <div class="k">${k}</div>
+      <div class="v ${cls} ${v ? "" : "empty"}">${v || "no value recorded"}</div>
+    </div>
+  `).join("") + `
+    <div class="field" style="grid-column: 1 / -1; border-bottom: 0; padding-top: 4px;">
+      <a class="source-link" href="#">
+        Open source page scan
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  `;
+
+  document.getElementById("drawer").classList.add("open");
+  document.getElementById("drawer").setAttribute("aria-hidden", "false");
+  document.getElementById("backdrop").classList.add("open");
+  // move focus into the drawer for screen readers and keyboard users
+  setTimeout(() => document.getElementById("closeBtn").focus(), 280);
+  renderTable();
+}
+function closeDrawer() {
+  const wasOpen = document.getElementById("drawer").classList.contains("open");
+  state.selectedIdx = -1;
+  document.getElementById("drawer").classList.remove("open");
+  document.getElementById("drawer").setAttribute("aria-hidden", "true");
+  document.getElementById("backdrop").classList.remove("open");
+  renderTable();
+  // restore focus to the originating row (or fall back)
+  if (wasOpen) {
+    if (drawerReturnFocus && document.body.contains(drawerReturnFocus)) {
+      drawerReturnFocus.focus();
+    } else {
+      document.querySelector("tbody tr")?.focus();
+    }
+    drawerReturnFocus = null;
+  }
+}
+
+/* simple focus trap while drawer is open */
+document.getElementById("drawer").addEventListener("keydown", (e) => {
+  if (e.key !== "Tab") return;
+  const drawer = document.getElementById("drawer");
+  const focusables = drawer.querySelectorAll(
+    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  );
+  if (!focusables.length) return;
+  const first = focusables[0], last = focusables[focusables.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+
+/* ============================ Events ============================ */
+document.getElementById("closeBtn").addEventListener("click", closeDrawer);
+document.getElementById("backdrop").addEventListener("click", closeDrawer);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeDrawer();
+});
+
+document.getElementById("search").addEventListener("input", (e) => {
+  state.search = e.target.value;
+  renderTable();
+});
+document.querySelectorAll("#header-row th").forEach(th => {
+  const trigger = () => {
+    const k = th.dataset.key;
+    if (state.sortKey === k) state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
+    else { state.sortKey = k; state.sortDir = "asc"; }
+    renderTable();
+  };
+  th.querySelector(".col-sort").addEventListener("click", trigger);
+});
+document.querySelectorAll("[data-filter]").forEach(inp => {
+  inp.addEventListener("input", () => {
+    state.colFilters[inp.dataset.filter] = inp.value;
+    const wrap = inp.closest(".filter-wrap");
+    if (wrap) wrap.classList.toggle("has-value", !!inp.value);
+    renderTable();
+  });
+});
+document.querySelectorAll(".clear-x").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const key = btn.dataset.clearFor;
+    const input = document.querySelector(`[data-filter="${key}"]`);
+    if (!input) return;
+    input.value = "";
+    state.colFilters[key] = "";
+    input.closest(".filter-wrap").classList.remove("has-value");
+    input.focus();
+    renderTable();
+  });
+});
+document.getElementById("randomBtn").addEventListener("click", () => {
+  const n = state.visibleRows?.length || 0;
+  if (!n) return;
+  openEntry(Math.floor(Math.random() * n));
+});
+
+/* ============================ About modal ============================ */
+let aboutReturnFocus = null;
+function openAbout() {
+  aboutReturnFocus = document.activeElement;
+  document.getElementById("aboutBackdrop").classList.add("open");
+  setTimeout(() => document.getElementById("aboutCloseBtn").focus(), 60);
+}
+function closeAbout() {
+  document.getElementById("aboutBackdrop").classList.remove("open");
+  if (aboutReturnFocus && document.body.contains(aboutReturnFocus)) aboutReturnFocus.focus();
+  aboutReturnFocus = null;
+}
+document.getElementById("aboutCloseBtn").addEventListener("click", closeAbout);
+document.getElementById("aboutBackdrop").addEventListener("click", (e) => {
+  if (e.target.id === "aboutBackdrop") closeAbout();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && document.getElementById("aboutBackdrop").classList.contains("open")) {
+    closeAbout();
+  }
+});
+// trigger from sidebar link
+document.addEventListener("click", (e) => {
+  const t = e.target;
+  if (t && t.matches && t.matches("[data-open-about], [data-open-about] *")) {
+    e.preventDefault(); openAbout();
+  }
+});
+// focus trap inside about modal
+document.getElementById("aboutModal").addEventListener("keydown", (e) => {
+  if (e.key !== "Tab") return;
+  const modal = document.getElementById("aboutModal");
+  const focusables = modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+  if (!focusables.length) return;
+  const first = focusables[0], last = focusables[focusables.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+
+/* ============================ Init ============================ */
+renderSidebar();
+renderTable();
+if (location.hash === "#about") openAbout();
+
+</script>
+
+</body>
+</html>
