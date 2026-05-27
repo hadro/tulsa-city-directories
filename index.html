@@ -1474,6 +1474,7 @@ function renderSidebar() {
       if (set.has(v)) set.delete(v); else set.add(v);
       if (set.size === 0) delete state.facetOn[k];
       renderSidebar(); renderTable();
+      syncHash();
     };
     row.addEventListener("click", toggle);
     row.addEventListener("keydown", e => {
@@ -1485,6 +1486,7 @@ function renderSidebar() {
       e.stopPropagation();
       delete state.facetOn[btn.dataset.clear];
       renderSidebar(); renderTable();
+      syncHash();
     });
   });
 }
@@ -1637,14 +1639,146 @@ function clearAllFilters() {
   });
   renderSidebar();
   renderTable();
+  syncHash();
 }
+
+/* ============================ URL hash state ============================ */
+// Compact entry id: "<canvasN>:<x>,<y>,<w>,<h>" — round-trips to canvas_fragment.
+function entryIdFromCanvasFragment(cf) {
+  if (!cf) return null;
+  const m = cf.match(/\/canvas\/(\d+)(?:#xywh=([^&]+))?/);
+  if (!m) return null;
+  return m[2] ? `${m[1]}:${m[2]}` : m[1];
+}
+function canvasFragmentFromEntryId(id) {
+  if (!id) return null;
+  const m = String(id).match(/^(\d+)(?::(.+))?$/);
+  if (!m) return null;
+  const base = `${IIIF_SERVICE_BASE}/${MANIFEST_ID}/manifest.json/canvas/${m[1]}`;
+  return m[2] ? `${base}#xywh=${m[2]}` : base;
+}
+
+let _hashSelfWrite = false; // guard so popstate from our own writes doesn't loop
+
+function syncHash() {
+  if (!state.rows.length) return; // pre-boot
+  const p = new URLSearchParams();
+  if (state.search) p.set("q", state.search);
+  if (!(state.sortKey === "name" && state.sortDir === "asc")) {
+    p.set("sort", `${state.sortKey}:${state.sortDir}`);
+  }
+  for (const [k, v] of Object.entries(state.colFilters)) {
+    if (v) p.set(`cf_${k}`, v);
+  }
+  for (const [k, set] of Object.entries(state.facetOn || {})) {
+    if (set && set.size) p.set(`f_${k}`, [...set].join("|"));
+  }
+  if (state.selectedRow) {
+    const id = entryIdFromCanvasFragment(state.selectedRow.canvas_fragment);
+    if (id) p.set("entry", id);
+  }
+  if (state.aboutOpen) p.set("about", "1");
+  const s = p.toString();
+  const url = s ? `#${s}` : location.pathname + location.search;
+  _hashSelfWrite = true;
+  try { history.replaceState(null, "", url); } catch (e) {}
+  _hashSelfWrite = false;
+}
+
+function applyHashToState(opts) {
+  opts = opts || {};
+  const raw = location.hash.replace(/^#/, "");
+  // Legacy: bare "#about" with no params
+  if (raw === "about") {
+    if (!state.aboutOpen) openAbout({ skipHashUpdate: true });
+    return;
+  }
+  const p = new URLSearchParams(raw);
+
+  // Search
+  const q = p.get("q") || "";
+  state.search = q;
+  const searchEl = document.getElementById("search");
+  if (searchEl) {
+    searchEl.value = q;
+    document.getElementById("searchWrap").classList.toggle("has-value", !!q);
+  }
+
+  // Sort
+  const sort = p.get("sort");
+  if (sort && sort.includes(":")) {
+    const [k, d] = sort.split(":");
+    state.sortKey = k || "name";
+    state.sortDir = d === "desc" ? "desc" : "asc";
+  } else {
+    state.sortKey = "name";
+    state.sortDir = "asc";
+  }
+
+  // Column filters + facets
+  const newColFilters = {};
+  const newFacetOn = {};
+  for (const [k, v] of p.entries()) {
+    if (k.startsWith("cf_") && v) newColFilters[k.slice(3)] = v;
+    else if (k.startsWith("f_") && v) {
+      const set = new Set();
+      v.split("|").forEach(x => { if (x) set.add(x); });
+      if (set.size) newFacetOn[k.slice(2)] = set;
+    }
+  }
+  state.colFilters = newColFilters;
+  state.facetOn = newFacetOn;
+  document.querySelectorAll("[data-filter]").forEach(el => {
+    const k = el.dataset.filter;
+    el.value = state.colFilters[k] || "";
+    el.closest(".filter-wrap")?.classList.toggle("has-value", !!el.value);
+  });
+
+  renderSidebar();
+  renderTable();
+
+  // About modal
+  const wantAbout = p.get("about") === "1";
+  if (wantAbout && !state.aboutOpen) openAbout({ skipHashUpdate: true });
+  else if (!wantAbout && state.aboutOpen) closeAbout({ skipHashUpdate: true });
+
+  // Entry
+  const entryId = p.get("entry");
+  if (entryId) {
+    const cf = canvasFragmentFromEntryId(entryId);
+    if (cf) {
+      let row = state.visibleRows.find(r => r.canvas_fragment === cf);
+      if (!row) row = state.rows.find(r => r.canvas_fragment === cf);
+      if (row) {
+        if (state.selectedRow !== row) openEntryByRow(row, { skipHashUpdate: true });
+      } else if (state.selectedRow) {
+        closeDrawer({ skipHashUpdate: true });
+      }
+    }
+  } else if (state.selectedRow) {
+    closeDrawer({ skipHashUpdate: true });
+  }
+}
+
+window.addEventListener("popstate", () => {
+  if (_hashSelfWrite) return;
+  applyHashToState();
+});
 
 /* ============================ Drawer ============================ */
 let drawerReturnFocus = null;
-function openEntry(i) {
+
+function openEntry(i, opts) {
   const r = state.visibleRows[i];
   if (!r) return;
+  openEntryByRow(r, opts);
+}
+
+function openEntryByRow(r, opts) {
+  if (!r) return;
+  opts = opts || {};
   state.selectedRow = r;
+  state.lastOpenIndex = state.visibleRows.indexOf(r);
   drawerReturnFocus = document.activeElement;
 
   const cnum = canvasNumber(r.canvas_fragment || "");
@@ -1739,24 +1873,40 @@ function openEntry(i) {
   document.getElementById("drawer").classList.add("open");
   document.getElementById("drawer").setAttribute("aria-hidden", "false");
   document.getElementById("backdrop").classList.add("open");
-  setTimeout(() => document.getElementById("closeBtn").focus(), 280);
+  setTimeout(() => {
+    try { document.getElementById("closeBtn").focus({ preventScroll: true }); } catch (e) { document.getElementById("closeBtn").focus(); }
+  }, 280);
   renderTable();
+  if (!opts.skipHashUpdate) syncHash();
 }
 
-function closeDrawer() {
+function closeDrawer(opts) {
+  opts = opts || {};
   const wasOpen = document.getElementById("drawer").classList.contains("open");
   if (!wasOpen) return;
+  const idx = state.lastOpenIndex;
   state.selectedRow = null;
+  state.lastOpenIndex = null;
   document.getElementById("drawer").classList.remove("open");
   document.getElementById("drawer").setAttribute("aria-hidden", "true");
   document.getElementById("backdrop").classList.remove("open");
   renderTable();
-  if (drawerReturnFocus && document.body.contains(drawerReturnFocus)) {
-    try { drawerReturnFocus.focus(); } catch (e) {}
-  } else {
-    document.querySelector("tbody tr")?.focus();
+
+  // Restore focus to the row that opened the drawer, by index.
+  // preventScroll keeps the listings in place; renderTable() destroyed
+  // the original row reference, so we re-find by data-i.
+  let target = null;
+  if (idx != null && idx >= 0) {
+    target = document.querySelector(`#tbody tr[data-i="${idx}"]`);
+  }
+  if (!target && drawerReturnFocus && document.body.contains(drawerReturnFocus)) {
+    target = drawerReturnFocus;
+  }
+  if (target) {
+    try { target.focus({ preventScroll: true }); } catch (e) { /* IE/old Safari */ try { target.focus(); } catch (_) {} }
   }
   drawerReturnFocus = null;
+  if (!opts.skipHashUpdate) syncHash();
 }
 
 document.getElementById("drawer").addEventListener("keydown", (e) => {
@@ -1771,19 +1921,29 @@ document.getElementById("drawer").addEventListener("keydown", (e) => {
 
 /* ============================ About modal ============================ */
 let aboutReturnFocus = null;
-function openAbout() {
+function openAbout(opts) {
+  opts = opts || {};
+  if (state.aboutOpen) return;
+  state.aboutOpen = true;
   aboutReturnFocus = document.activeElement;
   document.getElementById("aboutBackdrop").classList.add("open");
-  setTimeout(() => document.getElementById("aboutCloseBtn").focus(), 60);
+  setTimeout(() => {
+    try { document.getElementById("aboutCloseBtn").focus({ preventScroll: true }); } catch (e) { document.getElementById("aboutCloseBtn").focus(); }
+  }, 60);
+  if (!opts.skipHashUpdate) syncHash();
 }
-function closeAbout() {
+function closeAbout(opts) {
+  opts = opts || {};
+  if (!state.aboutOpen) return;
+  state.aboutOpen = false;
   document.getElementById("aboutBackdrop").classList.remove("open");
   if (aboutReturnFocus && document.body.contains(aboutReturnFocus)) {
-    try { aboutReturnFocus.focus(); } catch (e) {}
+    try { aboutReturnFocus.focus({ preventScroll: true }); } catch (e) { try { aboutReturnFocus.focus(); } catch (_) {} }
   }
   aboutReturnFocus = null;
+  if (!opts.skipHashUpdate) syncHash();
 }
-document.getElementById("aboutCloseBtn").addEventListener("click", closeAbout);
+document.getElementById("aboutCloseBtn").addEventListener("click", () => closeAbout());
 document.getElementById("aboutBackdrop").addEventListener("click", (e) => {
   if (e.target.id === "aboutBackdrop") closeAbout();
 });
@@ -1824,6 +1984,7 @@ searchInput.addEventListener("input", (e) => {
     state.search = v;
     renderSidebar();
     renderTable();
+    syncHash();
   }, 140);
 });
 searchClear.addEventListener("click", () => {
@@ -1832,6 +1993,7 @@ searchClear.addEventListener("click", () => {
   state.search = "";
   renderSidebar();
   renderTable();
+  syncHash();
   searchInput.focus();
 });
 
@@ -1842,11 +2004,13 @@ document.querySelectorAll("#header-row th").forEach(th => {
     if (state.sortKey === k) state.sortDir = state.sortDir === "asc" ? "desc" : "asc";
     else { state.sortKey = k; state.sortDir = "asc"; }
     renderTable();
+    syncHash();
   };
   th.querySelector(".col-sort").addEventListener("click", trigger);
 });
 
 /* ============================ Column filters ============================ */
+let colFilterTimer = null;
 document.querySelectorAll("[data-filter]").forEach(inp => {
   const handler = () => {
     state.colFilters[inp.dataset.filter] = inp.value;
@@ -1854,6 +2018,8 @@ document.querySelectorAll("[data-filter]").forEach(inp => {
     if (wrap) wrap.classList.toggle("has-value", !!inp.value);
     renderSidebar();
     renderTable();
+    clearTimeout(colFilterTimer);
+    colFilterTimer = setTimeout(syncHash, 200);
   };
   if (inp.tagName === "SELECT") inp.addEventListener("change", handler);
   else inp.addEventListener("input", handler);
@@ -1870,6 +2036,7 @@ document.querySelectorAll(".filter-row .clear-x").forEach(btn => {
     input.focus();
     renderSidebar();
     renderTable();
+    syncHash();
   });
 });
 
@@ -1985,7 +2152,8 @@ async function boot() {
     renderSidebar();
     renderTable();
 
-    if (location.hash === "#about") openAbout();
+    // Apply any URL hash state (filters + selected entry + #about).
+    applyHashToState();
 
     overlay.classList.add("gone");
     setTimeout(() => overlay.remove(), 320);
