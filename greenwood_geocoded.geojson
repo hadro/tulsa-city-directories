@@ -16,7 +16,7 @@
         "occupation_role": "printer",
         "employer": "",
         "spouse_name": "Marguerite",
-        "alphabetical_range": "AAR",
+        "alphabetical_range": "ACM",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/14#xywh=129,1011,247,21"
       }
     },
@@ -31,11 +31,11 @@
       },
       "properties": {
         "name": "Abbott Marguerite",
-        "address": "rms 553 N Detroit av",
+        "address": "rms 553 N Detroit",
         "occupation_role": "tchr",
         "employer": "Booker T Washn School",
         "spouse_name": "",
-        "alphabetical_range": "AAR",
+        "alphabetical_range": "ACM",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/14#xywh=130,1277,246,19"
       }
     },
@@ -54,7 +54,7 @@
         "occupation_role": "elev opr",
         "employer": "Ryan & Pattillo",
         "spouse_name": "",
-        "alphabetical_range": "ACM",
+        "alphabetical_range": "ADA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/14#xywh=668,1042,247,19"
       }
     },
@@ -63,18 +63,75 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9862815,
-          36.1615683
+          -95.9912966,
+          36.1619508
         ]
       },
       "properties": {
-        "name": "Adams Wm",
-        "address": "rms 317 N Greenwood av",
-        "occupation_role": "porter",
+        "name": "Adams Mrs Hattie J",
+        "address": "r 413 N Detroit av",
+        "occupation_role": "",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "ADE",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/15#xywh=121,598,221,35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9863822,
+          36.1633047
+        ]
+      },
+      "properties": {
+        "name": "Adams John",
+        "address": "r 623 N Greenwood av",
+        "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "ADE",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/15#xywh=392,998,137,19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9899631,
+          36.1629136
+        ]
+      },
+      "properties": {
+        "name": "Adams Leona",
+        "address": "rms 420 E Easton",
+        "occupation_role": "maid",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "ADE",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/15#xywh=126,1138,247,35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9912966,
+          36.1619508
+        ]
+      },
+      "properties": {
+        "name": "Adams Mary A",
+        "address": "b 413 N Detroit av",
+        "occupation_role": "",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "ADE",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/15#xywh=128,1378,247,29"
       }
     },
     {
@@ -163,13 +220,13 @@
         ]
       },
       "properties": {
-        "name": "Alexander John (c)",
+        "name": "Alexander John",
         "address": "rms 122 N Greenwood av",
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Ida",
         "alphabetical_range": "ALE",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/16#xywh=671,349,249,22"
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/16#xywh=682,366,142,21"
       }
     },
     {
@@ -182,7 +239,7 @@
         ]
       },
       "properties": {
-        "name": "Alexander Joseph (c)",
+        "name": "Alexander Joseph",
         "address": "rms 121 N Greenwood av",
         "occupation_role": "lab",
         "employer": "",
@@ -201,51 +258,13 @@
         ]
       },
       "properties": {
-        "name": "Alexander Samuel A (c)",
+        "name": "Alexander Samuel A",
         "address": "rms 525 N Elgin av",
         "occupation_role": "barber",
         "employer": "C L Netherland",
         "spouse_name": "",
         "alphabetical_range": "ALE",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/16#xywh=666,1097,251,23"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.989301,
-          36.159016
-        ]
-      },
-      "properties": {
-        "name": "Allan Charles (c)",
-        "address": "r 305 E Archer",
-        "occupation_role": "tailor",
-        "employer": "",
-        "spouse_name": "Lillian",
-        "alphabetical_range": "ALL",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/16#xywh=928,705,249,28"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9806824,
-          36.1737329
-        ]
-      },
-      "properties": {
-        "name": "Allen Charles H (c)",
-        "address": "r 1304 N Lansing av",
-        "occupation_role": "",
-        "employer": "",
-        "spouse_name": "Mazzie",
-        "alphabetical_range": "ALL",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/16#xywh=923,1430,249,32"
       }
     },
     {
@@ -500,63 +519,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9830852,
-          36.171727
-        ]
-      },
-      "properties": {
-        "name": "Ard Joseph",
-        "address": "r 1339 Pocahontas",
-        "occupation_role": "lab",
-        "employer": "",
-        "spouse_name": "Ada",
-        "alphabetical_range": "ARC",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/20#xywh=947,268,241,20"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9830852,
-          36.171727
-        ]
-      },
-      "properties": {
-        "name": "Ard Samuel",
-        "address": "b 1339 Pocahontas",
-        "occupation_role": "",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "ARC",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/20"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9890186,
-          36.1681439
-        ]
-      },
-      "properties": {
-        "name": "Arkle Eva C",
-        "address": "b 903 N Ruth av",
-        "occupation_role": "",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "ARC",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/20#xywh=695,998,245,23"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9862799,
           36.1614966
         ]
@@ -607,25 +569,6 @@
         "spouse_name": "Addie",
         "alphabetical_range": "ATC",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/22#xywh=128,428,239,32"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.986545,
-          36.1680551
-        ]
-      },
-      "properties": {
-        "name": "Austin Wm",
-        "address": "r 632 Bryant",
-        "occupation_role": "lab",
-        "employer": "",
-        "spouse_name": "Rosana",
-        "alphabetical_range": "AUS",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/22#xywh=688,1228,244,19"
       }
     },
     {
@@ -776,7 +719,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Carrie",
-        "alphabetical_range": "BAN",
+        "alphabetical_range": "BAL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/25#xywh=380,1123,242,28"
       }
     },
@@ -795,7 +738,7 @@
         "occupation_role": "cook",
         "employer": "",
         "spouse_name": "Minnie",
-        "alphabetical_range": "BAN",
+        "alphabetical_range": "BAL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/25#xywh=380,1589,241,18"
       }
     },
@@ -928,7 +871,7 @@
         "occupation_role": "shiner",
         "employer": "Ideal Clnrs & Hat Wks",
         "spouse_name": "",
-        "alphabetical_range": "BAR",
+        "alphabetical_range": "BAS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/27#xywh=960,236,230,21"
       }
     },
@@ -947,7 +890,7 @@
         "occupation_role": "lab",
         "employer": "Standard Roofing & M Co",
         "spouse_name": "Della",
-        "alphabetical_range": "BAR",
+        "alphabetical_range": "BAS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/27#xywh=951,1410,247,21"
       }
     },
@@ -1222,44 +1165,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9856857,
-          36.1631696
-        ]
-      },
-      "properties": {
-        "name": "Beeson John B",
-        "address": "r 513 N Greenwood av",
-        "occupation_role": "barber",
-        "employer": "",
-        "spouse_name": "Margaret",
-        "alphabetical_range": "BEL",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/30#xywh=372,373,249,26"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9905601,
-          36.1630095
-        ]
-      },
-      "properties": {
-        "name": "Bell Alexander I",
-        "address": "r 535 N Elgin av",
-        "occupation_role": "lab",
-        "employer": "",
-        "spouse_name": "Allie",
-        "alphabetical_range": "BEL",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/30#xywh=381,1405,245,26"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9909988,
           36.1626862
         ]
@@ -1381,7 +1286,7 @@
       "properties": {
         "name": "Bell & Little",
         "address": "525 E Cameron",
-        "occupation_role": "restaurant (Mrs Susie Bell, Pressly L Little)",
+        "occupation_role": "Mrs Susie Bell, Pressly L Little, restaurant",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "BEL",
@@ -1678,32 +1583,13 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9905217,
-          36.1629358
-        ]
-      },
-      "properties": {
-        "name": "Bledsoe Roy",
-        "address": "rms 525 N El-gin av",
-        "occupation_role": "lab",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "BLU",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/35#xywh=678,257,246,25"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9865939,
           36.1622638
         ]
       },
       "properties": {
         "name": "Blevins Mrs Odessa",
-        "address": "r 421 N Green-wood av",
+        "address": "r 421 N Greenwood av",
         "occupation_role": "",
         "employer": "",
         "spouse_name": "",
@@ -1761,10 +1647,10 @@
       "properties": {
         "name": "Bowser Elizabeth",
         "address": "b 308 N Greenwood av",
-        "occupation_role": "wid Thomas",
+        "occupation_role": "",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "BOY",
+        "alphabetical_range": "BOW",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/39#xywh=128,1116,227,31"
       }
     },
@@ -1780,10 +1666,10 @@
       "properties": {
         "name": "Bowson Charity E R",
         "address": "b 308 N Greenwood",
-        "occupation_role": "wid Thos",
+        "occupation_role": "",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "BOY",
+        "alphabetical_range": "BOW",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/39#xywh=129,1264,226,20"
       }
     },
@@ -2103,7 +1989,7 @@
       "properties": {
         "name": "Brooks Etta",
         "address": "r 519 N Greenwood av",
-        "occupation_role": "",
+        "occupation_role": "wid Joseph",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "BRO",
@@ -2184,25 +2070,6 @@
         "spouse_name": "",
         "alphabetical_range": "BRO",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/43#xywh=931,593,248,23"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9865998,
-          36.1621365
-        ]
-      },
-      "properties": {
-        "name": "Brothers Patsy",
-        "address": "r 404 N Greenwood av",
-        "occupation_role": "",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "BRO",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/43#xywh=930,1422,237,16"
       }
     },
     {
@@ -2600,7 +2467,7 @@
         "occupation_role": "maid",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "BUC",
+        "alphabetical_range": "BUM",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/47#xywh=671,383,249,29"
       }
     },
@@ -2723,25 +2590,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9865989,
-          36.1616662
-        ]
-      },
-      "properties": {
-        "name": "Butcher Odelia",
-        "address": "rms 310 N Greenwood av",
-        "occupation_role": "maid",
-        "employer": "Hotel Tulsa",
-        "spouse_name": "",
-        "alphabetical_range": "BUR",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/50#xywh=124,1595,189,21"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9863614,
           36.1657681
         ]
@@ -2754,6 +2602,25 @@
         "spouse_name": "Ida",
         "alphabetical_range": "BUR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/50#xywh=371,1598,151,27"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9865989,
+          36.1616662
+        ]
+      },
+      "properties": {
+        "name": "Butcher Odelia",
+        "address": "rms 310 N Greenwood av",
+        "occupation_role": "maid",
+        "employer": "Hotel Tulsa",
+        "spouse_name": "",
+        "alphabetical_range": "BUR",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/50#xywh=124,1595,189,21"
       }
     },
     {
@@ -2837,18 +2704,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9865407,
-          36.160762
+          -95.9902795,
+          36.1624709
         ]
       },
       "properties": {
-        "name": "Cain M L",
-        "address": "201 N Greenwood av, rms Red Wing Hotel",
-        "occupation_role": "restaurant",
+        "name": "Caber Howard J",
+        "address": "r 420 N Elgin av",
+        "occupation_role": "clnr",
         "employer": "",
-        "spouse_name": "",
+        "spouse_name": "Nettie",
         "alphabetical_range": "CAH",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/51#xywh=686,512,244,31"
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/51#xywh=369,813,238,39"
       }
     },
     {
@@ -2864,9 +2731,9 @@
         "name": "Caldwell Cleo",
         "address": "rms 420 E Easton",
         "occupation_role": "helper",
-        "employer": "320 S Main av",
+        "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "CAH",
+        "alphabetical_range": "CAL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/51#xywh=692,1228,246,26"
       }
     },
@@ -2882,10 +2749,10 @@
       "properties": {
         "name": "Caldwell George",
         "address": "rms 112 1/2 N Greenwood av",
-        "occupation_role": "waiter",
-        "employer": "320 S Main av",
-        "spouse_name": "Audrey",
-        "alphabetical_range": "CAH",
+        "occupation_role": "helper",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "CAL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/51#xywh=693,1335,245,22"
       }
     },
@@ -2904,7 +2771,7 @@
         "occupation_role": "janitor",
         "employer": "",
         "spouse_name": "Addie",
-        "alphabetical_range": "CAH",
+        "alphabetical_range": "CAL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/51#xywh=695,1586,246,26"
       }
     },
@@ -2919,10 +2786,10 @@
       },
       "properties": {
         "name": "Caleb Lavonia",
-        "address": "1258 N Lansing av, b 1228 Pocahontas",
+        "address": "b 1228 Pocahontas",
         "occupation_role": "waiter",
         "employer": "",
-        "spouse_name": "John",
+        "spouse_name": "",
         "alphabetical_range": "CAL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/51#xywh=937,240,245,29"
       }
@@ -2961,7 +2828,7 @@
         "occupation_role": "porter",
         "employer": "",
         "spouse_name": "Bernice",
-        "alphabetical_range": "CAL",
+        "alphabetical_range": "CAM",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/52#xywh=128,611,230,36"
       }
     },
@@ -3018,7 +2885,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "CAR",
+        "alphabetical_range": "CAN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/53#xywh=675,999,250,29"
       }
     },
@@ -3037,7 +2904,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "CAR",
+        "alphabetical_range": "CAN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/53#xywh=674,1037,252,21"
       }
     },
@@ -3413,31 +3280,12 @@
       },
       "properties": {
         "name": "Charleston Lillian",
-        "address": "r 520 N Elgin",
+        "address": "520 N Elgin",
         "occupation_role": "grocer",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "CHA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/58#xywh=133,772,229,35"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9880498,
-          36.1683269
-        ]
-      },
-      "properties": {
-        "name": "Chatman Wm",
-        "address": "r 519 Bryant",
-        "occupation_role": "",
-        "employer": "",
-        "spouse_name": "Blanche",
-        "alphabetical_range": "CHA",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/58#xywh=369,879,244,27"
       }
     },
     {
@@ -3526,7 +3374,7 @@
         ]
       },
       "properties": {
-        "name": "Church of God (c)",
+        "name": "Church of God",
         "address": "1001 N Greenwood",
         "occupation_role": "",
         "employer": "",
@@ -3546,7 +3394,7 @@
       },
       "properties": {
         "name": "Clark Edward",
-        "address": "b 405 N Greenwood av",
+        "address": "b 405 N Greenwood",
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
@@ -3609,25 +3457,6 @@
         "spouse_name": "Beatrice",
         "alphabetical_range": "CLA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/60#xywh=124,1326,236,18"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9865998,
-          36.1621365
-        ]
-      },
-      "properties": {
-        "name": "Clark Lena",
-        "address": "b 405 N Greenwood av",
-        "occupation_role": "",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "CLA",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/60#xywh=365,506,246,38"
       }
     },
     {
@@ -3920,6 +3749,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9899631,
+          36.1629136
+        ]
+      },
+      "properties": {
+        "name": "Collins Leon",
+        "address": "rms 420 E Easton",
+        "occupation_role": "helper",
+        "employer": "Polin Tire Service",
+        "spouse_name": "",
+        "alphabetical_range": "COL",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/64#xywh=119,596,156,39"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.9862816,
           36.1615747
         ]
@@ -4059,7 +3907,7 @@
       },
       "properties": {
         "name": "Cotton Monsieur",
-        "address": "r 1201 N Lansing av",
+        "address": "1201 N Lansing av, r same",
         "occupation_role": "grocer",
         "employer": "",
         "spouse_name": "Corrine",
@@ -4101,7 +3949,7 @@
         "occupation_role": "maid",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "COU",
+        "alphabetical_range": "COW",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/68#xywh=378,923,245,32"
       }
     },
@@ -4158,7 +4006,7 @@
         "occupation_role": "tmstr",
         "employer": "",
         "spouse_name": "Charity",
-        "alphabetical_range": "CRO",
+        "alphabetical_range": "CRE",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/70#xywh=668,1617,254,17"
       }
     },
@@ -4196,7 +4044,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "CRU",
+        "alphabetical_range": "CRO",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/71#xywh=660,464,251,27"
       }
     },
@@ -4234,7 +4082,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Anna",
-        "alphabetical_range": "CUM",
+        "alphabetical_range": "CUN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/72#xywh=650,1320,253,32"
       }
     },
@@ -4348,7 +4196,7 @@
         "occupation_role": "grocer",
         "employer": "",
         "spouse_name": "Ella",
-        "alphabetical_range": "DAK",
+        "alphabetical_range": "DAN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/74#xywh=353,1085,239,22"
       }
     },
@@ -4528,6 +4376,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9898988,
+          36.1591129
+        ]
+      },
+      "properties": {
+        "name": "Davis Goldie",
+        "address": "rms 123 N Detroit av",
+        "occupation_role": "lab",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "DAV",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/76#xywh=384,821,119,22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.9902407,
           36.1623964
         ]
@@ -4573,7 +4440,7 @@
       "properties": {
         "name": "Davis Lucinda",
         "address": "r 627 Williams",
-        "occupation_role": "wid Anderson",
+        "occupation_role": "",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "DAV",
@@ -4804,7 +4671,7 @@
         "occupation_role": "maid",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "DEN",
+        "alphabetical_range": "DEH",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/78#xywh=912,287,255,31"
       }
     },
@@ -4899,7 +4766,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Marie",
-        "alphabetical_range": "DIL",
+        "alphabetical_range": "DIX",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/81#xywh=127,714,233,42"
       }
     },
@@ -4918,7 +4785,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Ellen",
-        "alphabetical_range": "DIL",
+        "alphabetical_range": "DIX",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/81#xywh=368,803,249,27"
       }
     },
@@ -4991,7 +4858,7 @@
       "properties": {
         "name": "Dotson Amanda",
         "address": "r 1258 Pocahontas",
-        "occupation_role": "",
+        "occupation_role": "wid Willis",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "DOT",
@@ -5053,6 +4920,44 @@
         "spouse_name": "",
         "alphabetical_range": "DOT",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/82#xywh=941,1375,243,34"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9856835,
+          36.1631086
+        ]
+      },
+      "properties": {
+        "name": "Douglas Jessie M",
+        "address": "rms 509 N Greenwood av",
+        "occupation_role": "maid",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "DOT",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/83#xywh=31,543,75,31"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9897322,
+          36.1614221
+        ]
+      },
+      "properties": {
+        "name": "Douglas Wm",
+        "address": "r 320 N Elgin av",
+        "occupation_role": "lab",
+        "employer": "",
+        "spouse_name": "Sallie",
+        "alphabetical_range": "DOT",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/83#xywh=120,1571,238,17"
       }
     },
     {
@@ -5136,6 +5041,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9899631,
+          36.1629136
+        ]
+      },
+      "properties": {
+        "name": "Dunlap Homer",
+        "address": "rms 420 E Easton",
+        "occupation_role": "lab",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "DUN",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/85#xywh=668,601,252,31"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.986981,
           36.1597682
         ]
@@ -5174,6 +5098,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9851742,
+          36.1601113
+        ]
+      },
+      "properties": {
+        "name": "East End Garage",
+        "address": "614 E Archer",
+        "occupation_role": "Wm Williams",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "EAR",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/87#xywh=123,632,232,45"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.98636,
           36.1600768
         ]
@@ -5181,7 +5124,7 @@
       "properties": {
         "name": "Economy Drug Co",
         "address": "108 N Greenwood av",
-        "occupation_role": "drug store",
+        "occupation_role": "Alfred F Bryant",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "ECK",
@@ -5274,6 +5217,25 @@
         ]
       },
       "properties": {
+        "name": "Eldridge Percy J",
+        "address": "r 109 1/2 N Greenwood av",
+        "occupation_role": "restaurant",
+        "employer": "",
+        "spouse_name": "Gertrude",
+        "alphabetical_range": "ELD",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/88#xywh=936,1566,253,39"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.986799,
+          36.1692523
+        ]
+      },
+      "properties": {
         "name": "Eldridge Robert",
         "address": "b 802 E Fairview",
         "occupation_role": "lab",
@@ -5307,44 +5269,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.986799,
-          36.1692523
-        ]
-      },
-      "properties": {
-        "name": "Ellis Harry",
-        "address": "b 802 E Fairview",
-        "occupation_role": "lab",
-        "employer": "",
-        "spouse_name": "Essie",
-        "alphabetical_range": "ELM",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/89#xywh=901,237,230,20"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9862563,
-          36.1641399
-        ]
-      },
-      "properties": {
-        "name": "Ellis James C",
-        "address": "rms 711 N Greenwood av",
-        "occupation_role": "lab",
-        "employer": "",
-        "spouse_name": "Ida",
-        "alphabetical_range": "ELM",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/89#xywh=901,380,252,22"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9874767,
           36.1648284
         ]
@@ -5371,49 +5295,11 @@
       "properties": {
         "name": "Emerson Sally",
         "address": "b 1008 N Greenwood av",
-        "occupation_role": "wid Jerry",
+        "occupation_role": "",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "ELR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/90#xywh=137,1414,232,21"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9868008,
-          36.168422
-        ]
-      },
-      "properties": {
-        "name": "Emmerson Sallie",
-        "address": "r 1010 N Greenwood av",
-        "occupation_role": "wid Jerry D",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "ELR",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/90#xywh=380,499,244,29"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9868008,
-          36.168422
-        ]
-      },
-      "properties": {
-        "name": "Emmerson U Dee",
-        "address": "b 1010 N Greenwood av",
-        "occupation_role": "waiter",
-        "employer": "",
-        "spouse_name": "Sarah",
-        "alphabetical_range": "ELR",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/90#xywh=379,535,246,29"
       }
     },
     {
@@ -5523,7 +5409,7 @@
       "properties": {
         "name": "Felix Hiram",
         "address": "rms 614 E Archer",
-        "occupation_role": "painter",
+        "occupation_role": "painter Gunn Bros",
         "employer": "Gunn Bros",
         "spouse_name": "",
         "alphabetical_range": "FEE",
@@ -5657,9 +5543,9 @@
         "name": "Finley James",
         "address": "rms 128 1/2 N Greenwood av",
         "occupation_role": "porter",
-        "employer": "",
+        "employer": "222 S Main av",
         "spouse_name": "",
-        "alphabetical_range": "FIS",
+        "alphabetical_range": "FIN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/95#xywh=656,453,254,22"
       }
     },
@@ -6001,7 +5887,7 @@
         "occupation_role": "",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "FRO",
+        "alphabetical_range": "FUL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/101#xywh=660,1335,252,31"
       }
     },
@@ -6035,7 +5921,7 @@
       },
       "properties": {
         "name": "Funches Abbie",
-        "address": "r 206 N Greenwood av",
+        "address": "206 N Greenwood av",
         "occupation_role": "tailor",
         "employer": "",
         "spouse_name": "",
@@ -6245,7 +6131,7 @@
       "properties": {
         "name": "Gentry Thomas R",
         "address": "r 537 N Detroit av",
-        "occupation_role": "Neeley & Waden",
+        "occupation_role": "Neely & Waden",
         "employer": "",
         "spouse_name": "Lottie E",
         "alphabetical_range": "GEN",
@@ -6288,6 +6174,25 @@
         "spouse_name": "",
         "alphabetical_range": "GEN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/105#xywh=370,801,246,26"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9897322,
+          36.1614221
+        ]
+      },
+      "properties": {
+        "name": "Getre John",
+        "address": "b 320 N Elgin av",
+        "occupation_role": "porter",
+        "employer": "Jefferson Hotel",
+        "spouse_name": "",
+        "alphabetical_range": "GEO",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/105#xywh=675,1104,248,43"
       }
     },
     {
@@ -6345,25 +6250,6 @@
         "spouse_name": "Ida",
         "alphabetical_range": "GIL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/107#xywh=140,868,230,22"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9860129,
-          36.1601811
-        ]
-      },
-      "properties": {
-        "name": "Gist John S",
-        "address": "r 121 N Greenwood av",
-        "occupation_role": "barber",
-        "employer": "",
-        "spouse_name": "Alice M",
-        "alphabetical_range": "GIL",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/107#xywh=373,1370,240,19"
       }
     },
     {
@@ -6436,7 +6322,7 @@
         "name": "Glenn John",
         "address": "rms 607 E Archer",
         "occupation_role": "cook",
-        "employer": "12 N Cincinnati av",
+        "employer": "",
         "spouse_name": "Flora",
         "alphabetical_range": "GLO",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/107#xywh=922,973,242,31"
@@ -6571,7 +6457,7 @@
         "occupation_role": "waiter",
         "employer": "",
         "spouse_name": "Marguerite",
-        "alphabetical_range": "GOR",
+        "alphabetical_range": "GOO",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/109#xywh=371,1641,195,21"
       }
     },
@@ -7131,6 +7017,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9863767,
+          36.1680565
+        ]
+      },
+      "properties": {
+        "name": "Hammonds Adelaide",
+        "address": "b 654 Bryant",
+        "occupation_role": "",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "HAM",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/117#xywh=681,1200,247,19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.9830852,
           36.171727
         ]
@@ -7141,7 +7046,7 @@
         "occupation_role": "maid",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "HAN",
+        "alphabetical_range": "HAM",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/117#xywh=936,545,245,17"
       }
     },
@@ -7308,7 +7213,7 @@
       },
       "properties": {
         "name": "Hardy G Elmo",
-        "address": "r 115 1/2 N Greenwood av",
+        "address": "115 1/2 N Greenwood av, r same",
         "occupation_role": "furn rms",
         "employer": "",
         "spouse_name": "Novie",
@@ -7327,7 +7232,7 @@
       },
       "properties": {
         "name": "Hardy John E",
-        "address": "r 115 1/2 N Greenwood av",
+        "address": "115 1/2 N Greenwood av, r same",
         "occupation_role": "furn rms",
         "employer": "",
         "spouse_name": "Matilda",
@@ -7352,6 +7257,44 @@
         "spouse_name": "",
         "alphabetical_range": "HAR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/119#xywh=387,1482,241,18"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9860358,
+          36.1602013
+        ]
+      },
+      "properties": {
+        "name": "Hardy & Hardy",
+        "address": "111 N Greenwood av",
+        "occupation_role": "restaurant",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "HAR",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/119#xywh=387,1584,241,19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9902756,
+          36.1624635
+        ]
+      },
+      "properties": {
+        "name": "Harper Charles",
+        "address": "rms 418 N Elgin av",
+        "occupation_role": "lab",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "HAR",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/120#xywh=146,571,232,36"
       }
     },
     {
@@ -7536,7 +7479,7 @@
       },
       "properties": {
         "name": "Harris Richard",
-        "address": "113 E 3d, rms 301 N Greenwood av",
+        "address": "rms 301 N Greenwood av",
         "occupation_role": "porter",
         "employer": "",
         "spouse_name": "",
@@ -7651,7 +7594,7 @@
       "properties": {
         "name": "Hawkins Rev Andrew H",
         "address": "r 912 E Fairview",
-        "occupation_role": "",
+        "occupation_role": "Rev",
         "employer": "",
         "spouse_name": "Elizabeth",
         "alphabetical_range": "HAW",
@@ -7694,25 +7637,6 @@
         "spouse_name": "Sara",
         "alphabetical_range": "HAW",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/123#xywh=670,579,249,28"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9884618,
-          36.1683296
-        ]
-      },
-      "properties": {
-        "name": "Hayes Tatum",
-        "address": "r 524 E Bryant",
-        "occupation_role": "porter",
-        "employer": "Tulsa Woven Wire Wks",
-        "spouse_name": "Jennie",
-        "alphabetical_range": "HAY",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/123#xywh=925,293,249,21"
       }
     },
     {
@@ -7862,7 +7786,7 @@
         "address": "r 1233 Pocahontas",
         "occupation_role": "maid Hotel Fern",
         "employer": "",
-        "spouse_name": "",
+        "spouse_name": "Felix",
         "alphabetical_range": "HEN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/125#xywh=397,1003,236,30"
       }
@@ -8404,6 +8328,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9898988,
+          36.1591129
+        ]
+      },
+      "properties": {
+        "name": "Hubbard Wm",
+        "address": "rms 123 N Detroit av",
+        "occupation_role": "porter",
+        "employer": "",
+        "spouse_name": "Mary",
+        "alphabetical_range": "HOW",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/135#xywh=150,1333,478,32"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.9897054,
           36.1613692
         ]
@@ -8412,7 +8355,7 @@
         "name": "Hudson Samuel",
         "address": "b 307 N Elgin av",
         "occupation_role": "porter",
-        "employer": "",
+        "employer": "111 N Main av",
         "spouse_name": "",
         "alphabetical_range": "HUG",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/135#xywh=664,644,248,23"
@@ -8433,7 +8376,7 @@
         "occupation_role": "waiter",
         "employer": "T E Hughes",
         "spouse_name": "",
-        "alphabetical_range": "HUG",
+        "alphabetical_range": "HUL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/136#xywh=154,816,234,34"
       }
     },
@@ -8452,7 +8395,7 @@
         "occupation_role": "tchr Booker T Washn School",
         "employer": "Booker T Washn School",
         "spouse_name": "Ida M",
-        "alphabetical_range": "HUG",
+        "alphabetical_range": "HUL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/136#xywh=155,889,234,24"
       }
     },
@@ -8471,7 +8414,7 @@
         "occupation_role": "prin Dungar Grade School",
         "employer": "Dungar Grade School",
         "spouse_name": "Nettie",
-        "alphabetical_range": "HUG",
+        "alphabetical_range": "HUL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/136#xywh=154,1286,233,21"
       }
     },
@@ -8490,7 +8433,7 @@
         "occupation_role": "restaurant",
         "employer": "",
         "spouse_name": "Mary",
-        "alphabetical_range": "HUG",
+        "alphabetical_range": "HUL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/136#xywh=395,602,238,28"
       }
     },
@@ -8585,7 +8528,7 @@
         "occupation_role": "porter",
         "employer": "Okla P & R Corp",
         "spouse_name": "",
-        "alphabetical_range": "HUN",
+        "alphabetical_range": "HUT",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/137#xywh=650,328,248,26"
       }
     },
@@ -8680,7 +8623,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Nettie",
-        "alphabetical_range": "IND",
+        "alphabetical_range": "IOW",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/139#xywh=157,503,231,39"
       }
     },
@@ -8699,7 +8642,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Mary",
-        "alphabetical_range": "IND",
+        "alphabetical_range": "IOW",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/139#xywh=155,1478,230,17"
       }
     },
@@ -8941,6 +8884,25 @@
         ]
       },
       "properties": {
+        "name": "Jeffery Henry",
+        "address": "r 1326 Pocahontas",
+        "occupation_role": "lab",
+        "employer": "",
+        "spouse_name": "Cassie",
+        "alphabetical_range": "JAR",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/141#xywh=679,1447,248,31"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9830852,
+          36.171727
+        ]
+      },
+      "properties": {
         "name": "Jeffery Samuel",
         "address": "b 1326 Pocahontas",
         "occupation_role": "",
@@ -9062,82 +9024,6 @@
         "spouse_name": "",
         "alphabetical_range": "JOH",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/143#xywh=147,929,233,24"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9901465,
-          36.1628457
-        ]
-      },
-      "properties": {
-        "name": "Johnson Emmett",
-        "address": "r 412 E Easton",
-        "occupation_role": "cook",
-        "employer": "",
-        "spouse_name": "Elodea",
-        "alphabetical_range": "JOH",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/143#xywh=387,617,236,35"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9855054,
-          36.1600018
-        ]
-      },
-      "properties": {
-        "name": "Johnson Fannie",
-        "address": "rms 611 E Archer",
-        "occupation_role": "",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "JOH",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/143#xywh=385,1139,236,27"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.986799,
-          36.1692523
-        ]
-      },
-      "properties": {
-        "name": "Johnson Floyd",
-        "address": "rms 802 E Fairview av",
-        "occupation_role": "janitor",
-        "employer": "Mayo bldg",
-        "spouse_name": "",
-        "alphabetical_range": "JOH",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/143#xywh=384,1227,239,29"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9869397,
-          36.1612453
-        ]
-      },
-      "properties": {
-        "name": "Johnson Frank",
-        "address": "r 511 E Cameron",
-        "occupation_role": "lab",
-        "employer": "",
-        "spouse_name": "Emman",
-        "alphabetical_range": "JOH",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/143#xywh=384,1267,238,25"
       }
     },
     {
@@ -9951,7 +9837,7 @@
         "name": "Jones Mattie",
         "address": "rms 121 N Greenwood av",
         "occupation_role": "waiter",
-        "employer": "",
+        "employer": "525 E Cameron",
         "spouse_name": "",
         "alphabetical_range": "JON",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/146#xywh=922,987,251,31"
@@ -10076,6 +9962,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.986799,
+          36.1692523
+        ]
+      },
+      "properties": {
+        "name": "Jones Wesley",
+        "address": "103 1/2 N Greenwood av, rms Gurley Hotel",
+        "occupation_role": "phys",
+        "employer": "",
+        "spouse_name": "Myrtle",
+        "alphabetical_range": "JOR",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/147#xywh=369,439,243,34"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.987132,
           36.1647125
         ]
@@ -10143,7 +10048,7 @@
         "occupation_role": "maid",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "KAH",
+        "alphabetical_range": "JOR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/147#xywh=916,490,223,31"
       }
     },
@@ -10162,7 +10067,7 @@
         "occupation_role": "",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "KEN",
+        "alphabetical_range": "KEL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/150#xywh=362,235,245,25"
       }
     },
@@ -10333,7 +10238,7 @@
         "occupation_role": "waiter",
         "employer": "",
         "spouse_name": "Willie M",
-        "alphabetical_range": "KIN",
+        "alphabetical_range": "KIR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/153#xywh=364,1514,243,28"
       }
     },
@@ -10387,7 +10292,7 @@
       "properties": {
         "name": "Knights of Pythias Hall",
         "address": "501 N Greenwood av",
-        "occupation_role": "",
+        "occupation_role": "hall",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "KNO",
@@ -10409,7 +10314,7 @@
         "occupation_role": "clk",
         "employer": "L A Ferguson",
         "spouse_name": "",
-        "alphabetical_range": "LAB",
+        "alphabetical_range": "KRO",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/156#xywh=356,1084,245,19"
       }
     },
@@ -10428,7 +10333,7 @@
         "occupation_role": "drugs",
         "employer": "",
         "spouse_name": "Hattie",
-        "alphabetical_range": "LAB",
+        "alphabetical_range": "KRO",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/156#xywh=355,1114,246,22"
       }
     },
@@ -10542,7 +10447,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Zaner",
-        "alphabetical_range": "LAT",
+        "alphabetical_range": "LAS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/159#xywh=390,262,241,25"
       }
     },
@@ -10577,7 +10482,7 @@
       "properties": {
         "name": "Lemos Cora M",
         "address": "b 618 N Greenwood av",
-        "occupation_role": "wid Charles H",
+        "occupation_role": "",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "LEK",
@@ -10824,8 +10729,8 @@
       "properties": {
         "name": "Little Press'ly L",
         "address": "r 617 E Independence",
-        "occupation_role": "",
-        "employer": "Bell & Little",
+        "occupation_role": "Bell & Little",
+        "employer": "",
         "spouse_name": "Mabel",
         "alphabetical_range": "LIT",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/164#xywh=1171,462,86,23"
@@ -10867,25 +10772,6 @@
         "spouse_name": "",
         "alphabetical_range": "LIT",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/164#xywh=665,1105,237,19"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9857053,
-          36.163335
-        ]
-      },
-      "properties": {
-        "name": "Littles Henry",
-        "address": "rms 519 N Greenwood av",
-        "occupation_role": "lab",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "LIT",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/164"
       }
     },
     {
@@ -11017,7 +10903,7 @@
         "occupation_role": "mech",
         "employer": "Sinclair Oil & G Co",
         "spouse_name": "Ella",
-        "alphabetical_range": "LOW",
+        "alphabetical_range": "LUC",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/167#xywh=122,1492,240,19"
       }
     },
@@ -11093,7 +10979,7 @@
         "occupation_role": "",
         "employer": "",
         "spouse_name": "Mamie",
-        "alphabetical_range": "LYO",
+        "alphabetical_range": "MCA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/168#xywh=924,795,245,23"
       }
     },
@@ -11112,7 +10998,7 @@
         "occupation_role": "helper",
         "employer": "",
         "spouse_name": "Daisy",
-        "alphabetical_range": "LYO",
+        "alphabetical_range": "MCA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/168#xywh=924,977,247,22"
       }
     },
@@ -11131,7 +11017,7 @@
         "occupation_role": "helper",
         "employer": "",
         "spouse_name": "Lebetha",
-        "alphabetical_range": "LYO",
+        "alphabetical_range": "MCA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/168#xywh=925,1012,247,22"
       }
     },
@@ -11150,7 +11036,7 @@
         "occupation_role": "helper",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "LYO",
+        "alphabetical_range": "MCA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/168#xywh=925,1048,246,22"
       }
     },
@@ -11340,7 +11226,7 @@
         "occupation_role": "furn rms",
         "employer": "",
         "spouse_name": "Carrie",
-        "alphabetical_range": "McD",
+        "alphabetical_range": "McC",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/172#xywh=362,805,245,22"
       }
     },
@@ -11359,7 +11245,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Daisy",
-        "alphabetical_range": "McD",
+        "alphabetical_range": "McC",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/172#xywh=364,878,243,17"
       }
     },
@@ -11378,7 +11264,7 @@
         "occupation_role": "janitor",
         "employer": "",
         "spouse_name": "Lucy",
-        "alphabetical_range": "McD",
+        "alphabetical_range": "McC",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/172#xywh=365,912,242,19"
       }
     },
@@ -11397,7 +11283,7 @@
         "occupation_role": "shoe shiner",
         "employer": "Carl Whitaker (c)",
         "spouse_name": "Marie",
-        "alphabetical_range": "McD",
+        "alphabetical_range": "McC",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/172#xywh=365,1095,243,20"
       }
     },
@@ -11416,7 +11302,7 @@
         "occupation_role": "porter",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "McD",
+        "alphabetical_range": "McC",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/172#xywh=366,1341,243,21"
       }
     },
@@ -11435,7 +11321,7 @@
         "occupation_role": "maid",
         "employer": "Browning Hotel",
         "spouse_name": "",
-        "alphabetical_range": "McD",
+        "alphabetical_range": "McC",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/172#xywh=365,1475,246,19"
       }
     },
@@ -11454,7 +11340,7 @@
         "occupation_role": "",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "McD",
+        "alphabetical_range": "McC",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/172#xywh=365,1605,246,21"
       }
     },
@@ -11489,7 +11375,7 @@
       "properties": {
         "name": "McDowell Hazle",
         "address": "rms 508 1/2 N Greenwood av",
-        "occupation_role": "maid",
+        "occupation_role": "maid New Fox Hotel",
         "employer": "New Fox Hotel",
         "spouse_name": "",
         "alphabetical_range": "MCD",
@@ -11549,7 +11435,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Florida",
-        "alphabetical_range": "McK",
+        "alphabetical_range": "McI",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/174#xywh=660,628,243,48"
       }
     },
@@ -11568,7 +11454,7 @@
         "occupation_role": "helper",
         "employer": "Berry-Gorman T & R Co",
         "spouse_name": "Celia",
-        "alphabetical_range": "McK",
+        "alphabetical_range": "McI",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/174#xywh=661,716,241,46"
       }
     },
@@ -11585,7 +11471,7 @@
         "name": "McKeever Joseph G",
         "address": "r 515 N Detroit av",
         "occupation_role": "dentist",
-        "employer": "",
+        "employer": "102 N Greenwood av",
         "spouse_name": "Myrtle",
         "alphabetical_range": "McK",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/174#xywh=911,692,245,32"
@@ -11869,10 +11755,10 @@
       "properties": {
         "name": "Magill Harrison M",
         "address": "r 529 N Detroit av",
-        "occupation_role": "tchr",
+        "occupation_role": "tchr Booker T Washn School",
         "employer": "Booker T Washn School",
         "spouse_name": "Fredonia",
-        "alphabetical_range": "MAI",
+        "alphabetical_range": "MAD",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/177#xywh=914,349,248,24"
       }
     },
@@ -11891,7 +11777,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Clara",
-        "alphabetical_range": "MAL",
+        "alphabetical_range": "MAI",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/178#xywh=371,805,208,22"
       }
     },
@@ -12166,6 +12052,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9863652,
+          36.1629705
+        ]
+      },
+      "properties": {
+        "name": "Masonic Hall (c)",
+        "address": "501 N Greenwood av",
+        "occupation_role": "",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "MAS",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/181#xywh=921,1158,246,36"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.9806829,
           36.1726528
         ]
@@ -12176,7 +12081,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "MAT",
+        "alphabetical_range": "MAS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=129,1212,237,29"
       }
     },
@@ -12195,7 +12100,7 @@
         "occupation_role": "billiards",
         "employer": "",
         "spouse_name": "Laura",
-        "alphabetical_range": "MAT",
+        "alphabetical_range": "MAS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=129,1317,240,27"
       }
     },
@@ -12214,7 +12119,7 @@
         "occupation_role": "cook",
         "employer": "",
         "spouse_name": "Effie",
-        "alphabetical_range": "MAT",
+        "alphabetical_range": "MAS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=371,603,242,27"
       }
     },
@@ -12233,7 +12138,7 @@
         "occupation_role": "cook",
         "employer": "",
         "spouse_name": "Effie",
-        "alphabetical_range": "MAT",
+        "alphabetical_range": "MAS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=374,742,239,24"
       }
     },
@@ -12252,7 +12157,7 @@
         "occupation_role": "carp",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "MAT",
+        "alphabetical_range": "MAX",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=666,296,247,42"
       }
     },
@@ -12271,7 +12176,7 @@
         "occupation_role": "",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "MAT",
+        "alphabetical_range": "MAX",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=667,381,246,42"
       }
     },
@@ -12290,7 +12195,7 @@
         "occupation_role": "carp",
         "employer": "",
         "spouse_name": "Madia",
-        "alphabetical_range": "MAT",
+        "alphabetical_range": "MAX",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=667,451,246,39"
       }
     },
@@ -12309,7 +12214,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "MAT",
+        "alphabetical_range": "MAX",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=668,570,247,38"
       }
     },
@@ -12328,27 +12233,8 @@
         "occupation_role": "lather",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "MAT",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=670,727,245,35"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.986799,
-          36.1692523
-        ]
-      },
-      "properties": {
-        "name": "Maxwell Eugene",
-        "address": "rms 115 1/2 N Greenwood av",
-        "occupation_role": "",
-        "employer": "",
-        "spouse_name": "",
         "alphabetical_range": "MAX",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=929,1575,248,32"
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/182#xywh=670,727,245,35"
       }
     },
     {
@@ -12401,7 +12287,7 @@
       "properties": {
         "name": "Mayberry Hazel",
         "address": "b 322 N Elgin av",
-        "occupation_role": "attndt",
+        "occupation_role": "attndt H A Burns",
         "employer": "H A Burns",
         "spouse_name": "",
         "alphabetical_range": "MAY",
@@ -12425,25 +12311,6 @@
         "spouse_name": "Maria",
         "alphabetical_range": "MEE",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/183#xywh=937,1434,241,18"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9830841,
-          36.1705241
-        ]
-      },
-      "properties": {
-        "name": "Melton Harriett",
-        "address": "b 1107 Pocahontas",
-        "occupation_role": "",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "MEL",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/184#xywh=385,1600,242,22"
       }
     },
     {
@@ -12803,7 +12670,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Lena",
-        "alphabetical_range": "MOD",
+        "alphabetical_range": "MOF",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/189#xywh=914,899,249,18"
       }
     },
@@ -12822,7 +12689,7 @@
         "occupation_role": "porter",
         "employer": "117 S Main av",
         "spouse_name": "Olive",
-        "alphabetical_range": "MOO",
+        "alphabetical_range": "MON",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/190#xywh=681,271,150,36"
       }
     },
@@ -12841,7 +12708,7 @@
         "occupation_role": "grocer",
         "employer": "",
         "spouse_name": "Minnie",
-        "alphabetical_range": "MOO",
+        "alphabetical_range": "MON",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/190#xywh=671,460,244,39"
       }
     },
@@ -13135,25 +13002,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9899631,
-          36.1629136
-        ]
-      },
-      "properties": {
-        "name": "Motley Robert W",
-        "address": "rms 420 E Easton",
-        "occupation_role": "phys",
-        "employer": "",
-        "spouse_name": "Louise",
-        "alphabetical_range": "MOS",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/194#xywh=147,1602,229,33"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9898127,
           36.1627721
         ]
@@ -13164,8 +13012,27 @@
         "occupation_role": "",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "MOU",
+        "alphabetical_range": "MOS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/194#xywh=383,1318,240,22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9857053,
+          36.163335
+        ]
+      },
+      "properties": {
+        "name": "Muckroy Mrs Etta",
+        "address": "r 519 N Greenwood av",
+        "occupation_role": "",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "MUL",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/194#xywh=665,1040,248,28"
       }
     },
     {
@@ -13204,25 +13071,6 @@
         "spouse_name": "Christella",
         "alphabetical_range": "MUL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/194#xywh=923,987,252,18"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9853189,
-          36.1600619
-        ]
-      },
-      "properties": {
-        "name": "Murdock James",
-        "address": "rms 615 E Archer",
-        "occupation_role": "actor",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "MUR",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/195#xywh=671,223,382,31"
       }
     },
     {
@@ -13335,7 +13183,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Elizabeth",
-        "alphabetical_range": "NEA",
+        "alphabetical_range": "NAP",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/197#xywh=383,1217,235,22"
       }
     },
@@ -13350,31 +13198,12 @@
       },
       "properties": {
         "name": "Neal Reuben O",
-        "address": "r 120 N Elgin av",
+        "address": "120 N Elgin av, r same",
         "occupation_role": "restaurant",
         "employer": "",
         "spouse_name": "Lillie",
-        "alphabetical_range": "NEA",
+        "alphabetical_range": "NAP",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/197#xywh=386,1484,238,23"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9859931,
-          36.170181
-        ]
-      },
-      "properties": {
-        "name": "Neal Simeon L",
-        "address": "r 636 E Booker",
-        "occupation_role": "tailor",
-        "employer": "",
-        "spouse_name": "Susa",
-        "alphabetical_range": "NEA",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/197#xywh=386,1514,238,25"
       }
     },
     {
@@ -13451,6 +13280,25 @@
         "spouse_name": "Joy",
         "alphabetical_range": "NEA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/197#xywh=653,399,245,38"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9867331,
+          36.1606761
+        ]
+      },
+      "properties": {
+        "name": "Neil Cliftonia",
+        "address": "rms 206 N Greenwood av",
+        "occupation_role": "maid",
+        "employer": "Hotel Kaufman",
+        "spouse_name": "",
+        "alphabetical_range": "NEA",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/197#xywh=909,688,250,17"
       }
     },
     {
@@ -13601,7 +13449,7 @@
         "occupation_role": "shoe shiner",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "OBE",
+        "alphabetical_range": "NOR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/201#xywh=553,1381,75,20"
       }
     },
@@ -13620,7 +13468,7 @@
         "occupation_role": "elev opr",
         "employer": "Kennedy bldg",
         "spouse_name": "",
-        "alphabetical_range": "OBE",
+        "alphabetical_range": "NOR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/201#xywh=389,1451,239,19"
       }
     },
@@ -13712,7 +13560,7 @@
       "properties": {
         "name": "Oklahoma Sun",
         "address": "101 1/2 N Greenwood av",
-        "occupation_role": "editor and mngr: Theodore Baughman",
+        "occupation_role": "Theodore Baughman editor and mngr",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "OKL",
@@ -13838,6 +13686,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9864721,
+          36.1683304
+        ]
+      },
+      "properties": {
+        "name": "Overton Charles",
+        "address": "r 643 Bryant",
+        "occupation_role": "",
+        "employer": "",
+        "spouse_name": "Anna",
+        "alphabetical_range": "OWE",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/204#xywh=675,1344,76,16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.9863822,
           36.1633047
         ]
@@ -13905,7 +13772,7 @@
         "occupation_role": "",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "PAL",
+        "alphabetical_range": "PAC",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/205#xywh=924,532,255,24"
       }
     },
@@ -13962,7 +13829,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "PAL",
+        "alphabetical_range": "PAR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/206#xywh=432,237,217,36"
       }
     },
@@ -13981,7 +13848,7 @@
         "occupation_role": "cementer",
         "employer": "",
         "spouse_name": "Alice",
-        "alphabetical_range": "PAL",
+        "alphabetical_range": "PAR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/206#xywh=431,277,218,37"
       }
     },
@@ -14167,7 +14034,7 @@
       },
       "properties": {
         "name": "Patton Wade F",
-        "address": "rms 424 N Elgin av",
+        "address": "rms 424 N Elgin",
         "occupation_role": "porter",
         "employer": "",
         "spouse_name": "Jessie",
@@ -14304,7 +14171,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Mattie",
-        "alphabetical_range": "PER",
+        "alphabetical_range": "PES",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/210#xywh=705,337,225,43"
       }
     },
@@ -14323,7 +14190,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "PER",
+        "alphabetical_range": "PES",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/210#xywh=705,660,226,37"
       }
     },
@@ -14342,7 +14209,7 @@
         "occupation_role": "tchr",
         "employer": "Booker T Washn School",
         "spouse_name": "",
-        "alphabetical_range": "PER",
+        "alphabetical_range": "PES",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/210#xywh=952,1246,215,21"
       }
     },
@@ -14361,7 +14228,7 @@
         "occupation_role": "clk",
         "employer": "",
         "spouse_name": "Carrie",
-        "alphabetical_range": "PER",
+        "alphabetical_range": "PES",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/210#xywh=941,1324,225,19"
       }
     },
@@ -14471,7 +14338,7 @@
       },
       "properties": {
         "name": "Pierce John W",
-        "address": "420 E 2d, r 1208 N Lansing av",
+        "address": "r 1208 N Lansing av",
         "occupation_role": "porter",
         "employer": "",
         "spouse_name": "Harriet",
@@ -14491,30 +14358,11 @@
       "properties": {
         "name": "Pimbrook Carrie",
         "address": "rms 523 N Detroit",
-        "occupation_role": "tchr Booker Washn School",
+        "occupation_role": "tchr",
         "employer": "Booker Washn School",
         "spouse_name": "",
         "alphabetical_range": "PIE",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/213#xywh=411,1577,238,26"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9914401,
-          36.1619791
-        ]
-      },
-      "properties": {
-        "name": "Pitt James",
-        "address": "r 421 N Detroit av",
-        "occupation_role": "porter",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "PLA",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/213#xywh=938,576,227,21"
       }
     },
     {
@@ -14798,7 +14646,7 @@
         "occupation_role": "",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "PRO",
+        "alphabetical_range": "PUR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/217#xywh=711,481,221,40"
       }
     },
@@ -14852,7 +14700,7 @@
       "properties": {
         "name": "Railey Letha",
         "address": "r 540 N Elgin av",
-        "occupation_role": "wid Wm",
+        "occupation_role": "",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "RAI",
@@ -14870,7 +14718,7 @@
       },
       "properties": {
         "name": "Ramsey Jesse L",
-        "address": "9 W 2d, r 814 N Greenwood av",
+        "address": "r 814 N Greenwood av",
         "occupation_role": "porter",
         "employer": "",
         "spouse_name": "Mabel",
@@ -14895,6 +14743,25 @@
         "spouse_name": "Lucy",
         "alphabetical_range": "RAN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/218#xywh=920,664,236,21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9910189,
+          36.1627247
+        ]
+      },
+      "properties": {
+        "name": "Randall Niten",
+        "address": "r 522 N Elgin av",
+        "occupation_role": "porter",
+        "employer": "",
+        "spouse_name": "Mattie",
+        "alphabetical_range": "RAN",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/218#xywh=1160,476,50,52"
       }
     },
     {
@@ -14978,44 +14845,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9902407,
-          36.1623964
-        ]
-      },
-      "properties": {
-        "name": "Rankin Arnett",
-        "address": "rms 508 E Easton",
-        "occupation_role": "porter",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "RAN",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/219#xywh=152,861,252,40"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9902407,
-          36.1623964
-        ]
-      },
-      "properties": {
-        "name": "Rankin Milton",
-        "address": "r 508 E Easton",
-        "occupation_role": "driver",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "RAN",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/219#xywh=157,1249,251,34"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9890192,
           36.1681589
         ]
@@ -15045,7 +14874,7 @@
         "occupation_role": "maid",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "REE",
+        "alphabetical_range": "REA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/220#xywh=405,1118,243,20"
       }
     },
@@ -15064,7 +14893,7 @@
         "occupation_role": "J T Presley propr",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "REE",
+        "alphabetical_range": "REA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/220#xywh=405,1219,244,27"
       }
     },
@@ -15292,7 +15121,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "RIN",
+        "alphabetical_range": "RID",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/224#xywh=721,875,222,26"
       }
     },
@@ -15311,7 +15140,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Lee",
-        "alphabetical_range": "RIN",
+        "alphabetical_range": "RID",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/224#xywh=720,893,223,27"
       }
     },
@@ -15330,7 +15159,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Annie",
-        "alphabetical_range": "RIN",
+        "alphabetical_range": "RID",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/224#xywh=721,1110,224,20"
       }
     },
@@ -15387,7 +15216,7 @@
         "occupation_role": "maid",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "RUP",
+        "alphabetical_range": "RUS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/226#xywh=154,1470,248,22"
       }
     },
@@ -15406,8 +15235,46 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "RUP",
+        "alphabetical_range": "RUS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/226#xywh=152,1613,252,23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9873667,
+          36.1630683
+        ]
+      },
+      "properties": {
+        "name": "Russell Charles H",
+        "address": "b 506 N Greenwood av",
+        "occupation_role": "porter",
+        "employer": "Smith Motor Co",
+        "spouse_name": "",
+        "alphabetical_range": "RUS",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/226#xywh=408,224,132,20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9873667,
+          36.1630683
+        ]
+      },
+      "properties": {
+        "name": "Russell Mrs Jannie",
+        "address": "r 506 N Greenwood av",
+        "occupation_role": "",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "RUS",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/226#xywh=409,1220,240,25"
       }
     },
     {
@@ -15915,7 +15782,7 @@
       },
       "properties": {
         "name": "Saddle Eugene I",
-        "address": "122 1/2 N Greenwood av",
+        "address": "rms 122 1/2 N Greenwood av",
         "occupation_role": "lawyer",
         "employer": "",
         "spouse_name": "",
@@ -15940,6 +15807,25 @@
         "spouse_name": "",
         "alphabetical_range": "ST L",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/232#xywh=131,1583,253,18"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.986799,
+          36.1692523
+        ]
+      },
+      "properties": {
+        "name": "Safety First Loan Co",
+        "address": "107 1/2 N Greenwood av",
+        "occupation_role": "Edward G Howard",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "ST L",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/232#xywh=397,389,252,30"
       }
     },
     {
@@ -16242,7 +16128,7 @@
         "occupation_role": "",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "SCO",
+        "alphabetical_range": "SED",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/236#xywh=934,239,223,18"
       }
     },
@@ -16327,25 +16213,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9869397,
-          36.1612453
-        ]
-      },
-      "properties": {
-        "name": "Shawnee David",
-        "address": "rms 513 E Cameron",
-        "occupation_role": "chauffeur",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "SHA",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/239#xywh=125,1449,255,19"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9899631,
           36.1629136
         ]
@@ -16396,6 +16263,25 @@
         "spouse_name": "",
         "alphabetical_range": "SHE",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/240#xywh=150,945,249,27"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.986079,
+          36.1601974
+        ]
+      },
+      "properties": {
+        "name": "Shipp Thelma",
+        "address": "r 119 N Greenwood av",
+        "occupation_role": "porter",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "SHO",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/240#xywh=931,574,230,20"
       }
     },
     {
@@ -16714,7 +16600,7 @@
       "properties": {
         "name": "Smith Building",
         "address": "122 N Greenwood av",
-        "occupation_role": "building",
+        "occupation_role": "",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "SMI",
@@ -16962,7 +16848,7 @@
         "name": "Smith John A",
         "address": "r 914 E Fairview",
         "occupation_role": "porter",
-        "employer": "414 S Main av",
+        "employer": "",
         "spouse_name": "Emma",
         "alphabetical_range": "SMI",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/246#xywh=692,490,221,28"
@@ -16981,7 +16867,7 @@
         "name": "Smith John L",
         "address": "rms 114 1/2 N Greenwood av",
         "occupation_role": "porter",
-        "employer": "108 S Main av",
+        "employer": "",
         "spouse_name": "",
         "alphabetical_range": "SMI",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/246#xywh=691,588,224,22"
@@ -17325,7 +17211,7 @@
         "occupation_role": "maid",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "SMU",
+        "alphabetical_range": "SNY",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/248#xywh=701,457,219,34"
       }
     },
@@ -17344,7 +17230,7 @@
         "occupation_role": "cook",
         "employer": "Jack's Cafe",
         "spouse_name": "Emma",
-        "alphabetical_range": "SPI",
+        "alphabetical_range": "SPA",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/250#xywh=383,770,246,23"
       }
     },
@@ -17378,7 +17264,7 @@
       },
       "properties": {
         "name": "Starks Fred",
-        "address": "rms 129 N Greenwood av",
+        "address": "rms 129 N Greenwood",
         "occupation_role": "",
         "employer": "",
         "spouse_name": "",
@@ -17530,7 +17416,7 @@
       },
       "properties": {
         "name": "Sterling Maurice",
-        "address": "rms 513 N Greenwood",
+        "address": "rms 513 N Greenwood av",
         "occupation_role": "porter",
         "employer": "307 S Boulder av",
         "spouse_name": "",
@@ -17645,10 +17531,10 @@
       "properties": {
         "name": "Stradford Hotel",
         "address": "301 N Greenwood av",
-        "occupation_role": "John B Stradford propr",
+        "occupation_role": "hotel",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "STR",
+        "alphabetical_range": "STO",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/255#xywh=707,1107,222,22"
       }
     },
@@ -17667,7 +17553,7 @@
         "occupation_role": "billiards",
         "employer": "",
         "spouse_name": "Augusta",
-        "alphabetical_range": "STR",
+        "alphabetical_range": "STO",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/255#xywh=719,1148,209,26"
       }
     },
@@ -17838,7 +17724,7 @@
         "occupation_role": "chauffeur",
         "employer": "",
         "spouse_name": "May",
-        "alphabetical_range": "STR",
+        "alphabetical_range": "SUL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/256#xywh=932,1023,243,20"
       }
     },
@@ -17971,7 +17857,7 @@
         "occupation_role": "",
         "employer": "",
         "spouse_name": "Stella",
-        "alphabetical_range": "SWA",
+        "alphabetical_range": "SYK",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/258#xywh=708,764,218,18"
       }
     },
@@ -17990,7 +17876,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "SWA",
+        "alphabetical_range": "SYK",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/258#xywh=707,817,218,17"
       }
     },
@@ -18455,6 +18341,44 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9860436,
+          36.1683339
+        ]
+      },
+      "properties": {
+        "name": "Thompson David",
+        "address": "r 840 1/2 E Bryant",
+        "occupation_role": "lab",
+        "employer": "",
+        "spouse_name": "Idella",
+        "alphabetical_range": "THO",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/263#xywh=406,316,241,19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9874763,
+          36.1632702
+        ]
+      },
+      "properties": {
+        "name": "Thompson David",
+        "address": "r 610 N Greenwood av",
+        "occupation_role": "lab",
+        "employer": "",
+        "spouse_name": "Ada",
+        "alphabetical_range": "THO",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/263#xywh=422,523,112,20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.9899631,
           36.1629136
         ]
@@ -18480,7 +18404,7 @@
       },
       "properties": {
         "name": "Thompson Richard",
-        "address": "rms 123 N Elgin av",
+        "address": "112 S Main av, rms 123 N Elgin av",
         "occupation_role": "porter",
         "employer": "",
         "spouse_name": "",
@@ -18636,7 +18560,7 @@
         "occupation_role": "dentist",
         "employer": "",
         "spouse_name": "Lucille",
-        "alphabetical_range": "TRA",
+        "alphabetical_range": "TRE",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/266#xywh=945,719,236,29"
       }
     },
@@ -18655,7 +18579,7 @@
         "occupation_role": "cook",
         "employer": "",
         "spouse_name": "Ola",
-        "alphabetical_range": "TRA",
+        "alphabetical_range": "TRE",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/266#xywh=944,878,235,33"
       }
     },
@@ -18710,7 +18634,7 @@
         "name": "Turley Clarence",
         "address": "rms 506 N Elgin av",
         "occupation_role": "porter",
-        "employer": "",
+        "employer": "227 S Boston av",
         "spouse_name": "",
         "alphabetical_range": "TUT",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/270#xywh=680,284,255,52"
@@ -18790,6 +18714,25 @@
         "spouse_name": "",
         "alphabetical_range": "TUT",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/270#xywh=938,759,229,29"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9919789,
+          36.1630314
+        ]
+      },
+      "properties": {
+        "name": "Tyler Julius",
+        "address": "rms 523 N Detroit av",
+        "occupation_role": "agt",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "TUT",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/271#xywh=115,1375,242,23"
       }
     },
     {
@@ -18921,7 +18864,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "VEA",
+        "alphabetical_range": "VAN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/273#xywh=376,671,216,20"
       }
     },
@@ -18940,7 +18883,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "VEA",
+        "alphabetical_range": "VAN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/273#xywh=376,852,238,31"
       }
     },
@@ -18959,7 +18902,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Grace",
-        "alphabetical_range": "VEA",
+        "alphabetical_range": "VAN",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/273#xywh=376,936,239,21"
       }
     },
@@ -19335,7 +19278,7 @@
       },
       "properties": {
         "name": "Ward Katie",
-        "address": "r rear 121 N Greenwood av",
+        "address": "rear 121 N Greenwood av",
         "occupation_role": "waiter",
         "employer": "M L Cain",
         "spouse_name": "",
@@ -19415,7 +19358,7 @@
         "occupation_role": "maid",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "WAS",
+        "alphabetical_range": "WAR",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/278#xywh=671,226,241,30"
       }
     },
@@ -19509,7 +19452,7 @@
         "address": "r 1175 Pocahontas",
         "occupation_role": "",
         "employer": "",
-        "spouse_name": "",
+        "spouse_name": "wid George",
         "alphabetical_range": "WAS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/278#xywh=919,225,241,23"
       }
@@ -19605,7 +19548,7 @@
         "occupation_role": "clk",
         "employer": "Leo Williams",
         "spouse_name": "Ethel",
-        "alphabetical_range": "WAT",
+        "alphabetical_range": "WAS",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/279#xywh=128,1406,245,24"
       }
     },
@@ -19719,7 +19662,7 @@
         "occupation_role": "porter",
         "employer": "",
         "spouse_name": "Lulu",
-        "alphabetical_range": "WEI",
+        "alphabetical_range": "WEE",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/280#xywh=696,1178,243,18"
       }
     },
@@ -19728,18 +19671,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.989022,
-          36.1587698
+          -95.9855054,
+          36.1600018
         ]
       },
       "properties": {
-        "name": "Welch Wm",
-        "address": "r 307 E Archer",
-        "occupation_role": "waiter",
+        "name": "Wells Mrs Dora",
+        "address": "613 E Archer, r same",
+        "occupation_role": "dress mkr",
         "employer": "",
-        "spouse_name": "Lillie",
-        "alphabetical_range": "WEI",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/281#xywh=368,1441,242,23"
+        "spouse_name": "",
+        "alphabetical_range": "WER",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/281#xywh=938,876,242,22"
       }
     },
     {
@@ -19899,25 +19842,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.985258,
-          36.1601752
-        ]
-      },
-      "properties": {
-        "name": "Wheeler Wm J",
-        "address": "rms 619 E Archer",
-        "occupation_role": "helper",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "WHA",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/283#xywh=380,649,240,20"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9903067,
           36.1625231
         ]
@@ -20020,7 +19944,7 @@
       "properties": {
         "name": "White & Black",
         "address": "809 N Greenwood av",
-        "occupation_role": "Edward White, Daniel Black, restaurant",
+        "occupation_role": "Edward White (c), Daniel Black (c), restaurant",
         "employer": "",
         "spouse_name": "",
         "alphabetical_range": "WHI",
@@ -20114,7 +20038,7 @@
       },
       "properties": {
         "name": "Whitley Allen J",
-        "address": "129 1/2 N Greenwood av",
+        "address": "rms 129 1/2 N Greenwood av",
         "occupation_role": "phys",
         "employer": "",
         "spouse_name": "",
@@ -20175,7 +20099,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "Tiny",
-        "alphabetical_range": "WIE",
+        "alphabetical_range": "WHI",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/285#xywh=152,840,241,22"
       }
     },
@@ -20190,11 +20114,11 @@
       },
       "properties": {
         "name": "Wickham Charles B",
-        "address": "544 N Elgin av",
+        "address": "544 N Elgin av, r same",
         "occupation_role": "phys",
         "employer": "",
         "spouse_name": "Edith",
-        "alphabetical_range": "WIE",
+        "alphabetical_range": "WHI",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/285#xywh=400,672,236,36"
       }
     },
@@ -20345,7 +20269,7 @@
         "address": "r 603 N Greenwood av",
         "occupation_role": "",
         "employer": "",
-        "spouse_name": "",
+        "spouse_name": "Claretta",
         "alphabetical_range": "WIL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/286#xywh=928,885,241,28"
       }
@@ -20402,7 +20326,7 @@
         "address": "rms 607 N Greenwood av",
         "occupation_role": "lab",
         "employer": "",
-        "spouse_name": "",
+        "spouse_name": "Mattie",
         "alphabetical_range": "WIL",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/286#xywh=936,1450,238,28"
       }
@@ -20488,18 +20412,75 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9890306,
-          36.1595467
+          -95.9887648,
+          36.1588594
         ]
       },
       "properties": {
-        "name": "Williams Frank R",
-        "address": "r 126 N Elgin av",
-        "occupation_role": "conf",
+        "name": "Williams George",
+        "address": "r 311 E Archer",
+        "occupation_role": "porter",
         "employer": "",
-        "spouse_name": "Lillian",
+        "spouse_name": "Susa",
         "alphabetical_range": "WIL",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/287#xywh=121,1504,246,24"
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/287#xywh=378,404,241,34"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9872783,
+          36.1690117
+        ]
+      },
+      "properties": {
+        "name": "Williams Henry",
+        "address": "b 540 Williams",
+        "occupation_role": "",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "WIL",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/287#xywh=378,710,223,19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9864289,
+          36.1701821
+        ]
+      },
+      "properties": {
+        "name": "Williams James",
+        "address": "r 616 Booker",
+        "occupation_role": "lab",
+        "employer": "",
+        "spouse_name": "Lucille",
+        "alphabetical_range": "WIL",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/287#xywh=376,1229,241,20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9862753,
+          36.1612858
+        ]
+      },
+      "properties": {
+        "name": "Williams Hume",
+        "address": "rms 301 N Greenwood av",
+        "occupation_role": "porter",
+        "employer": "L A Ferguson",
+        "spouse_name": "",
+        "alphabetical_range": "WIL",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/287"
       }
     },
     {
@@ -20659,44 +20640,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.985258,
-          36.1601752
-        ]
-      },
-      "properties": {
-        "name": "Willis Floyd",
-        "address": "rms 619 E Archer",
-        "occupation_role": "lab",
-        "employer": "",
-        "spouse_name": "Maggie",
-        "alphabetical_range": "WIL",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/288#xywh=931,435,245,28"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9870597,
-          36.1693717
-        ]
-      },
-      "properties": {
-        "name": "Willis Malachi",
-        "address": "b 1104 N Greenwood av",
-        "occupation_role": "lab",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "WIL",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/288#xywh=934,713,244,29"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9902407,
           36.1623964
         ]
@@ -20779,7 +20722,7 @@
       },
       "properties": {
         "name": "Wilson Henry T",
-        "address": "501 E Easton, r same",
+        "address": "r 501 E Easton",
         "occupation_role": "real est",
         "employer": "",
         "spouse_name": "Slyvia",
@@ -21001,6 +20944,44 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9902382,
+          36.1628118
+        ]
+      },
+      "properties": {
+        "name": "Wofford Shirley",
+        "address": "rms 409 E Easton",
+        "occupation_role": "lab",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "WOL",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/291#xywh=935,809,240,21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9898988,
+          36.1591129
+        ]
+      },
+      "properties": {
+        "name": "Woodard Frank W",
+        "address": "rms 123 N Detroit av",
+        "occupation_role": "cook",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "WOO",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/292#xywh=934,1226,163,21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.9866006,
           36.1621184
         ]
@@ -21051,25 +21032,6 @@
         "spouse_name": "",
         "alphabetical_range": "WOO",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/292#xywh=1204,1539,11,78"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9898988,
-          36.1591129
-        ]
-      },
-      "properties": {
-        "name": "Woodard Frank W",
-        "address": "rms 123 N Detroit av",
-        "occupation_role": "cook",
-        "employer": "",
-        "spouse_name": "",
-        "alphabetical_range": "WOO",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/292#xywh=934,1226,163,21"
       }
     },
     {
@@ -21146,6 +21108,25 @@
         "spouse_name": "Annie",
         "alphabetical_range": "WOO",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/293#xywh=143,1310,242,20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9904361,
+          36.1627717
+        ]
+      },
+      "properties": {
+        "name": "Woods John",
+        "address": "rms 502 N Elgin",
+        "occupation_role": "helper",
+        "employer": "121 S Boston av",
+        "spouse_name": "Cassie",
+        "alphabetical_range": "WOO",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/293#xywh=143,1324,243,22"
       }
     },
     {
@@ -21334,7 +21315,7 @@
         "occupation_role": "lab",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "WYA",
+        "alphabetical_range": "WRI",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/294#xywh=938,888,238,19"
       }
     },
@@ -21486,8 +21467,27 @@
         "occupation_role": "janitor",
         "employer": "",
         "spouse_name": "",
-        "alphabetical_range": "ZEI",
+        "alphabetical_range": "ZUM",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/297#xywh=387,1399,241,17"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.986799,
+          36.1692523
+        ]
+      },
+      "properties": {
+        "name": "Zoope Gertrude",
+        "address": "rms 119 1/2 N Greenwood av",
+        "occupation_role": "",
+        "employer": "",
+        "spouse_name": "",
+        "alphabetical_range": "ZUM",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/297#xywh=106,1039,15,57"
       }
     }
   ]

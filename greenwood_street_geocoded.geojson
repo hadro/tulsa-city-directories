@@ -306,46 +306,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.9869632,
-          36.1597743
-        ]
-      },
-      "properties": {
-        "house_number": "505",
-        "street_name": "ARCHER—EAST",
-        "occupant_name": "D R Roland",
-        "occupant_description": "furn rms",
-        "race_designation": "(c)",
-        "is_rear": "False",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/299",
-        "norm_addr": "505 Archer, Tulsa, OK"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9868413,
-          36.1598187
-        ]
-      },
-      "properties": {
-        "house_number": "513",
-        "street_name": "ARCHER—EAST",
-        "occupant_name": "Edward Kerne",
-        "occupant_description": "shoe shiner",
-        "race_designation": "(c)",
-        "is_rear": "False",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/299",
-        "norm_addr": "513 Archer, Tulsa, OK"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -95.9866591,
           36.1595999
         ]
@@ -619,6 +579,46 @@
         "is_rear": "False",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/299",
         "norm_addr": "619 Archer, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9869632,
+          36.1597743
+        ]
+      },
+      "properties": {
+        "house_number": "505",
+        "street_name": "ARCHER—WEST",
+        "occupant_name": "D R Roland",
+        "occupant_description": "furn rms",
+        "race_designation": "(c)",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/299",
+        "norm_addr": "505 Archer, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9868413,
+          36.1598187
+        ]
+      },
+      "properties": {
+        "house_number": "513",
+        "street_name": "ARCHER—WEST",
+        "occupant_name": "Edward Kerne",
+        "occupant_description": "shoe shiner",
+        "race_designation": "(c)",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/299",
+        "norm_addr": "513 Archer, Tulsa, OK"
       }
     },
     {
@@ -1577,7 +1577,7 @@
         "occupant_description": "",
         "race_designation": "(c)",
         "is_rear": "False",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/305",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/305#xywh=410,1174,169,19",
         "norm_addr": "522 E King St, Tulsa, OK"
       }
     },
@@ -1617,7 +1617,7 @@
         "occupant_description": "",
         "race_designation": "(c)",
         "is_rear": "False",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/305#xywh=410,1213,169,19",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/305",
         "norm_addr": "524 E King St, Tulsa, OK"
       }
     },
@@ -3753,7 +3753,7 @@
       "properties": {
         "house_number": "121",
         "street_name": "DETROIT AV—SOUTH",
-        "occupant_name": "A Mrs Florence D Quinn",
+        "occupant_name": "\"A\" Mrs Florence D Quinn",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -3773,7 +3773,7 @@
       "properties": {
         "house_number": "123",
         "street_name": "DETROIT AV—SOUTH",
-        "occupant_name": "A O A Kelley",
+        "occupant_name": "\"A\" O A Kelley",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -5072,7 +5072,7 @@
       },
       "properties": {
         "house_number": "407",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "W P Stetler",
         "occupant_description": "",
         "race_designation": "",
@@ -5092,7 +5092,7 @@
       },
       "properties": {
         "house_number": "408",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "Irly Farrar",
         "occupant_description": "",
         "race_designation": "",
@@ -5112,7 +5112,7 @@
       },
       "properties": {
         "house_number": "411",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "J W Odell",
         "occupant_description": "",
         "race_designation": "",
@@ -5126,13 +5126,33 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.990009,
+          36.1628966
+        ]
+      },
+      "properties": {
+        "house_number": "419",
+        "street_name": "EASTON—WEST",
+        "occupant_name": "T F Smith",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/314#xywh=987,1606,99,19",
+        "norm_addr": "419 Easton, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.9899631,
           36.1629136
         ]
       },
       "properties": {
         "house_number": "421",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "John Moody",
         "occupant_description": "",
         "race_designation": "",
@@ -5152,7 +5172,7 @@
       },
       "properties": {
         "house_number": "421",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "J D Summer",
         "occupant_description": "",
         "race_designation": "",
@@ -5172,7 +5192,7 @@
       },
       "properties": {
         "house_number": "423",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "Joel Knebel",
         "occupant_description": "",
         "race_designation": "",
@@ -5192,7 +5212,7 @@
       },
       "properties": {
         "house_number": "423",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "Watt Smith",
         "occupant_description": "",
         "race_designation": "",
@@ -5212,7 +5232,7 @@
       },
       "properties": {
         "house_number": "503",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "M J Fitzgerald",
         "occupant_description": "grocer",
         "race_designation": "",
@@ -5232,7 +5252,7 @@
       },
       "properties": {
         "house_number": "507",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "Mrs Julia McQueen",
         "occupant_description": "",
         "race_designation": "",
@@ -5252,7 +5272,7 @@
       },
       "properties": {
         "house_number": "507",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "A C W Wells",
         "occupant_description": "",
         "race_designation": "",
@@ -5272,7 +5292,7 @@
       },
       "properties": {
         "house_number": "509",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "B I Mullendore",
         "occupant_description": "",
         "race_designation": "",
@@ -5292,7 +5312,7 @@
       },
       "properties": {
         "house_number": "509-A",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "J E Mullendore",
         "occupant_description": "",
         "race_designation": "",
@@ -5312,7 +5332,7 @@
       },
       "properties": {
         "house_number": "511",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "Mrs Miriam L Perrin",
         "occupant_description": "",
         "race_designation": "",
@@ -5332,7 +5352,7 @@
       },
       "properties": {
         "house_number": "511",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "Clifford Silverthorn",
         "occupant_description": "",
         "race_designation": "",
@@ -5352,7 +5372,7 @@
       },
       "properties": {
         "house_number": "512",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "J T McCracken",
         "occupant_description": "",
         "race_designation": "",
@@ -5372,7 +5392,7 @@
       },
       "properties": {
         "house_number": "515",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "A H Maile",
         "occupant_description": "",
         "race_designation": "",
@@ -5392,7 +5412,7 @@
       },
       "properties": {
         "house_number": "516",
-        "street_name": "EASTON",
+        "street_name": "EASTON—WEST",
         "occupant_name": "R A Stewart",
         "occupant_description": "",
         "race_designation": "",
@@ -5559,6 +5579,566 @@
         "is_rear": "False",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316",
         "norm_addr": "503 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9889771,
+          36.1589955
+        ]
+      },
+      "properties": {
+        "house_number": "106",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "I D Hartshorn",
+        "occupant_description": "restaurant",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=432,790,134,16",
+        "norm_addr": "106 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9890091,
+          36.1590549
+        ]
+      },
+      "properties": {
+        "house_number": "108",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "J W Allen",
+        "occupant_description": "barber",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=417,831,123,16",
+        "norm_addr": "108 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9890913,
+          36.1592636
+        ]
+      },
+      "properties": {
+        "house_number": "110",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "George Smith",
+        "occupant_description": "soft drinks",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=417,847,169,17",
+        "norm_addr": "110 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9887619,
+          36.1596004
+        ]
+      },
+      "properties": {
+        "house_number": "118",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "J L Jones",
+        "occupant_description": "welder",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=416,972,158,20",
+        "norm_addr": "118 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9890288,
+          36.1595432
+        ]
+      },
+      "properties": {
+        "house_number": "120",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "Joseph Hodges",
+        "occupant_description": "transfer",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=418,984,162,19",
+        "norm_addr": "120 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9891058,
+          36.160556
+        ]
+      },
+      "properties": {
+        "house_number": "205",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "Bowman-Robertson",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=419,1019,128,19",
+        "norm_addr": "205 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9890448,
+          36.1601383
+        ]
+      },
+      "properties": {
+        "house_number": "206",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "Frank Crawford",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=418,1035,111,19",
+        "norm_addr": "206 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9890448,
+          36.1601383
+        ]
+      },
+      "properties": {
+        "house_number": "206",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "F E Graham",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=380,1037,21,20",
+        "norm_addr": "206 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9890448,
+          36.1601383
+        ]
+      },
+      "properties": {
+        "house_number": "206",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "Nicholas Jerefos",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=418,1071,111,18",
+        "norm_addr": "206 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9891064,
+          36.1605572
+        ]
+      },
+      "properties": {
+        "house_number": "209",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "J A Allen",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=417,1089,102,19",
+        "norm_addr": "209 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9891064,
+          36.1605572
+        ]
+      },
+      "properties": {
+        "house_number": "209",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "E A Stevenson",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=417,1108,102,18",
+        "norm_addr": "209 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9896002,
+          36.1603986
+        ]
+      },
+      "properties": {
+        "house_number": "216",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "Hurry Up Messenger Service",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=403,1263,204,19",
+        "norm_addr": "216 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9896788,
+          36.1613166
+        ]
+      },
+      "properties": {
+        "house_number": "306",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "R L Daley",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=403,1282,204,20",
+        "norm_addr": "306 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9896788,
+          36.1613166
+        ]
+      },
+      "properties": {
+        "house_number": "306",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "E A Sanders",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=420,1296,83,19",
+        "norm_addr": "306 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9896788,
+          36.1613166
+        ]
+      },
+      "properties": {
+        "house_number": "306",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "G A Windham",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=418,1311,95,19",
+        "norm_addr": "306 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.989694,
+          36.1613468
+        ]
+      },
+      "properties": {
+        "house_number": "310",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "Gallais Apartments",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=417,1332,128,17",
+        "norm_addr": "310 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.989694,
+          36.1613468
+        ]
+      },
+      "properties": {
+        "house_number": "310",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"A\" J F Rose",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=402,1344,96,26",
+        "norm_addr": "310 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.989694,
+          36.1613468
+        ]
+      },
+      "properties": {
+        "house_number": "310",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"A\" L A Quisenberry",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=380,1361,165,21",
+        "norm_addr": "310 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.989694,
+          36.1613468
+        ]
+      },
+      "properties": {
+        "house_number": "310",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"B\" J F Eagan",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=380,1381,125,19",
+        "norm_addr": "310 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.989694,
+          36.1613468
+        ]
+      },
+      "properties": {
+        "house_number": "310",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"C\" Mrs Bess Ellis",
+        "occupant_description": "dressmkr",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=380,1397,219,24",
+        "norm_addr": "310 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.989694,
+          36.1613468
+        ]
+      },
+      "properties": {
+        "house_number": "310",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"B\" N A McKeever",
+        "occupant_description": "oils",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=380,1417,184,19",
+        "norm_addr": "310 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.989694,
+          36.1613468
+        ]
+      },
+      "properties": {
+        "house_number": "310",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"D\" F W Johnson",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=380,1436,184,19",
+        "norm_addr": "310 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.989694,
+          36.1613468
+        ]
+      },
+      "properties": {
+        "house_number": "310",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"D\" M C Spradling",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=381,1449,150,19",
+        "norm_addr": "310 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.989694,
+          36.1613468
+        ]
+      },
+      "properties": {
+        "house_number": "310",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"F\" C G Stone",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=381,1468,150,20",
+        "norm_addr": "310 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9897246,
+          36.1614071
+        ]
+      },
+      "properties": {
+        "house_number": "318",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"A\" G H Beal",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=381,1568,117,20",
+        "norm_addr": "318 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9897246,
+          36.1614071
+        ]
+      },
+      "properties": {
+        "house_number": "318",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"A\" Jack Benn",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=380,1580,125,32",
+        "norm_addr": "318 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9897246,
+          36.1614071
+        ]
+      },
+      "properties": {
+        "house_number": "318",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"B\" C L Hough",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=380,1602,131,24",
+        "norm_addr": "318 Elgin Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9897246,
+          36.1614071
+        ]
+      },
+      "properties": {
+        "house_number": "318",
+        "street_name": "ELGIN AV—SOUTH",
+        "occupant_name": "\"B\" A L Bray",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/316#xywh=380,1620,125,22",
+        "norm_addr": "318 Elgin Ave, Tulsa, OK"
       }
     },
     {
@@ -5933,7 +6513,7 @@
       "properties": {
         "house_number": "318",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"B\" A R Sevann",
+        "occupant_name": "B A R Sevann",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -5953,7 +6533,7 @@
       "properties": {
         "house_number": "318",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"C\" Oleta Hough",
+        "occupant_name": "C Oleta Hough",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -5973,7 +6553,7 @@
       "properties": {
         "house_number": "318",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"C\" Mrs Leota Hough",
+        "occupant_name": "C Mrs Leota Hough",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -5993,7 +6573,7 @@
       "properties": {
         "house_number": "318",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"D\" T J Darby",
+        "occupant_name": "D T J Darby",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6013,7 +6593,7 @@
       "properties": {
         "house_number": "318",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"E\" C B Douglas",
+        "occupant_name": "E C B Douglas",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6033,7 +6613,7 @@
       "properties": {
         "house_number": "318",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"F\" O J McCann",
+        "occupant_name": "F O J McCann",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6073,7 +6653,7 @@
       "properties": {
         "house_number": "406",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" Ormond Green",
+        "occupant_name": "A Ormond Green",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6113,7 +6693,7 @@
       "properties": {
         "house_number": "408",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" Mrs Etta M Loder",
+        "occupant_name": "A Mrs Etta M Loder",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6193,7 +6773,7 @@
       "properties": {
         "house_number": "410",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" Richard Smith",
+        "occupant_name": "A Richard Smith",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6233,7 +6813,7 @@
       "properties": {
         "house_number": "412",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" Mrs Bertha V Avery",
+        "occupant_name": "A Mrs Bertha V Avery",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6253,7 +6833,7 @@
       "properties": {
         "house_number": "412",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" E L Averyt",
+        "occupant_name": "A E L Averyt",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6293,7 +6873,7 @@
       "properties": {
         "house_number": "414",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" Eunice M Robards",
+        "occupant_name": "A Eunice M Robards",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6333,7 +6913,7 @@
       "properties": {
         "house_number": "416",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" P E Dane",
+        "occupant_name": "A P E Dane",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6453,7 +7033,7 @@
       "properties": {
         "house_number": "420",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" Clara Kimble",
+        "occupant_name": "A Clara Kimble",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6473,7 +7053,7 @@
       "properties": {
         "house_number": "420",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" W F Seaver",
+        "occupant_name": "A W F Seaver",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6493,7 +7073,7 @@
       "properties": {
         "house_number": "420",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" Edith E White",
+        "occupant_name": "A Edith E White",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6533,7 +7113,7 @@
       "properties": {
         "house_number": "422",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" G E Root",
+        "occupant_name": "A G E Root",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -6573,7 +7153,7 @@
       "properties": {
         "house_number": "424",
         "street_name": "ELGIN AV—NORTH",
-        "occupant_name": "\"A\" W N Ellis",
+        "occupant_name": "A W N Ellis",
         "occupant_description": "",
         "race_designation": "",
         "is_rear": "False",
@@ -8866,6 +9446,26 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.986799,
+          36.1692523
+        ]
+      },
+      "properties": {
+        "house_number": "1016",
+        "street_name": "FAIRVIEW—EAST",
+        "occupant_name": "Wm Bobzien",
+        "occupant_description": "",
+        "race_designation": "",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/319",
+        "norm_addr": "1016 E Fairview near N Greenwood Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.989012,
           36.167953
         ]
@@ -8892,7 +9492,7 @@
       },
       "properties": {
         "house_number": "24",
-        "street_name": "GREENWOOD AV.",
+        "street_name": "GREENWOOD AV",
         "occupant_name": "Tulsa Public Health Association No 2",
         "occupant_description": "",
         "race_designation": "",
@@ -8912,7 +9512,7 @@
       },
       "properties": {
         "house_number": "101",
-        "street_name": "GREENWOOD AV.",
+        "street_name": "GREENWOOD AV",
         "occupant_name": "Earl Real Estate Co",
         "occupant_description": "",
         "race_designation": "(c)",
@@ -8932,7 +9532,7 @@
       },
       "properties": {
         "house_number": "102",
-        "street_name": "GREENWOOD AV.",
+        "street_name": "GREENWOOD AV",
         "occupant_name": "J J McKeever",
         "occupant_description": "dentist",
         "race_designation": "(c)",
@@ -8952,7 +9552,7 @@
       },
       "properties": {
         "house_number": "102",
-        "street_name": "GREENWOOD AV.",
+        "street_name": "GREENWOOD AV",
         "occupant_name": "J W Williams",
         "occupant_description": "",
         "race_designation": "(c)",
@@ -8966,13 +9566,33 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          -95.9859453,
+          36.1599864
+        ]
+      },
+      "properties": {
+        "house_number": "101 1/2",
+        "street_name": "GREENWOOD AV",
+        "occupant_name": "Oklahoma Sun",
+        "occupant_description": "",
+        "race_designation": "(c)",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/329#xywh=125,1744,24,55",
+        "norm_addr": "101 1/2 Greenwood Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           -95.986603,
           36.160322
         ]
       },
       "properties": {
         "house_number": "102",
-        "street_name": "GREENWOOD AV.",
+        "street_name": "GREENWOOD AV",
         "occupant_name": "Williams Building",
         "occupant_description": "",
         "race_designation": "(c)",
@@ -10093,6 +10713,26 @@
       "properties": {
         "house_number": "501",
         "street_name": "GREENWOOD AV",
+        "occupant_name": "Knights of Pythias Hall",
+        "occupant_description": "",
+        "race_designation": "(c)",
+        "is_rear": "False",
+        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/329#xywh=948,1528,19,17",
+        "norm_addr": "501 Greenwood Ave, Tulsa, OK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9863652,
+          36.1629705
+        ]
+      },
+      "properties": {
+        "house_number": "501",
+        "street_name": "GREENWOOD AV",
         "occupant_name": "Masonic Hall",
         "occupant_description": "",
         "race_designation": "(c)",
@@ -10118,26 +10758,6 @@
         "race_designation": "(c)",
         "is_rear": "False",
         "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/329#xywh=975,765,180,17",
-        "norm_addr": "501 Greenwood Ave, Tulsa, OK"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -95.9863652,
-          36.1629705
-        ]
-      },
-      "properties": {
-        "house_number": "501",
-        "street_name": "GREENWOOD AV",
-        "occupant_name": "Knights of Pythias Hall",
-        "occupant_description": "",
-        "race_designation": "(c)",
-        "is_rear": "False",
-        "canvas_fragment": "https://digitalcollections.tulsalibrary.org/iiif/2/p15020coll12:2857/manifest.json/canvas/329#xywh=948,1528,19,17",
         "norm_addr": "501 Greenwood Ave, Tulsa, OK"
       }
     },
