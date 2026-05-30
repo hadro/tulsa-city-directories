@@ -1054,19 +1054,115 @@
     color: var(--ink-2);
   }
 
+  /* ============================ Abbreviation tooltip ============================ */
+  .abbr-tooltip {
+    position: fixed;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    padding: 7px 11px;
+    border-radius: 2px;
+    max-width: 260px;
+    z-index: 200;
+    box-shadow: 0 8px 20px -8px rgba(30,26,20,0.4);
+    pointer-events: none;
+    --arrow-x: 50%;
+  }
+  .abbr-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: var(--arrow-x);
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--ink);
+  }
+  .abbr-tooltip.below::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: var(--ink);
+  }
+  .abbr-tooltip[hidden] { display: none; }
+
+  /* ============================ Sidebar disclosure shell ============================ */
+  .sidebar-shell { display: contents; }
+  .sidebar-toggle { display: none; }
+
   /* ============================ Responsive ============================ */
   @media (max-width: 880px) {
-    .masthead { grid-template-columns: 1fr; }
+    .masthead { grid-template-columns: 1fr; padding: 18px 22px 14px; }
     .masthead-meta { text-align: left; }
-    .app { grid-template-columns: 1fr; }
+    .app { display: block; }
+    .sidebar-shell {
+      display: block;
+      border-bottom: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    .sidebar-toggle {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 22px;
+      background: var(--paper);
+      border: 0;
+      border-bottom: 1px solid var(--rule);
+      cursor: pointer;
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--ink);
+      text-align: left;
+    }
+    .sidebar-toggle-label {
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .sidebar-toggle-label svg { color: var(--ink-3); }
+    .sidebar-toggle::after {
+      content: "";
+      width: 8px; height: 8px;
+      border-right: 1.5px solid var(--ink-3);
+      border-bottom: 1.5px solid var(--ink-3);
+      transform: rotate(45deg);
+      margin-left: auto;
+      transition: transform .15s ease;
+    }
+    .sidebar-shell.open .sidebar-toggle::after { transform: rotate(-135deg); }
+    .sidebar-toggle:hover { background: var(--paper-2); }
+    .sidebar-toggle-active {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-3);
+      letter-spacing: 0.04em;
+    }
+    .sidebar-toggle-active[data-active]:not([data-active="0"]) {
+      color: var(--accent);
+      background: rgba(122,42,31,0.06);
+      border: 1px solid var(--accent-soft);
+      padding: 2px 7px;
+      border-radius: 2px;
+    }
     .sidebar {
       position: static; max-height: none;
-      border-right: 0; border-bottom: 1px solid var(--rule);
+      border-right: 0; border-bottom: 0;
       padding: 18px 22px 24px;
+      display: none;
     }
+    .sidebar-shell.open .sidebar { display: block; }
     .main { padding: 18px 22px 200px; }
+    .toolbar { grid-template-columns: 1fr; }
+    .toolbar .btn { width: 100%; justify-content: center; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-wrap table { min-width: 720px; }
+    /* Sticky thead is incompatible with overflow-x on the wrapper. */
+    thead th, thead tr.filter-row th { position: static; top: auto; }
     .drawer-body { padding: 18px 22px 28px; }
     .drawer-header { padding: 14px 18px 12px 22px; }
+    .drawer-title { font-size: 21px; }
     .about-backdrop { padding: 18px; }
     .about-body { padding: 22px 28px 36px; }
     .about-title { font-size: 30px; }
@@ -1095,7 +1191,16 @@
 </header>
 
 <div class="app">
-  <aside class="sidebar" id="sidebar"></aside>
+  <div class="sidebar-shell" id="sidebarShell">
+    <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-expanded="false" aria-controls="sidebar">
+      <span class="sidebar-toggle-label">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+        Filters
+      </span>
+      <span class="sidebar-toggle-active" id="sidebarActiveCount" data-active="0"></span>
+    </button>
+    <aside class="sidebar" id="sidebar"></aside>
+  </div>
   <section class="main">
     <div class="toolbar">
       <div class="search" id="searchWrap">
@@ -1581,10 +1686,92 @@ function decorateAbbrevs(text, fieldType) {
       }
     }
     if (expansion) {
-      return `<abbr title="${escapeAttr(expansion)}">${escapeHTML(word)}</abbr>`;
+      // aria-label (not title=) so native browser tooltips don't fire — our
+      // shared JS tooltip handles both hover and tap consistently.
+      return `<abbr data-abbr aria-label="${escapeAttr(expansion)}" tabindex="0">${escapeHTML(word)}</abbr>`;
     }
     return escapeHTML(word);
   });
+}
+
+/* ============================ Shared abbreviation tooltip ============================ */
+function setupAbbrTooltips() {
+  const tip = document.createElement("div");
+  tip.className = "abbr-tooltip";
+  tip.id = "abbrTooltip";
+  tip.hidden = true;
+  document.body.appendChild(tip);
+  let openAbbr = null;
+
+  function position(abbr) {
+    const r = abbr.getBoundingClientRect();
+    const tr = tip.getBoundingClientRect();
+    const margin = 8;
+    let left = r.left + r.width / 2 - tr.width / 2;
+    let top = r.top - tr.height - 10;
+    let below = false;
+    if (left < margin) left = margin;
+    if (left + tr.width > window.innerWidth - margin) left = window.innerWidth - tr.width - margin;
+    if (top < margin) { top = r.bottom + 10; below = true; }
+    tip.style.left = `${left}px`;
+    tip.style.top = `${top}px`;
+    tip.classList.toggle("below", below);
+    const arrowLeft = Math.max(10, Math.min(tr.width - 10, r.left + r.width / 2 - left));
+    tip.style.setProperty("--arrow-x", `${arrowLeft}px`);
+  }
+  function show(abbr) {
+    const text = abbr.getAttribute("aria-label");
+    if (!text) return;
+    tip.textContent = text;
+    tip.hidden = false;
+    openAbbr = abbr;
+    position(abbr);
+  }
+  function hide() {
+    if (!openAbbr) return;
+    tip.hidden = true;
+    openAbbr = null;
+  }
+
+  document.addEventListener("click", e => {
+    const abbr = e.target.closest("abbr[data-abbr]");
+    if (abbr) {
+      e.stopPropagation();
+      // Always show on click/tap — never toggle. Dismiss by clicking
+      // elsewhere. This avoids the iOS pattern where a tap fires synthetic
+      // pointerover (which shows) and then click (which would otherwise hide).
+      show(abbr);
+      return;
+    }
+    if (openAbbr) hide();
+  });
+  // Hover-only show; pointerType filter keeps touch-device synthetic events
+  // out so they don't compete with the click handler.
+  document.addEventListener("pointerover", e => {
+    if (e.pointerType !== "mouse") return;
+    const abbr = e.target.closest("abbr[data-abbr]");
+    if (abbr && openAbbr !== abbr) show(abbr);
+  });
+  document.addEventListener("pointerout", e => {
+    if (e.pointerType !== "mouse") return;
+    if (!openAbbr) return;
+    const abbr = e.target.closest("abbr[data-abbr]");
+    if (abbr === openAbbr) hide();
+  });
+  document.addEventListener("focusin", e => {
+    const abbr = e.target.closest && e.target.closest("abbr[data-abbr]");
+    if (abbr && openAbbr !== abbr) show(abbr);
+  });
+  document.addEventListener("focusout", e => {
+    if (!openAbbr) return;
+    const abbr = e.target.closest && e.target.closest("abbr[data-abbr]");
+    if (abbr === openAbbr) hide();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && openAbbr) { hide(); e.stopPropagation(); }
+  });
+  window.addEventListener("scroll", hide, { capture: true, passive: true });
+  window.addEventListener("resize", hide);
 }
 
 /* ============================ CSV parsing ============================ */
@@ -1780,6 +1967,18 @@ function renderSidebar() {
       syncHash();
     });
   });
+  updateActiveFilterCount();
+}
+
+function updateActiveFilterCount() {
+  let n = 0;
+  if (state.search && state.search.trim()) n++;
+  for (const v of Object.values(state.colFilters || {})) if (v) n++;
+  for (const s of Object.values(state.facetOn || {})) if (s && s.size) n += s.size;
+  const el = document.getElementById("sidebarActiveCount");
+  if (!el) return;
+  el.textContent = n ? `${n} active` : "";
+  el.dataset.active = String(n);
 }
 
 /* ============================ Render: table ============================ */
@@ -2393,6 +2592,17 @@ document.getElementById("exportBtn").addEventListener("click", () => {
   setTimeout(() => { URL.revokeObjectURL(a.href); btn.disabled = false; }, 600);
 });
 
+/* ============================ Sidebar disclosure (mobile) ============================ */
+(function () {
+  const shell = document.getElementById("sidebarShell");
+  const toggle = document.getElementById("sidebarToggle");
+  if (!shell || !toggle) return;
+  toggle.addEventListener("click", () => {
+    const opened = shell.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", String(opened));
+  });
+})();
+
 /* ============================ Random entry ============================ */
 // Restricted to the main alphabetical city directory section — entries that
 // carry an alphabetical range key. Street-directory and classified-directory
@@ -2481,6 +2691,7 @@ async function boot() {
 
     renderSidebar();
     renderTable();
+    setupAbbrTooltips();
 
     // Apply any URL hash state (filters + selected entry + #about).
     applyHashToState();
