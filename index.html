@@ -912,6 +912,24 @@
     margin: 0;
     color: var(--ink-2);
   }
+  .abbr-group-note {
+    grid-column: 1 / -1;
+    margin: 10px 0 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink-3);
+  }
+  .abbr-group-note code {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 11.5px;
+    color: var(--ink-2);
+    background: var(--paper-2);
+    padding: 0 4px;
+    border-radius: 2px;
+  }
   .about-list { margin: 0 0 18px 0; padding-left: 28px; counter-reset: gbsteps; list-style: none; }
   .about-list li {
     position: relative;
@@ -1304,12 +1322,13 @@
             <div class="abbr-group">
               <div class="abbr-group-h">Residency code <span class="abbr-group-sub">(leads the address)</span></div>
               <dl>
-                <dt>r</dt><dd>resides &mdash; rents</dd>
-                <dt>h</dt><dd>home &mdash; owner-occupied</dd>
-                <dt>b</dt><dd>boards</dd>
-                <dt>rms</dt><dd>rooms &mdash; rents furnished</dd>
+                <dt>r</dt><dd>resides at</dd>
+                <dt>h</dt><dd>home of</dd>
+                <dt>b</dt><dd>boards at</dd>
+                <dt>rms</dt><dd>rooms at &mdash; rents furnished</dd>
                 <dt>rear</dt><dd>rear-of-building dwelling</dd>
               </dl>
+              <p class="abbr-group-note">These mark household status, not tenure: <code>h</code> doesn&rsquo;t certify ownership and <code>r</code> doesn&rsquo;t certify renting. An adult child living with parents is also <code>r</code>.</p>
             </div>
             <div class="abbr-group">
               <div class="abbr-group-h">Address</div>
@@ -1561,10 +1580,10 @@ function sourcePageUrl(row) {
 // case-insensitively anywhere it appears as a whole token.
 const ABBREVIATIONS = {
   residency: {
-    "r":   "resides at — rents",
-    "h":   "home — owner-occupied",
+    "r":   "resides at",
+    "h":   "home of",
     "b":   "boards at",
-    "rms": "rooms at — rents a furnished room",
+    "rms": "rooms at (rents a furnished room)",
     "bds": "boards at",
   },
   word: {
