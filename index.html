@@ -535,6 +535,14 @@
     vertical-align: 5px;
     white-space: nowrap;
   }
+  .drawer-name-note {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink-3);
+    margin: 6px 0 0 0;
+  }
 
   /* Empty-fields toggle inside the meta grid */
   .meta-grid.collapsed .field.empty { display: none; }
@@ -1178,6 +1186,7 @@
     <div>
       <p class="drawer-eyebrow" id="drawerEyebrow">Entry &middot; Polk-Hoffhine 1921</p>
       <h2 class="drawer-title" id="drawerTitle">&mdash;</h2>
+      <p class="drawer-name-note" id="drawerNameNote" hidden>Listed surname first, as in the original directory.</p>
     </div>
     <div class="drawer-actions">
       <button class="close" id="closeBtn" aria-label="Close entry">
@@ -1832,6 +1841,17 @@ function openEntryByRow(r, opts) {
     .map(f => ` <span class="flag-chip" aria-label="${escapeHTML(f.label)}">${escapeHTML(f.label)}</span>`)
     .join("");
   document.getElementById("drawerTitle").innerHTML = (escapeHTML(r.name || "(unnamed entry)") + raceChip + flagChips);
+
+  // Show the "listed surname first" note only for personal-name entries.
+  // Skip empty names (street directory rows) and anything that looks like a
+  // business listing.
+  const nameNote = document.getElementById("drawerNameNote");
+  const looksPersonal = !!r.name
+    && r.is_business !== "True"
+    && !/\s&\s/.test(r.name)
+    && !/\b(Co|Inc|Ltd|Corp|Bldg|Mfg|Hotel)\b/.test(r.name)
+    && r.name.trim().split(/\s+/).length >= 2;
+  nameNote.hidden = !looksPersonal;
 
   // Snippet
   const snippetFrame = document.getElementById("snippetFrame");
