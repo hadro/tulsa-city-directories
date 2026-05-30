@@ -1327,28 +1327,31 @@
           <p>City directories systematically under-counted: domestic workers without recorded employers, transient laborers, children, many wives without separate listings, and people deliberately omitted by the canvassers. The absence of a name here does not mean the person was not in Tulsa.</p>
 
           <h3 class="about-h3">Reading the directory</h3>
-          <p>Polk-Hoffhine used a consistent shorthand throughout. In an entry, any underlined abbreviation will show its expansion on hover or focus. The most common ones:</p>
+          <p>Polk-Hoffhine printed an ABBREVIATIONS page at the front of the volume; the list below mirrors it. Any underlined abbreviation in an entry shows its expansion on hover, focus, or tap. A few notable items: <code>engr</code> means <em>engraver</em>, not engineer (<code>eng</code> means &ldquo;engine or engineer&rdquo;); <code>gen</code> means general (the adjective), not the rank; <code>vet</code> means &ldquo;veterinary&rdquo;.</p>
           <div class="abbr-key">
             <div class="abbr-group">
               <div class="abbr-group-h">Residency code <span class="abbr-group-sub">(leads the address)</span></div>
               <dl>
-                <dt>r</dt><dd>resides at</dd>
+                <dt>r</dt><dd>residence</dd>
                 <dt>h</dt><dd>home of</dd>
-                <dt>b</dt><dd>boards at</dd>
-                <dt>rms</dt><dd>rooms at &mdash; rents furnished</dd>
+                <dt>b</dt><dd>boards</dd>
+                <dt>rms</dt><dd>rooms</dd>
                 <dt>rear</dt><dd>rear-of-building dwelling</dd>
               </dl>
-              <p class="abbr-group-note">These mark household status, not tenure: <code>h</code> doesn&rsquo;t certify ownership and <code>r</code> doesn&rsquo;t certify renting. An adult child living with parents is also <code>r</code>.</p>
+              <p class="abbr-group-note">These mark household status, not tenure: <code>h</code> doesn&rsquo;t certify ownership and <code>r</code> doesn&rsquo;t certify renting. An adult child living with parents is also <code>r</code>. <code>h</code> appears in the data but isn&rsquo;t in the directory&rsquo;s printed key.</p>
             </div>
             <div class="abbr-group">
-              <div class="abbr-group-h">Address</div>
+              <div class="abbr-group-h">Address &amp; position</div>
               <dl>
                 <dt>av</dt><dd>avenue</dd>
-                <dt>blvd</dt><dd>boulevard</dd>
+                <dt>boul</dt><dd>boulevard</dd>
                 <dt>bldg</dt><dd>building</dd>
-                <dt>apts</dt><dd>apartments</dd>
-                <dt>sta</dt><dd>station</dd>
-                <dt>N&middot;S&middot;E&middot;W</dt><dd>north&middot;south&middot;east&middot;west</dd>
+                <dt>blk</dt><dd>block</dd>
+                <dt>pl &middot; ter</dt><dd>place &middot; terrace</dd>
+                <dt>ct &middot; sq</dt><dd>court &middot; square</dd>
+                <dt>cor &middot; bet</dt><dd>corner &middot; between</dd>
+                <dt>nr &middot; opp</dt><dd>near &middot; opposite</dd>
+                <dt>N &middot; S &middot; E &middot; W</dt><dd>north &middot; south &middot; east &middot; west</dd>
               </dl>
             </div>
             <div class="abbr-group">
@@ -1357,22 +1360,38 @@
                 <dt>clk</dt><dd>clerk</dd>
                 <dt>lab</dt><dd>laborer</dd>
                 <dt>mngr</dt><dd>manager</dd>
-                <dt>atty</dt><dd>attorney</dd>
-                <dt>slsmn</dt><dd>salesman</dd>
+                <dt>agt</dt><dd>agent</dd>
+                <dt>salsn</dt><dd>salesman</dd>
                 <dt>tchr</dt><dd>teacher</dd>
+                <dt>carp</dt><dd>carpenter</dd>
+                <dt>mech</dt><dd>mechanic</dd>
+                <dt>messr</dt><dd>messenger</dd>
                 <dt>stenogr</dt><dd>stenographer</dd>
                 <dt>supt</dt><dd>superintendent</dd>
                 <dt>propr</dt><dd>proprietor</dd>
-                <dt>wid</dt><dd>widow of &mdash;</dd>
+                <dt>electr</dt><dd>electrician</dd>
+                <dt>eng</dt><dd>engine <em>or</em> engineer</dd>
+                <dt>engr</dt><dd>engraver</dd>
+                <dt>vet</dt><dd>veterinary</dd>
+                <dt>wid</dt><dd>widow</dd>
               </dl>
             </div>
             <div class="abbr-group">
-              <div class="abbr-group-h">Company &middot; title</div>
+              <div class="abbr-group-h">Qualifier &middot; compound &middot; title</div>
               <dl>
+                <dt>gen</dt><dd>general (adjective)</dd>
+                <dt>spl</dt><dd>special</dd>
+                <dt>frt &middot; ret &middot; whol</dt><dd>freight &middot; retail &middot; wholesale</dd>
+                <dt>dom</dt><dd>domestic</dd>
+                <dt>dept &middot; dist</dt><dd>department &middot; district</dd>
+                <dt>adv</dt><dd>advertisement</dd>
+                <dt>tel</dt><dd>telegraph <em>or</em> telephone</dd>
+                <dt>ins agt</dt><dd>insurance agent</dd>
+                <dt>tel opr</dt><dd>telegraph operator</dd>
+                <dt>civ eng</dt><dd>civil engineer</dd>
+                <dt>real est</dt><dd>real estate</dd>
+                <dt>P O</dt><dd>post office</dd>
                 <dt>Co</dt><dd>company</dd>
-                <dt>Mfg</dt><dd>manufacturing</dd>
-                <dt>Bros</dt><dd>brothers</dd>
-                <dt>Ry &middot; RR</dt><dd>railway &middot; railroad</dd>
                 <dt>Mrs</dt><dd>married (or widowed) woman</dd>
                 <dt>Rev</dt><dd>Reverend</dd>
               </dl>
@@ -1585,142 +1604,221 @@ function sourcePageUrl(row) {
 }
 
 /* ============================ Abbreviations ============================ */
-// Polk-Hoffhine 1921's directory shorthand. The residency codes (r/h/b/rms)
-// only apply at the start of an address; everything in WORD is matched
-// case-insensitively anywhere it appears as a whole token.
+// Sourced from the directory's own "ABBREVIATIONS" key page. Residency
+// codes (r/b/rms/h) only apply at the start of an address; phrases match
+// first (longest), then single words, then separators.
 const ABBREVIATIONS = {
+  // Leading residency codes. The directory's key lists r/b/rms; "h"
+  // appears in the data without being in the printed key, so it's kept
+  // here as a data convention.
   residency: {
-    "r":   "resides at",
+    "r":   "residence",
     "h":   "home of",
-    "b":   "boards at",
-    "rms": "rooms at (rents a furnished room)",
-    "bds": "boards at",
+    "b":   "boards",
+    "rms": "rooms",
+  },
+  // Multi-word compounds. Matched before single-word lookup.
+  phrase: {
+    "civ eng":    "civil engineer",
+    "cond d c":   "conductor dining car",
+    "exp messr":  "express messenger",
+    "ins agt":    "insurance agent",
+    "lino opr":   "linotype operator",
+    "tel opr":    "telegraph operator",
+    "trav agt":   "traveling agent",
+    "real est":   "real estate",
+    "p o":        "post office",
+    "r m s":      "railway mail service",
+    "n s":        "north side",
+    "s s":        "south side",
+    "e s":        "east side",
+    "w s":        "west side",
+    "n e":        "northeast",
+    "n w":        "northwest",
+    "s e":        "southeast",
+    "s w":        "southwest",
   },
   word: {
-    // address suffixes / parts
-    "av":   "avenue",
-    "ave":  "avenue",
-    "blvd": "boulevard",
-    "bldg": "building",
-    "apts": "apartments",
-    "apt":  "apartment",
-    "sta":  "station",
-    "pl":   "place",
-    "rd":   "road",
-    "sq":   "square",
-    "ct":   "court",
-    "rear": "rear-of-building dwelling",
-    // directions (single letters — matched only when capitalized)
-    "n":    "north",
-    "s":    "south",
-    "e":    "east",
-    "w":    "west",
-    "ne":   "northeast",
-    "nw":   "northwest",
-    "se":   "southeast",
-    "sw":   "southwest",
-    // occupations
-    "clk":       "clerk",
-    "lab":       "laborer",
-    "mgr":       "manager",
-    "mngr":      "manager",
-    "atty":      "attorney",
-    "slsmn":     "salesman",
-    "salsn":     "salesman",
-    "tchr":      "teacher",
-    "carp":      "carpenter",
-    "mech":      "mechanic",
-    "messr":     "messenger",
-    "opr":       "operator",
-    "pres":      "president",
-    "sec":       "secretary",
-    "treas":     "treasurer",
-    "stenogr":   "stenographer",
-    "shoemkr":   "shoemaker",
-    "tmstr":     "teamster",
-    "boilermkr": "boilermaker",
-    "propr":     "proprietor",
-    "asst":      "assistant",
-    "supt":      "superintendent",
-    "engr":      "engineer",
-    "chauf":     "chauffeur",
-    "wid":       "widow of —",
-    "dept":      "department",
+    // Address suffixes
+    "av":      "avenue",
+    "boul":    "boulevard",
+    "bldg":    "building",
+    "blk":     "block",
+    "ck":      "creek",
+    "cor":     "corner",
+    "ct":      "court",
+    "pk":      "park",
+    "pl":      "place",
+    "rd":      "road",
+    "ter":     "terrace",
+    "yd":      "yard",
+    // Address position
+    "bet":     "between",
+    "nr":      "near",
+    "opp":     "opposite",
+    "rear":    "rear-of-building dwelling",
+    // Directions (single letters require capitalization to match)
+    "n":       "north",
+    "s":       "south",
+    "e":       "east",
+    "w":       "west",
+    // General / qualifier
+    "gen":     "general",
+    "spl":     "special",
+    "com'l":   "commercial",
+    "frt":     "freight",
+    "ret":     "retail",
+    "whol":    "wholesale",
+    "dom":     "domestic",
+    "dist":    "district",
+    "dep":     "deputy",
+    "dept":    "department",
+    "comn":    "commission",
+    "comm'r":  "commissioner",
+    "adv":     "advertisement",
+    "trans":   "transfer",
+    "tel":     "telegraph or telephone",
+    // Occupations / roles
+    "acc't":     "accountant",
     "agt":       "agent",
-    "blksmth":   "blacksmith",
-    "watchmn":   "watchman",
-    "btchr":     "butcher",
-    "ftr":       "fitter",
-    "drvr":      "driver",
-    "lndy":      "laundry",
-    "elect":     "electrician",
+    "appr":      "apprentice",
+    "assn":      "association",
+    "asst":      "assistant",
+    "bkbndr":    "bookbinder",
+    "bkpr":      "bookkeeper",
+    "blksmith":  "blacksmith",
+    "brklyr":    "bricklayer",
+    "carp":      "carpenter",
+    "cashr":     "cashier",
+    "clk":       "clerk",
+    "clnr":      "cleaner",
+    "colr":      "collector",
+    "comp":      "compositor",
+    "conf":      "confectioner",
+    "contr":     "contractor",
+    "electr":    "electrician",
     "elev":      "elevator",
-    "cond":      "conductor",
-    "brkmn":     "brakeman",
-    "tnsmth":    "tinsmith",
-    "mnstr":     "minister",
-    "vet":       "veterinarian",
-    // company / employer
+    "eng":       "engine or engineer",
+    "engr":      "engraver",
+    "expman":    "expressman",
+    "insptr":    "inspector",
+    "lab":       "laborer",
+    "lithogr":   "lithographer",
+    "mach":      "machinist",
+    "mech":      "mechanic",
+    "mer":       "merchant",
+    "messr":     "messenger",
+    "mkr":       "maker",
+    "mnfg":      "manufacturing",
+    "mnfr":      "manufacturer",
+    "mngr":      "manager",
+    "opr":       "operator",
+    "photogr":   "photographer",
+    "phys":      "physician",
+    "pkr":       "packer",
+    "pres":      "president",
+    "prin":      "principal",
+    "propr":     "proprietor",
+    "pub":       "publisher",
+    "repr":      "repairer",
+    "salsn":     "salesman",
+    "seams":     "seamstress",
+    "sec":       "secretary",
+    "solr":      "solicitor",
+    "stenogr":   "stenographer",
+    "supt":      "superintendent",
+    "tchr":      "teacher",
+    "tmstr":     "teamster",
+    "tndr":      "tender",
+    "treas":     "treasurer",
+    "upholstr":  "upholsterer",
+    "vet":       "veterinary",
+    "wid":       "widow",
+    "wks":       "works",
+    // Place / proper
+    "washn":     "Washington",
+    // Titles
+    "mrs":       "married woman (form of address)",
+    "rev":       "Reverend",
+    // Ordinals
+    "1st": "first", "2d": "second", "3d": "third",
+    "4th": "fourth", "5th": "fifth", "6th": "sixth",
+    // Universally-used company forms (not in the directory's printed key
+    // but pervasive in the data).
     "co":   "company",
-    "corp": "corporation",
-    "inc":  "incorporated",
-    "ltd":  "limited",
     "mfg":  "manufacturing",
-    "bros": "brothers",
-    "ry":   "railway",
-    "rr":   "railroad",
-    "ref":  "refining",
-    "ins":  "insurance",
-    "tel":  "telephone",
-    "elec": "electric",
-    // titles
-    "mrs":  "married woman (form of address)",
-    "rev":  "Reverend",
-    "capt": "Captain",
-    "maj":  "Major",
-    "col":  "Colonel",
-    "gen":  "General",
-    "hon":  "Honorable",
-    "dr":   "Doctor",
-    "prof": "Professor",
-    "sgt":  "Sergeant",
   },
 };
 
 function escapeAttr(s) { return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
-// Walk text and wrap recognized abbreviations in <abbr title="…">.
+// Build a single regex that recognizes (in priority order):
+//   1. multi-word phrases from ABBREVIATIONS.phrase
+//   2. single words including the apostrophe forms (com'l, acc't, comm'r)
+//   3. ordinals like "1st" / "2d"
+//   4. everything else (whitespace, punctuation, digits)
+const _ABBR_PHRASE_KEYS = Object.keys(ABBREVIATIONS.phrase)
+  .sort((a, b) => b.length - a.length)
+  .map(p => p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+const _ABBR_TOKEN_RE = new RegExp(
+  "(" + (_ABBR_PHRASE_KEYS.length ? _ABBR_PHRASE_KEYS.join("|") : "__NEVER_MATCH__") + ")" +
+  "|(\\d+(?:st|nd|rd|th|d))" +
+  "|([A-Za-z][A-Za-z']*)" +
+  "|([^A-Za-z\\d]+|\\d+)",
+  "gi"
+);
+
+function _wrapAbbr(visible, expansion) {
+  return `<abbr data-abbr aria-label="${escapeAttr(expansion)}" tabindex="0">${escapeHTML(visible)}</abbr>`;
+}
+
+// Walk text and wrap recognized abbreviations in <abbr>.
 // fieldType:
-//   "address" → residency codes (r/h/b/rms) recognized at the leading token
-//   anything else → only WORD entries match
+//   "address" → residency codes (r/h/b/rms) recognized at the leading word
+//   anything else → only phrase + WORD entries match
 function decorateAbbrevs(text, fieldType) {
   if (!text) return "";
   let seenFirstWord = false;
-  return text.replace(/([A-Za-z][A-Za-z']*)|([^A-Za-z]+)/g, (m, word, other) => {
-    if (other != null) return escapeHTML(other);
-    const isFirst = !seenFirstWord;
-    seenFirstWord = true;
-    const lower = word.toLowerCase();
-    let expansion = null;
+  let out = "";
+  let m;
+  _ABBR_TOKEN_RE.lastIndex = 0;
+  while ((m = _ABBR_TOKEN_RE.exec(text)) !== null) {
+    const phrase = m[1], ordinal = m[2], word = m[3], other = m[4];
+    if (phrase) {
+      const exp = ABBREVIATIONS.phrase[phrase.toLowerCase()];
+      out += exp ? _wrapAbbr(phrase, exp) : escapeHTML(phrase);
+      seenFirstWord = true;
+      continue;
+    }
+    if (ordinal) {
+      const exp = ABBREVIATIONS.word[ordinal.toLowerCase()];
+      out += exp ? _wrapAbbr(ordinal, exp) : escapeHTML(ordinal);
+      seenFirstWord = true;
+      continue;
+    }
+    if (word) {
+      const isFirst = !seenFirstWord;
+      seenFirstWord = true;
+      const lower = word.toLowerCase();
+      let expansion = null;
 
-    if (fieldType === "address" && isFirst && ABBREVIATIONS.residency[lower]) {
-      expansion = ABBREVIATIONS.residency[lower];
-    } else if (ABBREVIATIONS.word[lower]) {
-      // Single-letter directions only when capitalized — avoids marking
-      // middle initials like "Barnard Harvey S" as "south."
-      if (lower.length <= 2 && /^[nsew]+$/.test(lower) && word !== word.toUpperCase()) {
-        expansion = null;
-      } else {
-        expansion = ABBREVIATIONS.word[lower];
+      if (fieldType === "address" && isFirst && ABBREVIATIONS.residency[lower]) {
+        expansion = ABBREVIATIONS.residency[lower];
+      } else if (ABBREVIATIONS.word[lower]) {
+        // Single-letter directions only when capitalized — avoids marking
+        // middle initials like "Harvey S" as "south."
+        if (lower.length === 1 && /^[nsew]$/.test(lower) && word !== word.toUpperCase()) {
+          expansion = null;
+        } else {
+          expansion = ABBREVIATIONS.word[lower];
+        }
       }
+      out += expansion ? _wrapAbbr(word, expansion) : escapeHTML(word);
+      continue;
     }
-    if (expansion) {
-      // aria-label (not title=) so native browser tooltips don't fire — our
-      // shared JS tooltip handles both hover and tap consistently.
-      return `<abbr data-abbr aria-label="${escapeAttr(expansion)}" tabindex="0">${escapeHTML(word)}</abbr>`;
-    }
-    return escapeHTML(word);
-  });
+    if (other) out += escapeHTML(other);
+  }
+  return out;
 }
 
 /* ============================ Shared abbreviation tooltip ============================ */
