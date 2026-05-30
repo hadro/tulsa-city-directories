@@ -1840,11 +1840,15 @@ function openEntryByRow(r, opts) {
     .filter(f => r[f.key] === "True")
     .map(f => ` <span class="flag-chip" aria-label="${escapeHTML(f.label)}">${escapeHTML(f.label)}</span>`)
     .join("");
-  document.getElementById("drawerTitle").innerHTML = (escapeHTML(r.name || "(unnamed entry)") + raceChip + flagChips);
+  // Street-directory rows have no `name` but list the resident in
+  // `occupant_name`. Use that as the title so the entry doesn't read
+  // "(unnamed entry)" in the drawer.
+  const titleText = r.name || r.occupant_name || "(unnamed entry)";
+  document.getElementById("drawerTitle").innerHTML = (escapeHTML(titleText) + raceChip + flagChips);
 
-  // Show the "listed surname first" note only for personal-name entries.
-  // Skip empty names (street directory rows) and anything that looks like a
-  // business listing.
+  // The "listed surname first" note applies only to the alphabetical section,
+  // where the directory inverts personal names. Street-directory occupants
+  // are listed in natural First Last order, so the note is suppressed there.
   const nameNote = document.getElementById("drawerNameNote");
   const looksPersonal = !!r.name
     && r.is_business !== "True"
@@ -1859,7 +1863,7 @@ function openEntryByRow(r, opts) {
   const url = snippetUrl(r);
   if (url) {
     const img = new Image();
-    img.alt = `Scanned page snippet showing ${r.name || 'entry'} in the 1921 Polk-Hoffhine Tulsa City Directory.`;
+    img.alt = `Scanned page snippet showing ${titleText} in the 1921 Polk-Hoffhine Tulsa City Directory.`;
     img.onload = () => {
       const loading = snippetFrame.querySelector(".snippet-loading");
       if (loading) loading.remove();
@@ -2141,10 +2145,14 @@ document.getElementById("exportBtn").addEventListener("click", () => {
 });
 
 /* ============================ Random entry ============================ */
+// Restricted to the main alphabetical city directory section — entries that
+// carry an alphabetical range key. Street-directory and classified-directory
+// rows are skipped because their "(unnamed)" headings make for a poor surprise.
 document.getElementById("randomBtn").addEventListener("click", () => {
-  const n = state.visibleRows?.length || 0;
-  if (!n) return;
-  openEntry(Math.floor(Math.random() * n));
+  const pool = state.visibleRows.filter(r => r.alphabetical_range && r.name);
+  if (!pool.length) return;
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+  openEntry(state.visibleRows.indexOf(pick));
 });
 
 /* ============================ Boot ============================ */
