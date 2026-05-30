@@ -97,6 +97,12 @@
     color: var(--ink-2);
   }
   .context .quiet { color: var(--ink-3); }
+  .context-accuracy {
+    color: var(--ink-3);
+    font-style: italic;
+    margin-top: 4px;
+    font-size: 12.5px;
+  }
   .masthead-meta {
     text-align: right;
     font-family: var(--mono);
@@ -1209,6 +1215,9 @@
       Compiled and published in the spring of 1921 &mdash; months before the Tulsa Race Massacre destroyed the Greenwood district that May.
       <span class="quiet">Names marked &ldquo;(c)&rdquo; were designated as Colored in the original publication.</span>
     </p>
+    <p class="context context-accuracy">
+      Entries were extracted by automated OCR and named-entity recognition; expect errors. Always consult the source page scan for authoritative readings.
+    </p>
   </div>
   <div class="masthead-meta">
     <span class="count" id="entryCount">&mdash;</span>
@@ -1523,15 +1532,15 @@ const FACETS = [
   { key: "is_rear", title: "Is rear", options: [
     { label: "No",  value: "False" },
     { label: "Yes", value: "True"  },
-  ]},
+  ], note: "Marks a dwelling at the rear of a lot — a smaller secondary residence behind the main house, typically rented separately from the front address." },
   { key: "is_special_contract", title: "Special contract", options: [
     { label: "No",  value: "False" },
     { label: "Yes", value: "True"  },
-  ]},
+  ], note: "Listings the publisher charged extra for. Usually rendered in ALL CAPS in the original — a form of paid prominence beyond the standard alphabetical entry." },
   { key: "is_advertisement", title: "Is advertisement", options: [
     { label: "No",  value: "False" },
     { label: "Yes", value: "True"  },
-  ]},
+  ], note: "Display advertisements scattered through the directory — paid commercial graphics rather than indexed personal or business listings." },
 ];
 
 const DRAWER_FIELDS = [
@@ -2290,6 +2299,9 @@ let _hashSelfWrite = false; // guard so popstate from our own writes doesn't loo
 
 function syncHash() {
   if (!state.rows.length) return; // pre-boot
+  // Mark that the user has interacted, so first-visit defaults aren't
+  // reapplied on subsequent reloads in this tab.
+  try { sessionStorage.setItem("tulsa-1921-interacted", "1"); } catch (e) {}
   const p = new URLSearchParams();
   if (state.search) p.set("q", state.search);
   if (!(state.sortKey === "name" && state.sortDir === "asc")) {
@@ -2356,6 +2368,16 @@ function applyHashToState(opts) {
   }
   state.colFilters = newColFilters;
   state.facetOn = newFacetOn;
+
+  // First-visit default: pre-check "Likely Greenwood resident" on a bare URL.
+  // sessionStorage tracks user interaction so a manual clear isn't undone on
+  // reload within the same tab; opening a fresh tab gets the default again.
+  let hasInteracted = false;
+  try { hasInteracted = sessionStorage.getItem("tulsa-1921-interacted") === "1"; } catch (e) {}
+  if (raw === "" && !hasInteracted) {
+    state.facetOn._greenwood = new Set(["True"]);
+  }
+
   document.querySelectorAll("[data-filter]").forEach(el => {
     const k = el.dataset.filter;
     el.value = state.colFilters[k] || "";
@@ -2496,7 +2518,7 @@ function openEntryByRow(r, opts) {
     const coords = state.greenwoodCoords && state.greenwoodCoords.get(r.canvas_fragment);
     const coordsLabel = coords ? `${coords[1].toFixed(5)}, ${coords[0].toFixed(5)}` : "";
     const mapLink = coords
-      ? ` <a class="source-link" style="font-size:12px;" href="https://www.openstreetmap.org/?mlat=${coords[1]}&mlon=${coords[0]}#map=18/${coords[1]}/${coords[0]}" target="_blank" rel="noopener" title="${escapeAttr(coordsLabel)}" aria-label="Show this address on a present-day map (${escapeAttr(coordsLabel)})">Show on a present-day map<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>`
+      ? ` <a class="source-link" style="font-size:12px;" href="https://www.openstreetmap.org/?mlat=${coords[1]}&mlon=${coords[0]}#map=18/${coords[1]}/${coords[0]}" target="_blank" rel="noopener" title="${escapeAttr(coordsLabel)}" aria-label="Show approximate location on a present-day map (${escapeAttr(coordsLabel)})">Show approximate location on a present-day map<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>`
       : "";
     metaHTML += `
       <div class="field" style="grid-column: 1 / -1; border-bottom: 0; padding-top: 4px;">
