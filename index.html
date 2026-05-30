@@ -521,6 +521,37 @@
     background: rgba(122,42,31,0.04);
     vertical-align: 4px;
   }
+  .drawer-title .flag-chip {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-left: 8px;
+    padding: 2px 7px;
+    border: 1px solid var(--rule-2);
+    border-radius: 2px;
+    background: var(--paper-2);
+    vertical-align: 5px;
+    white-space: nowrap;
+  }
+
+  /* Empty-fields toggle inside the meta grid */
+  .meta-grid.collapsed .field.empty { display: none; }
+  .meta-empty-toggle {
+    grid-column: 1 / -1;
+    background: none; border: 0; padding: 0;
+    color: var(--ink-3);
+    font-family: var(--sans);
+    font-size: 12px;
+    cursor: pointer;
+    text-align: left;
+    border-bottom: 1px dotted var(--ink-4);
+    align-self: start;
+    justify-self: start;
+    padding-bottom: 1px;
+  }
+  .meta-empty-toggle:hover { color: var(--ink); border-bottom-color: var(--ink); }
   .drawer-actions {
     display: flex; align-items: center; gap: 8px;
   }
@@ -1231,23 +1262,24 @@ const FACETS = [
 ];
 
 const DRAWER_FIELDS = [
-  { key: "alphabetical_range", label: "Alphabetical range", mono: true },
-  { key: "name",               label: "Name" },
-  { key: "is_business",        label: "Is business", boolean: true, mono: true },
-  { key: "spouse_name",        label: "Spouse" },
-  { key: "race_designation",   label: "Race designation", race: true },
-  { key: "occupation_role",    label: "Occupation role" },
-  { key: "employer",           label: "Employer" },
-  { key: "address",            label: "Address" },
-  { key: "business_category",  label: "Business category" },
-  { key: "is_rear",            label: "Is rear", boolean: true, mono: true },
-  { key: "is_special_contract",label: "Special contract", boolean: true, mono: true },
-  { key: "is_advertisement",   label: "Is advertisement", boolean: true, mono: true },
-  { key: "details",            label: "Details" },
-  { key: "street_name",        label: "Street name" },
-  { key: "house_number",       label: "House number", mono: true },
-  { key: "occupant_name",      label: "Occupant" },
+  { key: "spouse_name",          label: "Spouse" },
+  { key: "occupation_role",      label: "Occupation role" },
+  { key: "employer",             label: "Employer" },
+  { key: "address",              label: "Address" },
+  { key: "business_category",    label: "Business category" },
+  { key: "details",              label: "Details" },
+  { key: "street_name",          label: "Street name" },
+  { key: "house_number",         label: "House number", mono: true },
+  { key: "occupant_name",        label: "Occupant" },
   { key: "occupant_description", label: "Occupant description" },
+];
+
+// Title-bar boolean chips. Rendered only when the row's value is "True".
+const DRAWER_FLAGS = [
+  { key: "is_business",         label: "Business" },
+  { key: "is_rear",             label: "Rear dwelling" },
+  { key: "is_special_contract", label: "Special contract" },
+  { key: "is_advertisement",    label: "Advertisement" },
 ];
 
 /* ============================ Utilities ============================ */
@@ -1787,15 +1819,19 @@ function openEntryByRow(r, opts) {
 
   const cnum = canvasNumber(r.canvas_fragment || "");
   const pageLabel = cnum != null ? pagesLabelForCanvas(cnum) : null;
-  const eyebrow = pageLabel
-    ? `Entry &middot; Polk-Hoffhine 1921 &middot; ${escapeHTML(pageLabel)}`
-    : `Entry &middot; Polk-Hoffhine 1921`;
-  document.getElementById("drawerEyebrow").innerHTML = eyebrow;
+  const eyebrowParts = ["Entry", "Polk-Hoffhine 1921"];
+  if (r.alphabetical_range) eyebrowParts.push(escapeHTML(r.alphabetical_range));
+  if (pageLabel) eyebrowParts.push(escapeHTML(pageLabel));
+  document.getElementById("drawerEyebrow").innerHTML = eyebrowParts.join(" &middot; ");
 
   const raceChip = r.race_designation === "(c)"
     ? ` <span class="race-mark" aria-label="Race designation (c)">(c)</span>`
     : "";
-  document.getElementById("drawerTitle").innerHTML = (escapeHTML(r.name || "(unnamed entry)") + raceChip);
+  const flagChips = DRAWER_FLAGS
+    .filter(f => r[f.key] === "True")
+    .map(f => ` <span class="flag-chip" aria-label="${escapeHTML(f.label)}">${escapeHTML(f.label)}</span>`)
+    .join("");
+  document.getElementById("drawerTitle").innerHTML = (escapeHTML(r.name || "(unnamed entry)") + raceChip + flagChips);
 
   // Snippet
   const snippetFrame = document.getElementById("snippetFrame");
@@ -1819,30 +1855,31 @@ function openEntryByRow(r, opts) {
     if (loading) loading.outerHTML = `<div class="snippet-loading" style="display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;background:#e7e1d3;">No source region</div>`;
   }
 
-  // Meta grid
+  // Meta grid — substantive fields only. Empty ones are present in the DOM
+  // but hidden behind a toggle.
   const fields = DRAWER_FIELDS.map(f => {
-    let v = (r[f.key] || "").trim();
-    let cls = "";
-    let isEmpty = !v;
-    if (f.boolean) {
-      cls = "mono";
-      if (v === "True") v = "Yes";
-      else if (v === "False") v = "No";
-      else { v = ""; isEmpty = true; }
-    } else if (f.race) {
-      if (v === "(c)") { v = "(c) — designated Colored"; }
-    } else if (f.mono) {
-      cls = "mono";
-    }
-    return { ...f, v, cls, isEmpty };
+    const v = (r[f.key] || "").trim();
+    return { ...f, v, cls: f.mono ? "mono" : "", isEmpty: !v };
   });
+  const emptyCount = fields.filter(f => f.isEmpty).length;
 
-  let metaHTML = fields.map(f => `
+  const populatedHTML = fields.filter(f => !f.isEmpty).map(f => `
     <div class="field">
       <div class="k">${escapeHTML(f.label)}</div>
-      <div class="v ${f.cls} ${f.isEmpty ? 'empty' : ''}">${f.isEmpty ? 'no value recorded' : escapeHTML(f.v)}</div>
+      <div class="v ${f.cls}">${escapeHTML(f.v)}</div>
     </div>
   `).join("");
+  const emptyHTML = fields.filter(f => f.isEmpty).map(f => `
+    <div class="field empty">
+      <div class="k">${escapeHTML(f.label)}</div>
+      <div class="v empty">no value recorded</div>
+    </div>
+  `).join("");
+  const toggleHTML = emptyCount > 0
+    ? `<button type="button" class="meta-empty-toggle" id="metaEmptyToggle" aria-expanded="false">Show ${emptyCount} empty field${emptyCount === 1 ? "" : "s"}</button>`
+    : "";
+
+  let metaHTML = populatedHTML + toggleHTML + emptyHTML;
 
   // Greenwood block (only when this entry geocoded inside the burned-area polygon)
   if (r._greenwood === "True") {
@@ -1872,7 +1909,19 @@ function openEntryByRow(r, opts) {
       </a>
     </div>
   `;
-  document.getElementById("metaGrid").innerHTML = metaHTML;
+  const gridEl = document.getElementById("metaGrid");
+  gridEl.className = "meta-grid collapsed";
+  gridEl.innerHTML = metaHTML;
+  const toggleBtn = gridEl.querySelector("#metaEmptyToggle");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const collapsed = gridEl.classList.toggle("collapsed");
+      toggleBtn.setAttribute("aria-expanded", String(!collapsed));
+      toggleBtn.textContent = collapsed
+        ? `Show ${emptyCount} empty field${emptyCount === 1 ? "" : "s"}`
+        : `Hide empty fields`;
+    });
+  }
 
   document.getElementById("drawer").classList.add("open");
   document.getElementById("drawer").setAttribute("aria-hidden", "false");
