@@ -1318,7 +1318,7 @@
           <p>Roughly <strong id="aboutColoredCount">5,529 entries</strong> in the 1921 edition carry the &ldquo;(c)&rdquo; designation. Many of them lived and worked in Greenwood &mdash; the prosperous Black district destroyed weeks after the directory went to press.</p>
 
           <h3 class="about-h3">Likely Greenwood residents</h3>
-          <p>The <strong>Greenwood</strong> facet flags entries whose street address geocodes inside the 1921 burned-area polygon used by the <em>New York Times</em>&rsquo; reconstruction of the massacre footprint. The set combines two passes through this directory: the alphabetical &ldquo;(c)&rdquo; section (people listed with names) and the separate street-and-avenue directory (people listed by address and occupant). It is a structural proxy, not a complete roster &mdash; historical street names that no longer exist on modern maps will be undercounted, and any geocoding error propagates here.</p>
+          <p>The <strong>Greenwood</strong> facet flags entries whose street address geocodes inside the 1921 burned-area polygon mapped by <a class="about-link" href="https://www.nytimes.com/interactive/2021/05/24/us/tulsa-race-massacre.html" target="_blank" rel="noopener"><em>The New York Times</em>&rsquo;s &ldquo;What the Tulsa Race Massacre Destroyed&rdquo;</a> (2021). The set combines two passes through this directory: the alphabetical &ldquo;(c)&rdquo; section (people listed with names) and the separate street-and-avenue directory (people listed by address and occupant). It is a structural proxy, not a complete roster &mdash; historical street names that no longer exist on modern maps will be undercounted, and any geocoding error propagates here.</p>
 
           <h3 class="about-h3">A note on accuracy</h3>
           <p>There are OCR, entity-extraction, and entry-alignment errors throughout this data. Always consult the original source page as the authoritative record; this explorer is a way to engage with the directory more deeply, not a replacement for it. Data has not been reviewed for 100&percnt; accuracy.</p>
@@ -1403,7 +1403,7 @@
           <div class="about-side-block">
             <div class="about-side-label">Likely Greenwood</div>
             <div class="about-side-stat" id="aboutStatGreenwood">&mdash;</div>
-            <div class="about-side-sub">entries whose address geocoded inside the 1921 burned-area polygon, drawn from the alphabetical (c) section and the street directory.</div>
+            <div class="about-side-sub">entries whose address falls inside the area destroyed in the Tulsa Race Massacre (1921), as mapped by the New York Times.</div>
           </div>
           <div class="about-side-block">
             <div class="about-side-label">Volume</div>
@@ -1498,7 +1498,7 @@ const FACETS = [
   ]},
   { key: "_greenwood", title: "Greenwood", options: [
     { label: "Likely Greenwood resident", value: "True" },
-  ], note: "Entries whose address geocoded inside the 1921 burned-area polygon — drawn from the alphabetical (c) section and the street directory." },
+  ], note: "Entries whose address falls inside the area destroyed in the Tulsa Race Massacre (May 31 – June 1, 1921), as mapped by the New York Times." },
   { key: "is_rear", title: "Is rear", options: [
     { label: "No",  value: "False" },
     { label: "Yes", value: "True"  },
@@ -2393,7 +2393,7 @@ function openEntryByRow(r, opts) {
       <div class="field" style="grid-column: 1 / -1; border-bottom: 0; padding-top: 4px;">
         <div class="k" style="color: var(--accent);">Likely Greenwood resident</div>
         <div class="v" style="font-size: 13px; font-family: var(--sans); color: var(--ink-2); font-style: italic;">
-          This address falls inside the area destroyed during the Tulsa Race Massacre of May 31 &ndash; June 1, 1921, as mapped by the New York Times.${mapLink}
+          This address falls inside the area destroyed during the Tulsa Race Massacre of May 31 &ndash; June 1, 1921, as mapped by <a class="about-link" href="https://www.nytimes.com/interactive/2021/05/24/us/tulsa-race-massacre.html" target="_blank" rel="noopener">the New York Times</a>.${mapLink}
         </div>
       </div>
     `;
