@@ -659,17 +659,27 @@
     color: var(--ink-4); font-style: italic; font-family: var(--serif);
     font-size: 14px;
   }
-  .meta-grid .field .v abbr[title] {
+  .meta-grid .field .v abbr[data-abbr] {
     text-decoration: underline dotted;
     text-decoration-color: var(--ink-4);
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
     cursor: help;
+    -webkit-tap-highlight-color: rgba(122,42,31,0.12);
   }
-  .meta-grid .field .v abbr[title]:hover,
-  .meta-grid .field .v abbr[title]:focus {
+  .meta-grid .field .v abbr[data-abbr]:hover,
+  .meta-grid .field .v abbr[data-abbr]:focus {
     text-decoration-color: var(--accent);
     color: var(--accent);
+  }
+  /* Touch devices have no hover — make the affordance louder so the
+     dotted underline reads as "this is interactive." */
+  @media (hover: none) {
+    .meta-grid .field .v abbr[data-abbr] {
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 2px;
+    }
   }
   .source-link {
     display: inline-flex; align-items: center; gap: 6px;
