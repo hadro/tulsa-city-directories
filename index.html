@@ -1489,6 +1489,8 @@ const IIIF_FIRST_CANVAS_SERVICE_ID = 2439;
 const CANVAS_W = 1300;
 const CANVAS_H = 1844;
 const TULSA_LIBRARY_ITEM = "https://digitalcollections.tulsalibrary.org/digital/collection/p15020coll12/id/2857";
+const TULSA_LIBRARY_COLLECTION = "p15020coll12";
+const TULSA_LIBRARY_COMPOUND_ID = 2857;
 const MAX_RENDER_ROWS = 1000;
 
 /* ============================ State ============================ */
@@ -1600,7 +1602,16 @@ function snippetUrl(row, opts = {}) {
   return `${svc}/full/1200,/0/default.jpg`;
 }
 function sourcePageUrl(row) {
-  return TULSA_LIBRARY_ITEM;
+  // Deep-link to the specific page in the CONTENTdm viewer when possible.
+  // Canvas N maps to page pointer (firstCanvasServiceId + N) and position
+  // (N + 1) within the compound object. Falls back to the item-level URL
+  // when the canvas can't be parsed.
+  const cf = row.canvas_fragment || "";
+  const cnum = canvasNumber(cf);
+  if (cnum == null) return TULSA_LIBRARY_ITEM;
+  const pagePointer = IIIF_FIRST_CANVAS_SERVICE_ID + cnum;
+  const position = cnum + 1;
+  return `https://digitalcollections.tulsalibrary.org/digital/collection/${TULSA_LIBRARY_COLLECTION}/id/${pagePointer}/rec/${position}`;
 }
 
 /* ============================ Abbreviations ============================ */
