@@ -659,6 +659,18 @@
     color: var(--ink-4); font-style: italic; font-family: var(--serif);
     font-size: 14px;
   }
+  .meta-grid .field .v abbr[title] {
+    text-decoration: underline dotted;
+    text-decoration-color: var(--ink-4);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    cursor: help;
+  }
+  .meta-grid .field .v abbr[title]:hover,
+  .meta-grid .field .v abbr[title]:focus {
+    text-decoration-color: var(--accent);
+    color: var(--accent);
+  }
   .source-link {
     display: inline-flex; align-items: center; gap: 6px;
     color: var(--accent); text-decoration: none;
@@ -855,6 +867,50 @@
     font-style: italic;
     color: var(--ink) !important;
     margin: 0 0 18px 0;
+  }
+  .abbr-key {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 36px;
+    margin: 12px 0 24px;
+    max-width: 60ch;
+  }
+  @media (max-width: 640px) { .abbr-key { grid-template-columns: 1fr; } }
+  .abbr-group-h {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .abbr-group-h .abbr-group-sub {
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-4);
+    font-weight: 400;
+    margin-left: 4px;
+  }
+  .abbr-group dl {
+    display: grid;
+    grid-template-columns: minmax(56px, auto) 1fr;
+    gap: 4px 14px;
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .abbr-group dt {
+    font-family: var(--mono);
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 500;
+    align-self: baseline;
+  }
+  .abbr-group dd {
+    margin: 0;
+    color: var(--ink-2);
   }
   .about-list { margin: 0 0 18px 0; padding-left: 28px; counter-reset: gbsteps; list-style: none; }
   .about-list li {
@@ -1137,12 +1193,65 @@
           <h3 class="about-h3">What's missing</h3>
           <p>City directories systematically under-counted: domestic workers without recorded employers, transient laborers, children, many wives without separate listings, and people deliberately omitted by the canvassers. The absence of a name here does not mean the person was not in Tulsa.</p>
 
+          <h3 class="about-h3">Reading the directory</h3>
+          <p>Polk-Hoffhine used a consistent shorthand throughout. In an entry, any underlined abbreviation will show its expansion on hover or focus. The most common ones:</p>
+          <div class="abbr-key">
+            <div class="abbr-group">
+              <div class="abbr-group-h">Residency code <span class="abbr-group-sub">(leads the address)</span></div>
+              <dl>
+                <dt>r</dt><dd>resides &mdash; rents</dd>
+                <dt>h</dt><dd>home &mdash; owner-occupied</dd>
+                <dt>b</dt><dd>boards</dd>
+                <dt>rms</dt><dd>rooms &mdash; rents furnished</dd>
+                <dt>rear</dt><dd>rear-of-building dwelling</dd>
+              </dl>
+            </div>
+            <div class="abbr-group">
+              <div class="abbr-group-h">Address</div>
+              <dl>
+                <dt>av</dt><dd>avenue</dd>
+                <dt>blvd</dt><dd>boulevard</dd>
+                <dt>bldg</dt><dd>building</dd>
+                <dt>apts</dt><dd>apartments</dd>
+                <dt>sta</dt><dd>station</dd>
+                <dt>N&middot;S&middot;E&middot;W</dt><dd>north&middot;south&middot;east&middot;west</dd>
+              </dl>
+            </div>
+            <div class="abbr-group">
+              <div class="abbr-group-h">Occupation</div>
+              <dl>
+                <dt>clk</dt><dd>clerk</dd>
+                <dt>lab</dt><dd>laborer</dd>
+                <dt>mngr</dt><dd>manager</dd>
+                <dt>atty</dt><dd>attorney</dd>
+                <dt>slsmn</dt><dd>salesman</dd>
+                <dt>tchr</dt><dd>teacher</dd>
+                <dt>stenogr</dt><dd>stenographer</dd>
+                <dt>supt</dt><dd>superintendent</dd>
+                <dt>propr</dt><dd>proprietor</dd>
+                <dt>wid</dt><dd>widow of &mdash;</dd>
+              </dl>
+            </div>
+            <div class="abbr-group">
+              <div class="abbr-group-h">Company &middot; title</div>
+              <dl>
+                <dt>Co</dt><dd>company</dd>
+                <dt>Mfg</dt><dd>manufacturing</dd>
+                <dt>Bros</dt><dd>brothers</dd>
+                <dt>Ry &middot; RR</dt><dd>railway &middot; railroad</dd>
+                <dt>Mrs</dt><dd>married woman</dd>
+                <dt>Rev</dt><dd>Reverend</dd>
+              </dl>
+            </div>
+          </div>
+
           <h3 class="about-h3">How to use this site</h3>
           <ol class="about-list">
             <li>Filter by <strong>business</strong>, <strong>race designation</strong>, <strong>rear-dwelling</strong>, or <strong>advertisement</strong> in the left sidebar.</li>
             <li>Filter any column by typing in the small input below its header.</li>
             <li>Use the <strong>search bar</strong> to find names, addresses, employers, or occupations across the full directory.</li>
             <li><strong>Click any row</strong> to open the full entry alongside the source-scan snippet.</li>
+            <li>Hover any <strong>underlined abbreviation</strong> in an entry to see what it expands to.</li>
             <li>Use <strong>Export CSV</strong> to download the currently filtered selection for your own work.</li>
           </ol>
         </div>
@@ -1339,6 +1448,143 @@ function snippetUrl(row, opts = {}) {
 }
 function sourcePageUrl(row) {
   return TULSA_LIBRARY_ITEM;
+}
+
+/* ============================ Abbreviations ============================ */
+// Polk-Hoffhine 1921's directory shorthand. The residency codes (r/h/b/rms)
+// only apply at the start of an address; everything in WORD is matched
+// case-insensitively anywhere it appears as a whole token.
+const ABBREVIATIONS = {
+  residency: {
+    "r":   "resides at — rents",
+    "h":   "home — owner-occupied",
+    "b":   "boards at",
+    "rms": "rooms at — rents a furnished room",
+    "bds": "boards at",
+  },
+  word: {
+    // address suffixes / parts
+    "av":   "avenue",
+    "ave":  "avenue",
+    "blvd": "boulevard",
+    "bldg": "building",
+    "apts": "apartments",
+    "apt":  "apartment",
+    "sta":  "station",
+    "pl":   "place",
+    "rd":   "road",
+    "sq":   "square",
+    "ct":   "court",
+    "rear": "rear-of-building dwelling",
+    // directions (single letters — matched only when capitalized)
+    "n":    "north",
+    "s":    "south",
+    "e":    "east",
+    "w":    "west",
+    "ne":   "northeast",
+    "nw":   "northwest",
+    "se":   "southeast",
+    "sw":   "southwest",
+    // occupations
+    "clk":       "clerk",
+    "lab":       "laborer",
+    "mgr":       "manager",
+    "mngr":      "manager",
+    "atty":      "attorney",
+    "slsmn":     "salesman",
+    "salsn":     "salesman",
+    "tchr":      "teacher",
+    "carp":      "carpenter",
+    "mech":      "mechanic",
+    "messr":     "messenger",
+    "opr":       "operator",
+    "pres":      "president",
+    "sec":       "secretary",
+    "treas":     "treasurer",
+    "stenogr":   "stenographer",
+    "shoemkr":   "shoemaker",
+    "tmstr":     "teamster",
+    "boilermkr": "boilermaker",
+    "propr":     "proprietor",
+    "asst":      "assistant",
+    "supt":      "superintendent",
+    "engr":      "engineer",
+    "chauf":     "chauffeur",
+    "wid":       "widow of —",
+    "dept":      "department",
+    "agt":       "agent",
+    "blksmth":   "blacksmith",
+    "watchmn":   "watchman",
+    "btchr":     "butcher",
+    "ftr":       "fitter",
+    "drvr":      "driver",
+    "lndy":      "laundry",
+    "elect":     "electrician",
+    "elev":      "elevator",
+    "cond":      "conductor",
+    "brkmn":     "brakeman",
+    "tnsmth":    "tinsmith",
+    "mnstr":     "minister",
+    "vet":       "veterinarian",
+    // company / employer
+    "co":   "company",
+    "corp": "corporation",
+    "inc":  "incorporated",
+    "ltd":  "limited",
+    "mfg":  "manufacturing",
+    "bros": "brothers",
+    "ry":   "railway",
+    "rr":   "railroad",
+    "ref":  "refining",
+    "ins":  "insurance",
+    "tel":  "telephone",
+    "elec": "electric",
+    // titles
+    "mrs":  "Mistress — married woman",
+    "rev":  "Reverend",
+    "capt": "Captain",
+    "maj":  "Major",
+    "col":  "Colonel",
+    "gen":  "General",
+    "hon":  "Honorable",
+    "dr":   "Doctor",
+    "prof": "Professor",
+    "sgt":  "Sergeant",
+  },
+};
+
+function escapeAttr(s) { return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+// Walk text and wrap recognized abbreviations in <abbr title="…">.
+// fieldType:
+//   "address" → residency codes (r/h/b/rms) recognized at the leading token
+//   anything else → only WORD entries match
+function decorateAbbrevs(text, fieldType) {
+  if (!text) return "";
+  let seenFirstWord = false;
+  return text.replace(/([A-Za-z][A-Za-z']*)|([^A-Za-z]+)/g, (m, word, other) => {
+    if (other != null) return escapeHTML(other);
+    const isFirst = !seenFirstWord;
+    seenFirstWord = true;
+    const lower = word.toLowerCase();
+    let expansion = null;
+
+    if (fieldType === "address" && isFirst && ABBREVIATIONS.residency[lower]) {
+      expansion = ABBREVIATIONS.residency[lower];
+    } else if (ABBREVIATIONS.word[lower]) {
+      // Single-letter directions only when capitalized — avoids marking
+      // middle initials like "Barnard Harvey S" as "south."
+      if (lower.length <= 2 && /^[nsew]+$/.test(lower) && word !== word.toUpperCase()) {
+        expansion = null;
+      } else {
+        expansion = ABBREVIATIONS.word[lower];
+      }
+    }
+    if (expansion) {
+      return `<abbr title="${escapeAttr(expansion)}">${escapeHTML(word)}</abbr>`;
+    }
+    return escapeHTML(word);
+  });
 }
 
 /* ============================ CSV parsing ============================ */
@@ -1887,12 +2133,15 @@ function openEntryByRow(r, opts) {
   });
   const emptyCount = fields.filter(f => f.isEmpty).length;
 
-  const populatedHTML = fields.filter(f => !f.isEmpty).map(f => `
-    <div class="field">
+  const ABBR_FIELDS = { address: "address", occupation_role: "general", employer: "general", occupant_description: "general" };
+  const populatedHTML = fields.filter(f => !f.isEmpty).map(f => {
+    const mode = ABBR_FIELDS[f.key];
+    const valHTML = mode ? decorateAbbrevs(f.v, mode) : escapeHTML(f.v);
+    return `<div class="field">
       <div class="k">${escapeHTML(f.label)}</div>
-      <div class="v ${f.cls}">${escapeHTML(f.v)}</div>
-    </div>
-  `).join("");
+      <div class="v ${f.cls}">${valHTML}</div>
+    </div>`;
+  }).join("");
   const emptyHTML = fields.filter(f => f.isEmpty).map(f => `
     <div class="field empty">
       <div class="k">${escapeHTML(f.label)}</div>
