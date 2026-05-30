@@ -2385,17 +2385,15 @@ function openEntryByRow(r, opts) {
   // Greenwood block (only when this entry geocoded inside the burned-area polygon)
   if (r._greenwood === "True") {
     const coords = state.greenwoodCoords && state.greenwoodCoords.get(r.canvas_fragment);
-    const coordsLabel = coords
-      ? `${coords[1].toFixed(5)}, ${coords[0].toFixed(5)}`
-      : "geocoded";
+    const coordsLabel = coords ? `${coords[1].toFixed(5)}, ${coords[0].toFixed(5)}` : "";
     const mapLink = coords
-      ? ` &middot; <a class="source-link" style="font-size:12px;" href="https://www.openstreetmap.org/?mlat=${coords[1]}&mlon=${coords[0]}#map=18/${coords[1]}/${coords[0]}" target="_blank" rel="noopener">View on map<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>`
+      ? ` <a class="source-link" style="font-size:12px;" href="https://www.openstreetmap.org/?mlat=${coords[1]}&mlon=${coords[0]}#map=18/${coords[1]}/${coords[0]}" target="_blank" rel="noopener" title="${escapeAttr(coordsLabel)}" aria-label="Show this address on a present-day map (${escapeAttr(coordsLabel)})">Show on a present-day map<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>`
       : "";
     metaHTML += `
       <div class="field" style="grid-column: 1 / -1; border-bottom: 0; padding-top: 4px;">
         <div class="k" style="color: var(--accent);">Likely Greenwood resident</div>
         <div class="v" style="font-size: 13px; font-family: var(--sans); color: var(--ink-2); font-style: italic;">
-          Address geocoded inside the 1921 burned-area polygon (${escapeHTML(coordsLabel)}).${mapLink}
+          This address falls inside the area destroyed during the Tulsa Race Massacre of May 31 &ndash; June 1, 1921, as mapped by the New York Times.${mapLink}
         </div>
       </div>
     `;
