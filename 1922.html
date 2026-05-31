@@ -2143,8 +2143,16 @@ function renderSidebar() {
 function updateActiveFilterCount() {
   let n = 0;
   if (state.search && state.search.trim()) n++;
-  for (const v of Object.values(state.colFilters || {})) if (v) n++;
-  for (const s of Object.values(state.facetOn || {})) if (s && s.size) n += s.size;
+  // colFilters and facetOn can mirror each other on linked keys
+  // (e.g. section, race_marker). Dedupe by key so a single user
+  // selection only counts once.
+  const counted = new Set();
+  for (const [k, s] of Object.entries(state.facetOn || {})) {
+    if (s && s.size) { n += s.size; counted.add(k); }
+  }
+  for (const [k, v] of Object.entries(state.colFilters || {})) {
+    if (v && !counted.has(k)) n++;
+  }
   const el = document.getElementById("sidebarActiveCount");
   if (!el) return;
   el.textContent = n ? `${n} active` : "";
@@ -2304,15 +2312,17 @@ function syncFacetFromColFilter(key) {
 function syncColFilterFromFacet(key) {
   const facet = _facetForKey(key);
   if (!facet) return;
+  // Only mirror to state.colFilters when there's an actual column-filter
+  // input for this key — keeps the active-filter counter from
+  // double-counting facets that live only in the sidebar.
+  const dropdown = document.querySelector(`select[data-filter="${key}"]`);
+  if (!dropdown) return;
   const set = state.facetOn[key] || new Set();
   const newVal = set.size === 1 ? [...set][0] : "";
   state.colFilters[key] = newVal;
-  const dropdown = document.querySelector(`select[data-filter="${key}"]`);
-  if (dropdown) {
-    dropdown.value = newVal;
-    const wrap = dropdown.closest(".filter-wrap");
-    if (wrap) wrap.classList.toggle("has-value", !!newVal);
-  }
+  dropdown.value = newVal;
+  const wrap = dropdown.closest(".filter-wrap");
+  if (wrap) wrap.classList.toggle("has-value", !!newVal);
 }
 
 function clearAllFilters() {
@@ -2420,13 +2430,16 @@ function applyHashToState(opts) {
 
   // Reconcile linked colFilter ↔ facet pairs so a permalink that has
   // only one form (e.g. cf_section=Street+and+Avenue+Directory) also
-  // checks the matching facet in the sidebar — and vice versa.
+  // checks the matching facet in the sidebar — and vice versa. Skip
+  // facets that don't have a column-filter UI to avoid double-counting
+  // in the active-filter badge.
   for (const facet of FACETS) {
+    const hasDropdown = !!document.querySelector(`select[data-filter="${facet.key}"]`);
     const fSet = state.facetOn[facet.key];
     const cVal = state.colFilters[facet.key];
-    if (fSet && fSet.size === 1) {
+    if (fSet && fSet.size === 1 && hasDropdown) {
       state.colFilters[facet.key] = [...fSet][0];
-    } else if (fSet && fSet.size > 1) {
+    } else if (fSet && fSet.size > 1 && hasDropdown) {
       state.colFilters[facet.key] = "";
     } else if (cVal && facet.options.some(o => o.value === cVal)) {
       state.facetOn[facet.key] = new Set([cVal]);
