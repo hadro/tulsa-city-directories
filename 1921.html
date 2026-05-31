@@ -2312,12 +2312,15 @@ function syncFacetFromColFilter(key) {
 function syncColFilterFromFacet(key) {
   const facet = _facetForKey(key);
   if (!facet) return;
-  // Only mirror to state.colFilters when there's an actual column-filter
-  // input for this key. Some facets (e.g. _greenwood) live only in the
-  // sidebar; writing them to colFilters would let the active-filter
-  // counter see them twice.
   const dropdown = document.querySelector(`select[data-filter="${key}"]`);
-  if (!dropdown) return;
+  if (!dropdown) {
+    // No column-filter UI for this facet (e.g. _greenwood). Make sure
+    // we don't leave a phantom colFilter entry around — older versions
+    // of this code would write one, and a stale URL or earlier-session
+    // state can carry it in.
+    delete state.colFilters[key];
+    return;
+  }
   const set = state.facetOn[key] || new Set();
   const newVal = set.size === 1 ? [...set][0] : "";
   state.colFilters[key] = newVal;
@@ -2444,6 +2447,12 @@ function applyHashToState(opts) {
       state.colFilters[facet.key] = "";
     } else if (cVal && facet.options.some(o => o.value === cVal)) {
       state.facetOn[facet.key] = new Set([cVal]);
+      if (!hasDropdown) delete state.colFilters[facet.key];
+    }
+    // Facets without a column-filter UI never want a colFilter entry —
+    // strip any phantom carried in by a stale URL.
+    if (!hasDropdown && state.colFilters[facet.key]) {
+      delete state.colFilters[facet.key];
     }
   }
 
