@@ -1491,8 +1491,8 @@ const CSV_URL = "1922.csv";
 const MANIFEST_ID = "p15020coll12:3788";
 const IIIF_SERVICE_BASE = "https://digitalcollections.tulsalibrary.org/iiif/2";
 const IIIF_FIRST_CANVAS_SERVICE_ID = 2858;
-const CANVAS_W = 1300;
-const CANVAS_H = 1844;
+const CANVAS_W = 1000;
+const CANVAS_H = 1400;
 const TULSA_LIBRARY_ITEM = "https://digitalcollections.tulsalibrary.org/digital/collection/p15020coll12/id/3788";
 const TULSA_LIBRARY_COLLECTION = "p15020coll12";
 const TULSA_LIBRARY_COMPOUND_ID = 3788;
@@ -1588,13 +1588,39 @@ function pagesLabelForCanvas(n) {
   if (n == null) return null;
   return `pp. ${2 * n}–${2 * n + 1}`;
 }
-function snippetUrl(row, opts = {}) {
+// Per-canvas natural dimensions. The 1922 pipeline ran
+// rescale_canvas_fragments so xywh values match each image's actual
+// pixel space — but that space varies per page. We fetch info.json
+// once per canvas and cache the result; if the fetch fails, we fall
+// back to CANVAS_W/CANVAS_H which are an empirical median for this
+// volume.
+const _canvasDimsCache = new Map();
+async function canvasDims(svcUrl) {
+  if (_canvasDimsCache.has(svcUrl)) return _canvasDimsCache.get(svcUrl);
+  const promise = (async () => {
+    try {
+      const resp = await fetch(`${svcUrl}/info.json`, { mode: "cors" });
+      if (!resp.ok) throw new Error(`info.json HTTP ${resp.status}`);
+      const info = await resp.json();
+      const w = +info.width, h = +info.height;
+      if (w > 0 && h > 0) return { w, h };
+      throw new Error("bad dims");
+    } catch (e) {
+      return { w: CANVAS_W, h: CANVAS_H };
+    }
+  })();
+  _canvasDimsCache.set(svcUrl, promise);
+  return promise;
+}
+
+async function snippetUrl(row, opts = {}) {
   const cf = row.canvas_fragment || "";
   if (!cf) return null;
   const cid = cf.includes("#") ? cf.split("#")[0] : cf;
   const cnum = canvasNumber(cid);
   const svc = serviceIdForCanvas(cnum);
   if (!svc) return null;
+  const dims = await canvasDims(svc);
   if (cf.includes("#xywh=")) {
     const xywh = cf.split("#xywh=")[1].split(",").map(Number);
     if (xywh.length !== 4 || xywh[2] <= 0 || xywh[3] <= 0) return null;
@@ -1605,10 +1631,10 @@ function snippetUrl(row, opts = {}) {
     const ry = Math.max(0, xywh[1] - padV);
     const rw = (xywh[0] + xywh[2] + padH) - rx;
     const rh = (xywh[1] + xywh[3] + padV) - ry;
-    const xp = (rx / CANVAS_W * 100).toFixed(4);
-    const yp = (ry / CANVAS_H * 100).toFixed(4);
-    const wp = (rw / CANVAS_W * 100).toFixed(4);
-    const hp = (rh / CANVAS_H * 100).toFixed(4);
+    const xp = (rx / dims.w * 100).toFixed(4);
+    const yp = (ry / dims.h * 100).toFixed(4);
+    const wp = (rw / dims.w * 100).toFixed(4);
+    const hp = (rh / dims.h * 100).toFixed(4);
     const tw = opts.targetWidth || 1200;
     return `${svc}/pct:${xp},${yp},${wp},${hp}/${tw},/0/default.jpg`;
   }
@@ -2447,27 +2473,36 @@ function openEntryByRow(r, opts) {
     && r.name.trim().split(/\s+/).length >= 2;
   nameNote.hidden = !looksPersonal;
 
-  // Snippet
+  // Snippet — snippetUrl is async because we lazy-fetch info.json per
+  // canvas. Track an opener token so a slow URL resolving after the user
+  // moves to another entry doesn't paint into the now-stale frame.
   const snippetFrame = document.getElementById("snippetFrame");
   snippetFrame.innerHTML = `<span class="snippet-caption">Source scan &middot; page snippet</span><div class="snippet-loading"></div>`;
-  const url = snippetUrl(r);
-  if (url) {
-    const img = new Image();
-    img.alt = `Scanned page snippet showing ${titleText} in the 1922 Polk-Hoffhine Tulsa City Directory.`;
-    img.onload = () => {
+  state._snippetToken = (state._snippetToken || 0) + 1;
+  const myToken = state._snippetToken;
+  (async () => {
+    const url = await snippetUrl(r);
+    if (myToken !== state._snippetToken) return;
+    if (url) {
+      const img = new Image();
+      img.alt = `Scanned page snippet showing ${titleText} in the 1922 Polk-Hoffhine Tulsa City Directory.`;
+      img.onload = () => {
+        if (myToken !== state._snippetToken) return;
+        const loading = snippetFrame.querySelector(".snippet-loading");
+        if (loading) loading.remove();
+        snippetFrame.appendChild(img);
+      };
+      img.onerror = () => {
+        if (myToken !== state._snippetToken) return;
+        const loading = snippetFrame.querySelector(".snippet-loading");
+        if (loading) loading.outerHTML = `<div class="snippet-loading" style="display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;background:#e7e1d3;">Snippet unavailable</div>`;
+      };
+      img.src = url;
+    } else {
       const loading = snippetFrame.querySelector(".snippet-loading");
-      if (loading) loading.remove();
-      snippetFrame.appendChild(img);
-    };
-    img.onerror = () => {
-      const loading = snippetFrame.querySelector(".snippet-loading");
-      if (loading) loading.outerHTML = `<div class="snippet-loading" style="display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;background:#e7e1d3;">Snippet unavailable</div>`;
-    };
-    img.src = url;
-  } else {
-    const loading = snippetFrame.querySelector(".snippet-loading");
-    if (loading) loading.outerHTML = `<div class="snippet-loading" style="display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;background:#e7e1d3;">No source region</div>`;
-  }
+      if (loading) loading.outerHTML = `<div class="snippet-loading" style="display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;background:#e7e1d3;">No source region</div>`;
+    }
+  })();
 
   // Meta grid — substantive fields only. Empty ones are present in the DOM
   // but hidden behind a toggle.
