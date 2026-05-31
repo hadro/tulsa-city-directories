@@ -1597,30 +1597,11 @@ function pagesLabelForCanvas(n) {
   if (n == null) return null;
   return `pp. ${2 * n}–${2 * n + 1}`;
 }
-// Per-canvas natural dimensions. The 1922 pipeline ran
-// rescale_canvas_fragments so xywh values match each image's actual
-// pixel space — but that space varies per page. We fetch info.json
-// once per canvas and cache the result; if the fetch fails, we fall
-// back to CANVAS_W/CANVAS_H which are an empirical median for this
-// volume.
-const _canvasDimsCache = new Map();
-async function canvasDims(svcUrl) {
-  if (_canvasDimsCache.has(svcUrl)) return _canvasDimsCache.get(svcUrl);
-  const promise = (async () => {
-    try {
-      const resp = await fetch(`${svcUrl}/info.json`, { mode: "cors" });
-      if (!resp.ok) throw new Error(`info.json HTTP ${resp.status}`);
-      const info = await resp.json();
-      const w = +info.width, h = +info.height;
-      if (w > 0 && h > 0) return { w, h };
-      throw new Error("bad dims");
-    } catch (e) {
-      return { w: CANVAS_W, h: CANVAS_H };
-    }
-  })();
-  _canvasDimsCache.set(svcUrl, promise);
-  return promise;
-}
+// Per-volume OCR-processing canvas dimensions. 1922's pipeline produced
+// xywh values in roughly a 1000 × 1400 space (max observed bounds are
+// 968 × 1348). Fixed hardcoded values match what the 1921 viewer does;
+// fetching info.json from the IIIF service would return the much-larger
+// natural scan dimensions and shift every crop into the top-left.
 
 async function snippetUrl(row, opts = {}) {
   const cf = row.canvas_fragment || "";
@@ -1629,7 +1610,6 @@ async function snippetUrl(row, opts = {}) {
   const cnum = canvasNumber(cid);
   const svc = serviceIdForCanvas(cnum);
   if (!svc) return null;
-  const dims = await canvasDims(svc);
   if (cf.includes("#xywh=")) {
     const xywh = cf.split("#xywh=")[1].split(",").map(Number);
     if (xywh.length !== 4 || xywh[2] <= 0 || xywh[3] <= 0) return null;
@@ -1640,10 +1620,10 @@ async function snippetUrl(row, opts = {}) {
     const ry = Math.max(0, xywh[1] - padV);
     const rw = (xywh[0] + xywh[2] + padH) - rx;
     const rh = (xywh[1] + xywh[3] + padV) - ry;
-    const xp = (rx / dims.w * 100).toFixed(4);
-    const yp = (ry / dims.h * 100).toFixed(4);
-    const wp = (rw / dims.w * 100).toFixed(4);
-    const hp = (rh / dims.h * 100).toFixed(4);
+    const xp = (rx / CANVAS_W * 100).toFixed(4);
+    const yp = (ry / CANVAS_H * 100).toFixed(4);
+    const wp = (rw / CANVAS_W * 100).toFixed(4);
+    const hp = (rh / CANVAS_H * 100).toFixed(4);
     const tw = opts.targetWidth || 1200;
     return `${svc}/pct:${xp},${yp},${wp},${hp}/${tw},/0/default.jpg`;
   }
