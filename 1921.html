@@ -2351,9 +2351,6 @@ let _hashSelfWrite = false; // guard so popstate from our own writes doesn't loo
 
 function syncHash() {
   if (!state.rows.length) return; // pre-boot
-  // Mark that the user has interacted, so first-visit defaults aren't
-  // reapplied on subsequent reloads in this tab.
-  try { sessionStorage.setItem("tulsa-1921-interacted", "1"); } catch (e) {}
   const p = new URLSearchParams();
   if (state.search) p.set("q", state.search);
   if (!(state.sortKey === "name" && state.sortDir === "asc")) {
@@ -2436,12 +2433,10 @@ function applyHashToState(opts) {
     }
   }
 
-  // First-visit default: pre-check "Likely Greenwood resident" on a bare URL.
-  // sessionStorage tracks user interaction so a manual clear isn't undone on
-  // reload within the same tab; opening a fresh tab gets the default again.
-  let hasInteracted = false;
-  try { hasInteracted = sessionStorage.getItem("tulsa-1921-interacted") === "1"; } catch (e) {}
-  if (raw === "" && !hasInteracted) {
+  // Default view when there's no URL hash: pre-check "Likely Greenwood
+  // resident." Always applied on a bare URL — the user opts out by
+  // keeping the unchecked state in the URL after toggling.
+  if (raw === "") {
     state.facetOn._greenwood = new Set(["True"]);
   }
 
@@ -2836,7 +2831,13 @@ document.getElementById("exportBtn").addEventListener("click", () => {
 // — earlier this was hardcoded to the alphabetical section, which
 // caused the button to silently no-op under any other filter.
 document.getElementById("randomBtn").addEventListener("click", () => {
-  const pool = state.visibleRows.filter(r => r.name || r.occupant_name);
+  // Prefer alphabetical-section entries (the directory's main name index).
+  // If the user has filtered to a non-alphabetical view (e.g. just the
+  // street directory) the alphabetical pool will be empty, so fall back
+  // to any visible row with a displayable title.
+  const broad = state.visibleRows.filter(r => r.name || r.occupant_name);
+  const alpha = broad.filter(r => r.alphabetical_range);
+  const pool = alpha.length ? alpha : broad;
   if (!pool.length) return;
   const pick = pool[Math.floor(Math.random() * pool.length)];
   openEntry(state.visibleRows.indexOf(pick));
