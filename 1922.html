@@ -2118,6 +2118,7 @@ function renderSidebar() {
       const set = state.facetOn[k] || (state.facetOn[k] = new Set());
       if (set.has(v)) set.delete(v); else set.add(v);
       if (set.size === 0) delete state.facetOn[k];
+      syncColFilterFromFacet(k);
       renderSidebar(); renderTable();
       syncHash();
     };
@@ -2129,7 +2130,9 @@ function renderSidebar() {
   el.querySelectorAll("[data-clear]").forEach(btn => {
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
-      delete state.facetOn[btn.dataset.clear];
+      const k = btn.dataset.clear;
+      delete state.facetOn[k];
+      syncColFilterFromFacet(k);
       renderSidebar(); renderTable();
       syncHash();
     });
@@ -2278,6 +2281,40 @@ function renderEmptyState() {
   `;
 }
 
+/* ============================ Facet ↔ column-filter sync ============================ */
+// Some column-header dropdowns map to the same data key as a sidebar
+// facet (e.g. section, address_type, race_marker). Keep the two UIs
+// in sync so a header dropdown selection ticks the matching facet
+// checkbox, and a facet click updates the dropdown. The filter logic
+// happily applies both representations to the same result, so this
+// is purely a visual-state consistency thing.
+function _facetForKey(key) {
+  return (typeof FACETS !== "undefined") ? FACETS.find(f => f.key === key) : null;
+}
+function syncFacetFromColFilter(key) {
+  const facet = _facetForKey(key);
+  if (!facet) return;
+  const v = state.colFilters[key];
+  if (v && facet.options.some(o => o.value === v)) {
+    state.facetOn[key] = new Set([v]);
+  } else if (state.facetOn[key]) {
+    delete state.facetOn[key];
+  }
+}
+function syncColFilterFromFacet(key) {
+  const facet = _facetForKey(key);
+  if (!facet) return;
+  const set = state.facetOn[key] || new Set();
+  const newVal = set.size === 1 ? [...set][0] : "";
+  state.colFilters[key] = newVal;
+  const dropdown = document.querySelector(`select[data-filter="${key}"]`);
+  if (dropdown) {
+    dropdown.value = newVal;
+    const wrap = dropdown.closest(".filter-wrap");
+    if (wrap) wrap.classList.toggle("has-value", !!newVal);
+  }
+}
+
 function clearAllFilters() {
   state.search = "";
   state.colFilters = {};
@@ -2380,6 +2417,21 @@ function applyHashToState(opts) {
   }
   state.colFilters = newColFilters;
   state.facetOn = newFacetOn;
+
+  // Reconcile linked colFilter ↔ facet pairs so a permalink that has
+  // only one form (e.g. cf_section=Street+and+Avenue+Directory) also
+  // checks the matching facet in the sidebar — and vice versa.
+  for (const facet of FACETS) {
+    const fSet = state.facetOn[facet.key];
+    const cVal = state.colFilters[facet.key];
+    if (fSet && fSet.size === 1) {
+      state.colFilters[facet.key] = [...fSet][0];
+    } else if (fSet && fSet.size > 1) {
+      state.colFilters[facet.key] = "";
+    } else if (cVal && facet.options.some(o => o.value === cVal)) {
+      state.facetOn[facet.key] = new Set([cVal]);
+    }
+  }
 
   document.querySelectorAll("[data-filter]").forEach(el => {
     const k = el.dataset.filter;
@@ -2689,9 +2741,11 @@ document.querySelectorAll("#header-row th").forEach(th => {
 let colFilterTimer = null;
 document.querySelectorAll("[data-filter]").forEach(inp => {
   const handler = () => {
-    state.colFilters[inp.dataset.filter] = inp.value;
+    const key = inp.dataset.filter;
+    state.colFilters[key] = inp.value;
     const wrap = inp.closest(".filter-wrap");
     if (wrap) wrap.classList.toggle("has-value", !!inp.value);
+    syncFacetFromColFilter(key);
     renderSidebar();
     renderTable();
     clearTimeout(colFilterTimer);
