@@ -2777,11 +2777,12 @@ document.getElementById("exportBtn").addEventListener("click", () => {
 })();
 
 /* ============================ Random entry ============================ */
-// Restricted to the main alphabetical city directory section — entries that
-// carry an alphabetical range key. Street-directory and classified-directory
-// rows are skipped because their "(unnamed)" headings make for a poor surprise.
+// Picks from rows that will display a meaningful drawer title. If the
+// user has filtered to a non-alphabetical section, random respects that
+// — earlier this was hardcoded to the alphabetical section, which
+// caused the button to silently no-op under any other filter.
 document.getElementById("randomBtn").addEventListener("click", () => {
-  const pool = state.visibleRows.filter(r => r.alphabetical_range && r.name);
+  const pool = state.visibleRows.filter(r => r.name || r.occupant_name);
   if (!pool.length) return;
   const pick = pool[Math.floor(Math.random() * pool.length)];
   openEntry(state.visibleRows.indexOf(pick));
