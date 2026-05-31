@@ -1581,6 +1581,15 @@ function canvasNumber(canvasFragment) {
 }
 function serviceIdForCanvas(n) {
   if (n == null) return null;
+  // Prefer the data-derived canvas → image-pointer map built at boot from
+  // the CSV's `image` column. The volume's pointers aren't strictly
+  // sequential — some canvases were added later and jump forward in the
+  // numbering — so the simple (IIIF_FIRST_CANVAS_SERVICE_ID + N) formula
+  // gets many canvases wrong. The formula is kept as a fallback for the
+  // pre-boot window.
+  if (state.canvasMap && state.canvasMap.has(n)) {
+    return `${IIIF_SERVICE_BASE}/${MANIFEST_ID.split(':')[0]}:${state.canvasMap.get(n)}`;
+  }
   return `${IIIF_SERVICE_BASE}/${MANIFEST_ID.split(':')[0]}:${IIIF_FIRST_CANVAS_SERVICE_ID + n}`;
 }
 function pagesLabelForCanvas(n) {
@@ -1642,13 +1651,14 @@ async function snippetUrl(row, opts = {}) {
 }
 function sourcePageUrl(row) {
   // Deep-link to the specific page in the CONTENTdm viewer when possible.
-  // Canvas N maps to page pointer (firstCanvasServiceId + N) and position
-  // (N + 1) within the compound object. Falls back to the item-level URL
-  // when the canvas can't be parsed.
+  // Looks up the canvas → image pointer in state.canvasMap (built from
+  // the CSV's `image` column) since pointers aren't strictly sequential;
+  // falls back to the formula then the item-level URL.
   const cf = row.canvas_fragment || "";
   const cnum = canvasNumber(cf);
   if (cnum == null) return TULSA_LIBRARY_ITEM;
-  const pagePointer = IIIF_FIRST_CANVAS_SERVICE_ID + cnum;
+  const pagePointer = (state.canvasMap && state.canvasMap.get(cnum))
+    || (IIIF_FIRST_CANVAS_SERVICE_ID + cnum);
   const position = cnum + 1;
   return `https://digitalcollections.tulsalibrary.org/digital/collection/${TULSA_LIBRARY_COLLECTION}/id/${pagePointer}/rec/${position}`;
 }
@@ -2800,6 +2810,24 @@ async function boot() {
         if (v) s += " " + v;
       }
       r._search = s.toLowerCase();
+    }
+
+    // Build canvas → image-pointer map from the CSV's own `image` column.
+    // Used by serviceIdForCanvas to look up the correct CONTENTdm pointer
+    // for each canvas (non-sequential pointers happen when pages were
+    // added later out of order — this was the root cause of off-by-N
+    // crops on most 1922 entries).
+    state.canvasMap = new Map();
+    for (let i = 0; i < rows.length; i++) {
+      const r = rows[i];
+      const cf = r.canvas_fragment || "";
+      const img = r.image || "";
+      const cm = cf.match(/\/canvas\/(\d+)/);
+      const im = img.match(/p15020coll12:(\d+)/);
+      if (cm && im) {
+        const c = +cm[1];
+        if (!state.canvasMap.has(c)) state.canvasMap.set(c, +im[1]);
+      }
     }
 
     state.rows = rows;
