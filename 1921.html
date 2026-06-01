@@ -31,6 +31,7 @@
 
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
+  html { font-size: clamp(14.5px, calc(12px + 0.2vw), 17px); }
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
@@ -38,7 +39,7 @@
   }
   body {
     font-family: var(--sans);
-    font-size: 13.5px;
+    font-size: 1rem;
     color: var(--ink);
     background: var(--paper);
     -webkit-font-smoothing: antialiased;
@@ -47,7 +48,7 @@
   .skip-link {
     position: absolute; left: -9999px; top: 0;
     background: var(--ink); color: var(--paper);
-    padding: 8px 14px; font-family: var(--sans); font-size: 13px;
+    padding: 8px 14px; font-family: var(--sans); font-size: 0.963rem;
     z-index: 1000;
   }
   .skip-link:focus { left: 0; }
@@ -60,7 +61,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 24px;
-    align-items: end;
+    align-items: start;
   }
   .eyebrow {
     font-family: var(--mono);
@@ -79,7 +80,7 @@
   .title {
     font-family: var(--serif);
     font-weight: 400;
-    font-size: 30px;
+    font-size: 2.222rem;
     line-height: 1.1;
     letter-spacing: -0.005em;
     margin: 0;
@@ -92,7 +93,7 @@
   .context {
     margin: 10px 0 0 0;
     max-width: 720px;
-    font-size: 13px;
+    font-size: 0.963rem;
     line-height: 1.55;
     color: var(--ink-2);
   }
@@ -101,18 +102,18 @@
     color: var(--ink-3);
     font-style: italic;
     margin-top: 4px;
-    font-size: 12.5px;
+    font-size: 0.926rem;
   }
   .masthead-meta {
     text-align: right;
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 0.815rem;
     color: var(--ink-3);
     line-height: 1.7;
   }
   .masthead-meta .count {
     font-family: var(--serif);
-    font-size: 22px;
+    font-size: 1.630rem;
     color: var(--ink);
     letter-spacing: -0.01em;
     display: block;
@@ -124,12 +125,23 @@
     text-decoration: none;
     border-bottom: 1px dotted var(--accent);
     font-family: var(--sans);
-    font-size: 11.5px;
+    font-size: 0.852rem;
     display: inline-block;
     margin-top: 8px;
     letter-spacing: 0;
   }
   .masthead-meta .about-link:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .masthead-credit {
+    margin-top: 12px;
+    font-family: var(--sans);
+    font-size: 0.815rem;
+    color: var(--ink-3);
+    line-height: 1.5;
+    max-width: 280px;
+    text-align: left;
+  }
+  .masthead-credit p { margin: 0 0 4px 0; }
+  .masthead-credit .about-link { font-size: 0.815rem; font-family: var(--sans); }
 
   /* ============================ App layout ============================ */
   .app {
@@ -170,7 +182,7 @@
   }
   .filter-section h3 .clear {
     font-family: var(--sans); text-transform: none; letter-spacing: 0;
-    font-size: 11px; color: var(--ink-4); cursor: pointer;
+    font-size: 0.815rem; color: var(--ink-4); cursor: pointer;
     border: 0; background: none; padding: 0;
   }
   .filter-section h3 .clear:hover { color: var(--accent); }
@@ -187,7 +199,7 @@
   .facet-row:hover { color: var(--ink); }
   .facet-row .label {
     display: flex; align-items: center; gap: 9px;
-    font-size: 13px;
+    font-size: 0.963rem;
   }
   .facet-row .label .chk {
     width: 13px; height: 13px; border: 1px solid var(--rule-2);
@@ -203,13 +215,13 @@
     display: block;
   }
   .facet-row .count {
-    font-family: var(--mono); font-size: 11.5px; color: var(--ink-4);
+    font-family: var(--mono); font-size: 0.852rem; color: var(--ink-4);
     font-variant-numeric: tabular-nums;
   }
   .facet-note {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 11.5px;
+    font-size: 0.852rem;
     line-height: 1.45;
     color: var(--ink-3);
     margin: 6px 0 0 22px;
@@ -220,7 +232,7 @@
   .sidebar-note {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 12px;
+    font-size: 0.889rem;
     line-height: 1.5;
     color: var(--ink-3);
     padding: 16px 0 0 0;
@@ -247,7 +259,7 @@
     border-radius: 2px;
     background: var(--card);
     font-family: var(--sans);
-    font-size: 13.5px;
+    font-size: 1rem;
     color: var(--ink);
     outline: none;
     transition: border-color .15s, box-shadow .15s;
@@ -274,7 +286,7 @@
   .search .clear-x:hover { background: var(--paper-3); color: var(--ink); }
   .search.has-value .clear-x { display: inline-flex; }
   .search-hint {
-    font-size: 11.5px; color: var(--ink-4); margin: 6px 2px 0;
+    font-size: 0.852rem; color: var(--ink-4); margin: 6px 2px 0;
     font-family: var(--sans);
   }
   .search-hint strong { color: var(--ink-2); font-weight: 500; }
@@ -285,7 +297,7 @@
     background: var(--card);
     border-radius: 2px;
     font-family: var(--sans);
-    font-size: 13px;
+    font-size: 0.963rem;
     color: var(--ink);
     cursor: pointer;
     display: inline-flex; align-items: center; gap: 8px;
@@ -366,7 +378,7 @@
     background: var(--card);
     border-radius: 2px;
     font-family: var(--sans);
-    font-size: 12px;
+    font-size: 0.889rem;
     color: var(--ink);
     outline: none;
   }
@@ -403,7 +415,7 @@
   tbody td {
     padding: 11px 14px;
     border-bottom: 1px solid var(--paper-2);
-    font-size: 13.5px;
+    font-size: 1rem;
     color: var(--ink);
     vertical-align: middle;
     white-space: nowrap;
@@ -416,7 +428,7 @@
 
   .range-tag {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 0.815rem;
     letter-spacing: 0.06em;
     color: var(--ink-2);
     background: var(--paper-2);
@@ -426,7 +438,7 @@
   }
   .name-cell {
     font-family: var(--serif);
-    font-size: 15px;
+    font-size: 1.111rem;
     letter-spacing: -0.005em;
   }
   .name-cell .race-mark,
@@ -448,7 +460,7 @@
   button.race-mark { font: inherit; line-height: inherit; font-family: var(--mono); font-size: 10.5px; }
   .is-bus-yes {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 0.815rem;
     color: var(--ink-2);
     background: var(--paper-2);
     padding: 2px 7px;
@@ -511,14 +523,14 @@
   }
   .drawer-title {
     font-family: var(--serif);
-    font-size: 24px;
+    font-size: 1.778rem;
     font-weight: 400;
     margin: 0;
     letter-spacing: -0.01em;
   }
   .drawer-title .race-mark {
     font-family: var(--mono);
-    font-size: 11.5px;
+    font-size: 0.852rem;
     color: var(--accent);
     margin-left: 10px;
     padding: 2px 7px;
@@ -544,7 +556,7 @@
   .drawer-name-note {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 12px;
+    font-size: 0.889rem;
     line-height: 1.5;
     color: var(--ink-3);
     margin: 6px 0 0 0;
@@ -557,7 +569,7 @@
     background: none; border: 0; padding: 0;
     color: var(--ink-3);
     font-family: var(--sans);
-    font-size: 12px;
+    font-size: 0.889rem;
     cursor: pointer;
     text-align: left;
     border-bottom: 1px dotted var(--ink-4);
@@ -651,19 +663,19 @@
   }
   .meta-grid .field .v {
     font-family: var(--serif);
-    font-size: 17px;
+    font-size: 1.259rem;
     color: var(--ink);
     letter-spacing: -0.005em;
     word-break: break-word;
   }
   .meta-grid .field .v.mono {
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: 1.037rem;
     letter-spacing: 0;
   }
   .meta-grid .field .v.empty {
     color: var(--ink-4); font-style: italic; font-family: var(--serif);
-    font-size: 14px;
+    font-size: 1.037rem;
   }
   .meta-grid .field .v abbr[data-abbr] {
     text-decoration: underline dotted;
@@ -690,7 +702,7 @@
   .source-link {
     display: inline-flex; align-items: center; gap: 6px;
     color: var(--accent); text-decoration: none;
-    font-family: var(--sans); font-size: 13px;
+    font-family: var(--sans); font-size: 0.963rem;
     border-bottom: 1px dotted var(--accent);
     padding-bottom: 1px;
   }
@@ -710,7 +722,7 @@
     background: var(--ink);
     color: var(--paper);
     font-family: var(--sans);
-    font-size: 11.5px;
+    font-size: 0.852rem;
     line-height: 1.45;
     padding: 8px 10px;
     border-radius: 2px;
@@ -743,14 +755,14 @@
   }
   .empty-state .empty-title {
     font-family: var(--serif);
-    font-size: 22px;
+    font-size: 1.630rem;
     font-weight: 400;
     color: var(--ink);
     margin: 0 0 8px 0;
     letter-spacing: -0.005em;
   }
   .empty-state .empty-sub {
-    font-size: 13px;
+    font-size: 0.963rem;
     color: var(--ink-3);
     margin: 0 0 18px 0;
   }
@@ -764,7 +776,7 @@
   }
   .empty-state .active-summary .chip {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 0.815rem;
     color: var(--accent);
     background: rgba(122,42,31,0.06);
     border: 1px solid var(--accent-soft);
@@ -780,7 +792,7 @@
     background: rgba(122,42,31,0.04);
     color: var(--accent);
     font-family: var(--sans);
-    font-size: 13px;
+    font-size: 0.963rem;
     border-radius: 2px;
     cursor: pointer;
     transition: background .12s;
@@ -842,7 +854,7 @@
   .about-title {
     font-family: var(--serif);
     font-weight: 300;
-    font-size: 40px;
+    font-size: 2.963rem;
     line-height: 1.12;
     letter-spacing: -0.015em;
     margin: 0 0 36px 0;
@@ -864,13 +876,13 @@
     .about-grid { grid-template-columns: 1fr; gap: 28px; }
     .about-side { border-left: 0 !important; border-top: 1px solid var(--rule); padding-left: 0 !important; padding-top: 28px !important; }
   }
-  .about-prose { font-family: var(--serif); font-size: 16px; line-height: 1.65; color: var(--ink-2); }
+  .about-prose { font-family: var(--serif); font-size: 1.185rem; line-height: 1.65; color: var(--ink-2); }
   .about-prose p { margin: 0 0 18px 0; max-width: 60ch; }
   .about-prose strong { color: var(--ink); font-weight: 500; }
-  .about-lede { font-size: 18px; color: var(--ink); }
+  .about-lede { font-size: 1.333rem; color: var(--ink); }
   .about-h3 {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 0.815rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--ink-3);
@@ -914,13 +926,13 @@
     gap: 4px 14px;
     margin: 0;
     font-family: var(--serif);
-    font-size: 14px;
+    font-size: 1.037rem;
     line-height: 1.45;
   }
   .abbr-group dt {
     font-family: var(--mono);
     color: var(--ink);
-    font-size: 12.5px;
+    font-size: 0.926rem;
     font-weight: 500;
     align-self: baseline;
   }
@@ -933,14 +945,14 @@
     margin: 10px 0 0;
     font-family: var(--serif);
     font-style: italic;
-    font-size: 12.5px;
+    font-size: 0.926rem;
     line-height: 1.5;
     color: var(--ink-3);
   }
   .abbr-group-note code {
     font-family: var(--mono);
     font-style: normal;
-    font-size: 11.5px;
+    font-size: 0.852rem;
     color: var(--ink-2);
     background: var(--paper-2);
     padding: 0 4px;
@@ -952,14 +964,14 @@
     padding: 6px 0 6px 8px;
     counter-increment: gbsteps;
     font-family: var(--serif);
-    font-size: 16px;
+    font-size: 1.185rem;
     color: var(--ink-2);
     line-height: 1.6;
   }
   .about-list li::before {
     content: counter(gbsteps, decimal-leading-zero);
     position: absolute; left: -28px; top: 8px;
-    font-family: var(--mono); font-size: 11px;
+    font-family: var(--mono); font-size: 0.815rem;
     color: var(--accent); letter-spacing: 0.04em;
   }
   .about-link {
@@ -982,7 +994,7 @@
   }
   .about-side-stat {
     font-family: var(--serif);
-    font-size: 36px;
+    font-size: 2.667rem;
     font-weight: 300;
     line-height: 1;
     letter-spacing: -0.02em;
@@ -990,21 +1002,21 @@
   }
   .about-side-stat-text {
     font-family: var(--serif);
-    font-size: 22px;
+    font-size: 1.630rem;
     font-weight: 400;
     color: var(--ink);
     line-height: 1.2;
   }
   .about-side-sub {
     font-family: var(--sans);
-    font-size: 12.5px;
+    font-size: 0.926rem;
     line-height: 1.5;
     color: var(--ink-3);
   }
   .about-credit {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 13px;
+    font-size: 0.963rem;
     color: var(--ink-3);
     line-height: 1.55;
     border-top: 1px solid var(--rule);
@@ -1040,7 +1052,7 @@
   }
   .boot-card .boot-title {
     font-family: var(--serif);
-    font-size: 24px;
+    font-size: 1.778rem;
     color: var(--ink);
     letter-spacing: -0.005em;
     margin: 0 0 16px 0;
@@ -1067,11 +1079,11 @@
     100% { transform: translateX(120%); }
   }
   .boot-status {
-    font-family: var(--sans); font-size: 13px; color: var(--ink-3);
+    font-family: var(--sans); font-size: 0.963rem; color: var(--ink-3);
     margin-top: 6px;
   }
   .boot-error {
-    font-family: var(--mono); font-size: 12px; color: var(--accent);
+    font-family: var(--mono); font-size: 0.889rem; color: var(--accent);
     margin-top: 10px; line-height: 1.5;
     max-width: 360px;
   }
@@ -1094,7 +1106,7 @@
     background: var(--ink);
     color: var(--paper);
     font-family: var(--sans);
-    font-size: 12px;
+    font-size: 0.889rem;
     font-weight: 400;
     line-height: 1.4;
     padding: 7px 11px;
@@ -1148,7 +1160,7 @@
       border-bottom: 1px solid var(--rule);
       cursor: pointer;
       font-family: var(--sans);
-      font-size: 14px;
+      font-size: 1.037rem;
       color: var(--ink);
       text-align: left;
     }
@@ -1169,7 +1181,7 @@
     .sidebar-toggle:hover { background: var(--paper-2); }
     .sidebar-toggle-active {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 0.815rem;
       color: var(--ink-3);
       letter-spacing: 0.04em;
     }
@@ -1196,10 +1208,10 @@
     thead th, thead tr.filter-row th { position: static; top: auto; }
     .drawer-body { padding: 18px 22px 28px; }
     .drawer-header { padding: 14px 18px 12px 22px; }
-    .drawer-title { font-size: 21px; }
+    .drawer-title { font-size: 1.556rem; }
     .about-backdrop { padding: 18px; }
     .about-body { padding: 22px 28px 36px; }
-    .about-title { font-size: 30px; }
+    .about-title { font-size: 2.222rem; }
   }
 </style>
 </head>
@@ -1209,7 +1221,7 @@
 
 <header class="masthead">
   <div>
-    <p class="eyebrow"><span class="dot"></span><a href="https://github.com/hadro/directory-pipeline" target="_blank" rel="noopener">Pipeline Data Explorer</a></p>
+    <p class="eyebrow"><span class="dot"></span><a href="#" data-reset-app>Pipeline Data Explorer</a></p>
     <h1 class="title">Polk-Hoffhine Directory Co.'s <em>Tulsa City Directory,</em> 1921</h1>
     <p class="context">
       Compiled and published in the spring of 1921 &mdash; months before the Tulsa Race Massacre destroyed the Greenwood district that May.
@@ -1222,8 +1234,12 @@
   <div class="masthead-meta">
     <span class="count" id="entryCount">&mdash;</span>
     <span id="entryCountSub">entries &middot; 1921 edition</span><br/>
-    one of <span style="color:var(--ink)">11</span> directories indexed<br/>
-    <a href="#about" data-open-about class="about-link">About this directory &rarr;</a>
+    <!-- one of <span style="color:var(--ink)">11</span> directories indexed<br/> -->
+    <a href="#about" data-open-about class="about-link">About this explorer &rarr;</a>
+    <div class="masthead-credit">
+      <p>Source material held by the <a class="about-link" href="https://digitalcollections.tulsalibrary.org/digital/collection/p15020coll12/id/2857" target="_blank" rel="noopener">Tulsa City&ndash;County Library</a>.</p>
+      <p>Greenwood and the Tulsa Race Massacre context drawn from the <a class="about-link" href="https://www.tulsahistory.org/exhibit/1921-tulsa-race-massacre/" target="_blank" rel="noopener">Tulsa Historical Society &amp; Museum</a>.</p>
+    </div>
   </div>
 </header>
 
@@ -1269,7 +1285,7 @@
           <col style="width: 22%"/>
           <col style="width: 90px"/>
           <col style="width: 14%"/>
-          <col style="width: 80px"/>
+          <col style="width: 120px"/>
           <col style="width: 18%"/>
           <col style="width: 24%"/>
         </colgroup>
@@ -1279,7 +1295,7 @@
             <th data-key="name" aria-sort="ascending"><button class="col-sort" type="button">Name <span class="sort" aria-hidden="true">&darr;</span></button></th>
             <th data-key="is_business" aria-sort="none"><button class="col-sort" type="button">Business <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
             <th data-key="spouse_name" aria-sort="none"><button class="col-sort" type="button">Spouse <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
-            <th data-key="race_designation" aria-sort="none"><button class="col-sort" type="button">Race <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
+            <th data-key="race_designation" aria-sort="none"><button class="col-sort" type="button">Race designator <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
             <th data-key="occupation_role" aria-sort="none"><button class="col-sort" type="button">Occupation <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
             <th data-key="address" aria-sort="none"><button class="col-sort" type="button">Address <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
           </tr>
@@ -1307,7 +1323,7 @@
 <div class="about-backdrop" id="aboutBackdrop" role="presentation">
   <div class="about-modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" tabindex="-1">
     <div class="about-head">
-      <div class="about-eyebrow">About this directory</div>
+      <div class="about-eyebrow">About this explorer</div>
       <button class="about-close" id="aboutCloseBtn" aria-label="Close about panel">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
@@ -1327,10 +1343,10 @@
           <p>Roughly <strong id="aboutColoredCount">5,529 entries</strong> in the 1921 edition carry the &ldquo;(c)&rdquo; designation. Many of them lived and worked in Greenwood &mdash; the prosperous Black district destroyed weeks after the directory went to press.</p>
 
           <h3 class="about-h3">Likely Greenwood residents</h3>
-          <p>The <strong>Greenwood</strong> facet flags entries whose street address geocodes inside the 1921 burned-area polygon mapped by <a class="about-link" href="https://www.nytimes.com/interactive/2021/05/24/us/tulsa-race-massacre.html" target="_blank" rel="noopener"><em>The New York Times</em>&rsquo;s &ldquo;What the Tulsa Race Massacre Destroyed&rdquo;</a> (2021). The set combines two passes through this directory: the alphabetical &ldquo;(c)&rdquo; section (people listed with names) and the separate street-and-avenue directory (people listed by address and occupant). It is a structural proxy, not a complete roster &mdash; historical street names that no longer exist on modern maps will be undercounted, and any geocoding error propagates here.</p>
+          <p>The <strong>Greenwood</strong> facet flags entries whose street address geocodes inside the 1921 burned-area polygon mapped by <a class="about-link" href="https://www.nytimes.com/interactive/2021/05/24/us/tulsa-race-massacre.html?unlocked_article_code=1.lFA.e3VE.V5pm6dDzVBzf&smid=url-share" target="_blank" rel="noopener"><em>The New York Times</em>&rsquo;s &ldquo;What the Tulsa Race Massacre Destroyed&rdquo;</a> (2021). The set combines two passes through this directory: the alphabetical &ldquo;(c)&rdquo; section (people listed with names) and the separate street-and-avenue directory (people listed by address and occupant). It is a structural proxy, not a complete roster &mdash; historical street names that no longer exist on modern maps will be undercounted, and any geocoding error propagates here.</p>
 
           <h3 class="about-h3">A note on accuracy</h3>
-          <p>There are OCR, entity-extraction, and entry-alignment errors throughout this data. Always consult the original source page as the authoritative record; this explorer is a way to engage with the directory more deeply, not a replacement for it. Data has not been reviewed for 100&percnt; accuracy.</p>
+          <p>There may be OCR, entity-extraction, and entry-alignment errors throughout this data. Always consult the original source page as the authoritative record; this explorer is a way to engage with the directory more deeply, not a replacement for it. Data has not been reviewed for 100&percnt; accuracy.</p>
 
           <h3 class="about-h3">What's missing</h3>
           <p>City directories systematically under-counted: domestic workers without recorded employers, transient laborers, children, many wives without separate listings, and people deliberately omitted by the canvassers. The absence of a name here does not mean the person was not in Tulsa.</p>
@@ -1426,7 +1442,7 @@
           <div class="about-side-block">
             <div class="about-side-label">Marked &ldquo;(c)&rdquo;</div>
             <div class="about-side-stat" id="aboutStatColored">&mdash;</div>
-            <div class="about-side-sub">entries designated Colored in the original publication</div>
+            <div class="about-side-sub">entries designated "Colored" in the original publication</div>
           </div>
           <div class="about-side-block">
             <div class="about-side-label">Likely Greenwood</div>
@@ -1441,7 +1457,7 @@
           <div class="about-side-block">
             <div class="about-side-label">Volume</div>
             <div class="about-side-stat-text">1921 edition</div>
-            <div class="about-side-sub">one of 11 Tulsa directories being indexed in this collection.</div>
+            <!-- <div class="about-side-sub">one of 11 Tulsa directories being indexed in this collection.</div> -->
           </div>
           <div class="about-side-block">
             <div class="about-side-label">Pipeline</div>
@@ -1529,7 +1545,7 @@ const FACETS = [
     { label: "Yes", value: "True"  },
   ]},
   { key: "race_designation", title: "Race designation", options: [
-    { label: "(c) — designated Colored", value: "(c)" },
+    { label: "(c) — designated 'Colored'", value: "(c)" },
   ]},
   { key: "_greenwood", title: "Greenwood", options: [
     { label: "Likely Greenwood resident", value: "True" },
@@ -2104,7 +2120,7 @@ function renderSidebar() {
       ${facet.note ? `<p class="facet-note">${escapeHTML(facet.note)}</p>` : ""}
     </div>`);
   });
-  html.push(`<p class="sidebar-note">Source scans courtesy of the <a href="${TULSA_LIBRARY_ITEM}" target="_blank" rel="noopener">Tulsa City&ndash;County Library</a>. <a href="#" data-open-about>About this directory &rarr;</a></p>`);
+  html.push(`<p class="sidebar-note">Source scans courtesy of the <a href="${TULSA_LIBRARY_ITEM}" target="_blank" rel="noopener">Tulsa City&ndash;County Library</a>. <a href="#" data-open-about>About this explorer &rarr;</a></p>`);
   el.innerHTML = html.join("");
 
   el.querySelectorAll(".facet-row").forEach(row => {
@@ -2561,12 +2577,12 @@ function openEntryByRow(r, opts) {
     };
     img.onerror = () => {
       const loading = snippetFrame.querySelector(".snippet-loading");
-      if (loading) loading.outerHTML = `<div class="snippet-loading" style="display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;background:#e7e1d3;">Snippet unavailable</div>`;
+      if (loading) loading.outerHTML = `<div class="snippet-loading" style="display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-family:var(--mono);font-size:0.815rem;letter-spacing:0.08em;text-transform:uppercase;background:#e7e1d3;">Snippet unavailable</div>`;
     };
     img.src = url;
   } else {
     const loading = snippetFrame.querySelector(".snippet-loading");
-    if (loading) loading.outerHTML = `<div class="snippet-loading" style="display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;background:#e7e1d3;">No source region</div>`;
+    if (loading) loading.outerHTML = `<div class="snippet-loading" style="display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-family:var(--mono);font-size:0.815rem;letter-spacing:0.08em;text-transform:uppercase;background:#e7e1d3;">No source region</div>`;
   }
 
   // Meta grid — substantive fields only. Empty ones are present in the DOM
@@ -2603,13 +2619,13 @@ function openEntryByRow(r, opts) {
     const coords = state.greenwoodCoords && state.greenwoodCoords.get(r.canvas_fragment);
     const coordsLabel = coords ? `${coords[1].toFixed(5)}, ${coords[0].toFixed(5)}` : "";
     const mapLink = coords
-      ? ` <a class="source-link" style="font-size:12px;" href="https://www.openstreetmap.org/?mlat=${coords[1]}&mlon=${coords[0]}#map=18/${coords[1]}/${coords[0]}" target="_blank" rel="noopener" title="${escapeAttr(coordsLabel)}" aria-label="Show approximate location on a present-day map (${escapeAttr(coordsLabel)})">Show approximate location on a present-day map<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>`
+      ? ` <a class="source-link" style="font-size:0.889rem;" href="https://www.openstreetmap.org/?mlat=${coords[1]}&mlon=${coords[0]}#map=18/${coords[1]}/${coords[0]}" target="_blank" rel="noopener" title="${escapeAttr(coordsLabel)}" aria-label="Show approximate location on a present-day map (${escapeAttr(coordsLabel)})">Show approximate location on a present-day map<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>`
       : "";
     metaHTML += `
       <div class="field" style="grid-column: 1 / -1; border-bottom: 0; padding-top: 4px;">
         <div class="k" style="color: var(--accent);">Likely Greenwood resident</div>
-        <div class="v" style="font-size: 13px; font-family: var(--sans); color: var(--ink-2); font-style: italic;">
-          This address falls inside the area destroyed during the Tulsa Race Massacre of May 31 &ndash; June 1, 1921, as mapped by <a class="about-link" href="https://www.nytimes.com/interactive/2021/05/24/us/tulsa-race-massacre.html" target="_blank" rel="noopener">the New York Times</a>.${mapLink}
+        <div class="v" style="font-size: 0.963rem; font-family: var(--sans); color: var(--ink-2); font-style: italic;">
+          This address falls inside the area destroyed during the Tulsa Race Massacre of May 31 &ndash; June 1, 1921, as mapped by <a class="about-link" href="https://www.nytimes.com/interactive/2021/05/24/us/tulsa-race-massacre.html?unlocked_article_code=1.lFA.e3VE.V5pm6dDzVBzf&smid=url-share" target="_blank" rel="noopener">the New York Times</a>.${mapLink}
         </div>
       </div>
     `;
@@ -2645,6 +2661,8 @@ function openEntryByRow(r, opts) {
     try { document.getElementById("closeBtn").focus({ preventScroll: true }); } catch (e) { document.getElementById("closeBtn").focus(); }
   }, 280);
   renderTable();
+  const selTr = document.querySelector("#tbody tr.selected");
+  if (selTr) selTr.scrollIntoView({ block: "nearest", behavior: "smooth" });
   if (!opts.skipHashUpdate) syncHash();
 }
 
@@ -2718,6 +2736,16 @@ document.getElementById("aboutBackdrop").addEventListener("click", (e) => {
 document.addEventListener("click", (e) => {
   const t = e.target.closest("[data-open-about]");
   if (t) { e.preventDefault(); openAbout(); }
+});
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-reset-app]");
+  if (!t) return;
+  e.preventDefault();
+  clearAllFilters();
+  closeDrawer({ skipHashUpdate: true });
+  closeAbout({ skipHashUpdate: true });
+  window.scrollTo(0, 0);
+  history.replaceState(null, "", location.pathname);
 });
 document.getElementById("aboutModal").addEventListener("keydown", (e) => {
   if (e.key !== "Tab") return;
@@ -2858,7 +2886,8 @@ document.getElementById("randomBtn").addEventListener("click", () => {
   // If the user has filtered to a non-alphabetical view (e.g. just the
   // street directory) the alphabetical pool will be empty, so fall back
   // to any visible row with a displayable title.
-  const broad = state.visibleRows.filter(r => r.name || r.occupant_name);
+  const rendered = state.visibleRows.slice(0, MAX_RENDER_ROWS);
+  const broad = rendered.filter(r => r.name || r.occupant_name);
   const alpha = broad.filter(r => r.alphabetical_range);
   const pool = alpha.length ? alpha : broad;
   if (!pool.length) return;

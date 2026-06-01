@@ -972,12 +972,12 @@
           <div class="about-side-block">
             <div class="about-side-label">Marked “(c)”</div>
             <div class="about-side-stat">5,529</div>
-            <div class="about-side-sub">entries designated Colored in the original publication</div>
+            <div class="about-side-sub">entries designated "Colored" in the original publication</div>
           </div>
           <div class="about-side-block">
             <div class="about-side-label">Volume</div>
             <div class="about-side-stat-text">1921 edition</div>
-            <div class="about-side-sub">one of 11 Tulsa directories being indexed in this collection.</div>
+            <!-- <div class="about-side-sub">one of 11 Tulsa directories being indexed in this collection.</div> -->
           </div>
           <div class="about-side-block">
             <div class="about-side-label">Pipeline</div>
@@ -1090,7 +1090,7 @@ const FACETS = [
     { label:"Yes", match:r=>r.is_business,  count:3053  },
   ]},
   { key:"race", title:"Race designation", clear:true, options:[
-    { label:"(c) — designated Colored", match:r=>r.race==="(c)", count:5529 },
+    { label:"(c) — designated 'Colored", match:r=>r.race==="(c)", count:5529 },
   ]},
   { key:"is_rear", title:"Is rear", clear:true, options:[
     { label:"No",  match:r=>true,  count:21664 },
