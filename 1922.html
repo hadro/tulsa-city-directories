@@ -4,6 +4,18 @@
 <meta charset="utf-8" />
 <title>Polk-Hoffhine Tulsa City Directory, 1922 — Pipeline Data Explorer</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description"              content="Browse 69,669 entries from the 1922 Tulsa city directory — compiled one year after the Tulsa Race Massacre destroyed the Greenwood district." />
+<meta property="og:title"            content="Polk-Hoffhine Tulsa City Directory, 1922" />
+<meta property="og:description"      content="Browse 69,669 entries from the 1922 Tulsa city directory — compiled one year after the Tulsa Race Massacre destroyed the Greenwood district." />
+<meta property="og:type"             content="website" />
+<meta property="og:url"              content="https://hadro.github.io/tulsa-city-directories/1922.html" />
+<meta property="og:image"            content="https://hadro.github.io/tulsa-city-directories/screenshot.png" />
+<meta property="og:image:width"      content="1200" />
+<meta property="og:image:height"     content="630" />
+<meta name="twitter:card"            content="summary_large_image" />
+<meta name="twitter:title"           content="Polk-Hoffhine Tulsa City Directory, 1922" />
+<meta name="twitter:description"     content="Browse 69,669 entries from the 1922 Tulsa city directory — compiled one year after the Tulsa Race Massacre destroyed the Greenwood district." />
+<meta name="twitter:image"           content="https://hadro.github.io/tulsa-city-directories/screenshot.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -777,6 +789,7 @@
   .empty-state .active-summary .chip {
     font-family: var(--mono);
     font-size: 0.815rem;
+    font-weight: 600;
     color: var(--accent);
     background: rgba(122,42,31,0.06);
     border: 1px solid var(--accent-soft);
@@ -1320,7 +1333,7 @@
 </div>
 
 <!-- ============================ About modal ============================ -->
-<div class="about-backdrop" id="aboutBackdrop" role="presentation">
+<div class="about-backdrop" id="aboutBackdrop" role="none">
   <div class="about-modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" tabindex="-1">
     <div class="about-head">
       <div class="about-eyebrow">About this explorer</div>
@@ -2117,7 +2130,7 @@ function renderSidebar() {
       ${facet.options.map(opt => {
         const on = activeSet.has(opt.value);
         const cnt = counts[opt.value] || 0;
-        return `<div class="facet-row" data-facet="${facet.key}" data-value="${escapeHTML(opt.value)}" data-on="${on}" tabindex="0" role="checkbox" aria-checked="${on}">
+        return `<div class="facet-row" data-facet="${facet.key}" data-value="${escapeHTML(opt.value)}" data-on="${on}" tabindex="0" role="checkbox" aria-checked="${on}" aria-label="${opt.label.replace(/"/g, '&quot;')}">
           <span class="label"><span class="chk" aria-hidden="true"></span>${escapeHTML(opt.label)}</span>
           <span class="count">${fmt(cnt)}</span>
         </div>`;
@@ -2216,11 +2229,11 @@ function renderTable() {
       const occ = r.occupation_role
         ? escapeHTML(r.occupation_role)
         : `<span class="muted-dash" aria-label="none">&mdash;</span>`;
-      const addr = r.address ? escapeHTML(r.address) : `<span class="muted-dash">&mdash;</span>`;
+      const addr = r.address ? escapeHTML(r.address) : `<span class="muted-dash" aria-label="no address recorded">&mdash;</span>`;
       const sec = r.section
         ? `<span class="range-tag" title="${escapeHTML(r.section)}">${escapeHTML(sectionTag(r.section))}</span>`
-        : `<span class="muted-dash">&mdash;</span>`;
-      html[i] = `<tr data-i="${i}" class="${isSel?'selected':''}" tabindex="0" role="button" aria-label="Open entry: ${escapeHTML(r.name || '(unnamed)')}">
+        : `<span class="muted-dash" aria-label="no section">&mdash;</span>`;
+      html[i] = `<tr data-i="${i}" class="${isSel?'selected':''}" tabindex="0" role="button" aria-label="Open entry: ${escapeHTML(r.name || '(unnamed)')}${r.race_marker === '(c)' ? ', designated Colored' : ''}">
         <td>${sec}</td>
         <td class="name-cell">${escapeHTML(r.name || '')}${raceMark}</td>
         <td>${addrType}</td>

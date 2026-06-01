@@ -4,6 +4,18 @@
 <meta charset="utf-8" />
 <title>Polk-Hoffhine Tulsa City Directory, 1921 — Pipeline Data Explorer</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description"              content="Browse 69,843 entries from the 1921 Tulsa city directory — compiled months before the Tulsa Race Massacre destroyed the Greenwood district." />
+<meta property="og:title"            content="Polk-Hoffhine Tulsa City Directory, 1921" />
+<meta property="og:description"      content="Browse 69,843 entries from the 1921 Tulsa city directory — compiled months before the Tulsa Race Massacre destroyed the Greenwood district." />
+<meta property="og:type"             content="website" />
+<meta property="og:url"              content="https://hadro.github.io/tulsa-city-directories/1921.html" />
+<meta property="og:image"            content="https://hadro.github.io/tulsa-city-directories/screenshot.png" />
+<meta property="og:image:width"      content="1200" />
+<meta property="og:image:height"     content="630" />
+<meta name="twitter:card"            content="summary_large_image" />
+<meta name="twitter:title"           content="Polk-Hoffhine Tulsa City Directory, 1921" />
+<meta name="twitter:description"     content="Browse 69,843 entries from the 1921 Tulsa city directory — compiled months before the Tulsa Race Massacre destroyed the Greenwood district." />
+<meta name="twitter:image"           content="https://hadro.github.io/tulsa-city-directories/screenshot.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -777,6 +789,7 @@
   .empty-state .active-summary .chip {
     font-family: var(--mono);
     font-size: 0.815rem;
+    font-weight: 600;
     color: var(--accent);
     background: rgba(122,42,31,0.06);
     border: 1px solid var(--accent-soft);
@@ -1281,32 +1294,32 @@
     <div class="table-wrap" id="tableWrap">
       <table id="mainTable">
         <colgroup>
-          <col style="width: 92px"/>
           <col style="width: 22%"/>
-          <col style="width: 90px"/>
           <col style="width: 14%"/>
-          <col style="width: 120px"/>
           <col style="width: 18%"/>
           <col style="width: 24%"/>
+          <col style="width: 90px"/>
+          <col style="width: 120px"/>
+          <col style="width: 92px"/>
         </colgroup>
         <thead>
           <tr id="header-row">
-            <th data-key="alphabetical_range" aria-sort="none"><button class="col-sort" type="button">Range <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
             <th data-key="name" aria-sort="ascending"><button class="col-sort" type="button">Name <span class="sort" aria-hidden="true">&darr;</span></button></th>
-            <th data-key="is_business" aria-sort="none"><button class="col-sort" type="button">Business <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
             <th data-key="spouse_name" aria-sort="none"><button class="col-sort" type="button">Spouse <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
-            <th data-key="race_designation" aria-sort="none"><button class="col-sort" type="button">Race designator <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
             <th data-key="occupation_role" aria-sort="none"><button class="col-sort" type="button">Occupation <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
             <th data-key="address" aria-sort="none"><button class="col-sort" type="button">Address <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
+            <th data-key="is_business" aria-sort="none"><button class="col-sort" type="button">Business <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
+            <th data-key="race_designation" aria-sort="none"><button class="col-sort" type="button">Race designator <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
+            <th data-key="alphabetical_range" aria-sort="none"><button class="col-sort" type="button">Range <span class="sort" aria-hidden="true">&#x2195;</span></button></th>
           </tr>
           <tr class="filter-row">
-            <th><div class="filter-wrap"><input data-filter="alphabetical_range" placeholder="filter&hellip;" aria-label="Filter by range"/><button class="clear-x" data-clear-for="alphabetical_range" aria-label="Clear range filter" type="button" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
             <th><div class="filter-wrap"><input data-filter="name" placeholder="filter&hellip;" aria-label="Filter by name"/><button class="clear-x" data-clear-for="name" aria-label="Clear name filter" type="button" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
-            <th><select data-filter="is_business" aria-label="Filter by business"><option value="">(all)</option><option value="True">Yes</option><option value="False">No</option></select></th>
             <th><div class="filter-wrap"><input data-filter="spouse_name" placeholder="filter&hellip;" aria-label="Filter by spouse"/><button class="clear-x" data-clear-for="spouse_name" aria-label="Clear spouse filter" type="button" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
-            <th><select data-filter="race_designation" aria-label="Filter by race designation"><option value="">(all)</option><option value="(c)">(c)</option><option value="__none__">&mdash;</option></select></th>
             <th><div class="filter-wrap"><input data-filter="occupation_role" placeholder="filter&hellip;" aria-label="Filter by occupation"/><button class="clear-x" data-clear-for="occupation_role" aria-label="Clear occupation filter" type="button" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
             <th><div class="filter-wrap"><input data-filter="address" placeholder="filter&hellip;" aria-label="Filter by address"/><button class="clear-x" data-clear-for="address" aria-label="Clear address filter" type="button" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
+            <th><select data-filter="is_business" aria-label="Filter by business"><option value="">(all)</option><option value="True">Yes</option><option value="False">No</option></select></th>
+            <th><select data-filter="race_designation" aria-label="Filter by race designation"><option value="">(all)</option><option value="(c)">(c)</option><option value="__none__">&mdash;</option></select></th>
+            <th><div class="filter-wrap"><input data-filter="alphabetical_range" placeholder="filter&hellip;" aria-label="Filter by range"/><button class="clear-x" data-clear-for="alphabetical_range" aria-label="Clear range filter" type="button" tabindex="-1"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div></th>
           </tr>
         </thead>
         <tbody id="tbody"></tbody>
@@ -1320,7 +1333,7 @@
 </div>
 
 <!-- ============================ About modal ============================ -->
-<div class="about-backdrop" id="aboutBackdrop" role="presentation">
+<div class="about-backdrop" id="aboutBackdrop" role="none">
   <div class="about-modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" tabindex="-1">
     <div class="about-head">
       <div class="about-eyebrow">About this explorer</div>
@@ -2112,7 +2125,7 @@ function renderSidebar() {
       ${facet.options.map(opt => {
         const on = activeSet.has(opt.value);
         const cnt = counts[opt.value] || 0;
-        return `<div class="facet-row" data-facet="${facet.key}" data-value="${escapeHTML(opt.value)}" data-on="${on}" tabindex="0" role="checkbox" aria-checked="${on}">
+        return `<div class="facet-row" data-facet="${facet.key}" data-value="${escapeHTML(opt.value)}" data-on="${on}" tabindex="0" role="checkbox" aria-checked="${on}" aria-label="${opt.label.replace(/"/g, '&quot;')}">
           <span class="label"><span class="chk" aria-hidden="true"></span>${escapeHTML(opt.label)}</span>
           <span class="count">${fmt(cnt)}</span>
         </div>`;
@@ -2211,18 +2224,18 @@ function renderTable() {
       const occ = r.occupation_role
         ? escapeHTML(r.occupation_role)
         : `<span class="muted-dash" aria-label="none">&mdash;</span>`;
-      const addr = r.address ? escapeHTML(r.address) : `<span class="muted-dash">&mdash;</span>`;
+      const addr = r.address ? escapeHTML(r.address) : `<span class="muted-dash" aria-label="no address recorded">&mdash;</span>`;
       const range = r.alphabetical_range
         ? `<span class="range-tag">${escapeHTML(r.alphabetical_range)}</span>`
-        : `<span class="muted-dash">&mdash;</span>`;
-      html[i] = `<tr data-i="${i}" class="${isSel?'selected':''}" tabindex="0" role="button" aria-label="Open entry: ${escapeHTML(r.name || '(unnamed)')}">
-        <td>${range}</td>
+        : `<span class="muted-dash" aria-label="no range">&mdash;</span>`;
+      html[i] = `<tr data-i="${i}" class="${isSel?'selected':''}" tabindex="0" role="button" aria-label="Open entry: ${escapeHTML(r.name || r.occupant_name || '(unnamed)')}${r.race_designation === '(c)' ? ', designated Colored' : ''}">
         <td class="name-cell">${escapeHTML(r.name || '')}${raceMark}</td>
-        <td>${bus}</td>
         <td class="spouse-cell">${spouse}</td>
-        <td>${race}</td>
         <td>${occ}</td>
         <td title="${escapeHTML(r.address || '')}">${addr}</td>
+        <td>${bus}</td>
+        <td>${race}</td>
+        <td>${range}</td>
       </tr>`;
     }
     tbody.innerHTML = html.join("");
