@@ -435,8 +435,10 @@
     text-overflow: ellipsis;
   }
   tbody tr:hover td { background: var(--row-hover); }
+  tbody tr:hover { position: relative; z-index: 2; }
   tbody tr.selected td { background: var(--row-selected); }
   tbody tr.selected td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+  .name-cell { overflow: visible; }
 
   .range-tag {
     font-family: var(--mono);
@@ -2210,7 +2212,7 @@ function renderTable() {
       const r = slice[i];
       const isSel = (selRow && selRow === r);
       const raceMark = r.race_designation === "(c)"
-        ? `<button type="button" class="race-mark tip" tabindex="-1" aria-label="Race designation (c): marked as Colored in the original publication">(c)<span class="tip-body" role="tooltip">Marked in the original publication as <em>&ldquo;Colored&rdquo;</em> &mdash; the directory's racial notation under Jim Crow.</span></button>`
+        ? `<button type="button" class="race-mark tip" tabindex="-1" aria-label="Race designation (c): marked as 'Colored' in the original publication">(c)<span class="tip-body" role="tooltip">Marked in the original publication as <em>&ldquo;Colored&rdquo;</em> &mdash; the directory's racial notation under Jim Crow.</span></button>`
         : "";
       const bus = r.is_business === "True"
         ? `<span class="is-bus-yes">YES</span>`

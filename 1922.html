@@ -435,6 +435,7 @@
     text-overflow: ellipsis;
   }
   tbody tr:hover td { background: var(--row-hover); }
+  tbody tr:hover { position: relative; z-index: 2; }
   tbody tr.selected td { background: var(--row-selected); }
   tbody tr.selected td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
 
@@ -452,6 +453,7 @@
     font-family: var(--serif);
     font-size: 1.111rem;
     letter-spacing: -0.005em;
+    overflow: visible;
   }
   .name-cell .race-mark,
   button.race-mark {
@@ -2215,7 +2217,7 @@ function renderTable() {
       const r = slice[i];
       const isSel = (selRow && selRow === r);
       const raceMark = r.race_marker === "(c)"
-        ? `<button type="button" class="race-mark tip" tabindex="-1" aria-label="Race designation (c): marked as Colored in the original publication">(c)<span class="tip-body" role="tooltip">Marked in the original publication as <em>&ldquo;Colored&rdquo;</em> &mdash; the directory's racial notation under Jim Crow.</span></button>`
+        ? `<button type="button" class="race-mark tip" tabindex="-1" aria-label="Race designation (c): marked as 'Colored' in the original publication">(c)<span class="tip-body" role="tooltip">Marked in the original publication as <em>&ldquo;Colored&rdquo;</em> &mdash; the directory's racial notation under Jim Crow.</span></button>`
         : "";
       const addrType = r.address_type
         ? `<span class="range-tag">${escapeHTML(r.address_type)}</span>`
