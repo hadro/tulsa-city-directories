@@ -2419,12 +2419,11 @@ function syncHash() {
 function applyHashToState(opts) {
   opts = opts || {};
   const raw = location.hash.replace(/^#/, "");
-  // Legacy: bare "#about" with no params
-  if (raw === "about") {
-    if (!state.aboutOpen) openAbout({ skipHashUpdate: true });
-    return;
-  }
-  const p = new URLSearchParams(raw);
+  // Legacy bare "#about" form is treated as an empty URL plus an About
+  // request — closing the modal lands you in the same default view a
+  // fresh visit would.
+  const isLegacyAbout = raw === "about";
+  const p = new URLSearchParams(isLegacyAbout ? "" : raw);
 
   // Search
   const q = p.get("q") || "";
@@ -2494,7 +2493,7 @@ function applyHashToState(opts) {
   renderTable();
 
   // About modal
-  const wantAbout = p.get("about") === "1";
+  const wantAbout = p.get("about") === "1" || isLegacyAbout;
   if (wantAbout && !state.aboutOpen) openAbout({ skipHashUpdate: true });
   else if (!wantAbout && state.aboutOpen) closeAbout({ skipHashUpdate: true });
 
